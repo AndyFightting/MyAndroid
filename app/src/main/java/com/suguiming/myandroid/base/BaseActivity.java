@@ -17,7 +17,7 @@ import com.suguiming.myandroid.tool.MyTool;
 /**
  * Created by suguiming on 15/11/18.
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
 
     protected RelativeLayout fatherView;
     protected RelativeLayout titleView;
@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     private ImageView leftImg;
     private TextView leftTitleTv;
 
-    private TextView rightTv;
+    private TextView rightTitleTv;
     private ImageView rightOneImg;
     private ImageView rightTwoImg;
 
@@ -123,13 +123,14 @@ public class BaseActivity extends AppCompatActivity {
         leftImg = (ImageView)findViewById(R.id.left_img);
         leftTitleTv = (TextView)findViewById(R.id.left_title_tv);
 
-        rightTv = (TextView)findViewById(R.id.right_title_tv);
+        rightTitleTv = (TextView)findViewById(R.id.right_title_tv);
         rightOneImg = (ImageView)findViewById(R.id.right_one_img);
         rightTwoImg = (ImageView)findViewById(R.id.right_two_img);
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View tmpView = inflater.inflate(viewId, null);
         mainView.addView(tmpView);
+        
     }
 
     public void hideTitleView(){
@@ -153,6 +154,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showLeftImg(String imgName){
         if (hasTitle){
+            leftImg.setOnClickListener(this);
             leftImg.setVisibility(View.VISIBLE);
             leftTitleTv.setVisibility(View.GONE);
 
@@ -170,6 +172,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showLeftTitle(String titleName){
         if (hasTitle){
+            leftTitleTv.setOnClickListener(this);
             leftTitleTv.setVisibility(View.VISIBLE);
             leftImg.setVisibility(View.GONE);
 
@@ -179,16 +182,17 @@ public class BaseActivity extends AppCompatActivity {
 
     private void hideRightTitle(){
         if (hasTitle){
-            rightTv.setVisibility(View.GONE);
+            rightTitleTv.setVisibility(View.GONE);
         }
     }
 
     public void showRightTitle(String titleName){
         if (hasTitle){
-            rightTv.setVisibility(View.VISIBLE);
+            rightTitleTv.setOnClickListener(this);
+            rightTitleTv.setVisibility(View.VISIBLE);
             rightOneImg.setVisibility(View.GONE);
             rightTwoImg.setVisibility(View.GONE);
-            rightTv.setText(titleName);
+            rightTitleTv.setText(titleName);
         }
     }
 
@@ -200,8 +204,9 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showRightOneImg(String imgName){
         if (hasTitle){
+            rightOneImg.setOnClickListener(this);
             rightOneImg.setVisibility(View.VISIBLE);
-            rightTv.setVisibility(View.GONE);
+            rightTitleTv.setVisibility(View.GONE);
 
             Context ctx=getBaseContext();
             int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
@@ -217,8 +222,9 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showRightTwoImg(String imgName){
         if (hasTitle){
+            rightTwoImg.setOnClickListener(this);
             rightTwoImg.setVisibility(View.VISIBLE);
-            rightTv.setVisibility(View.GONE);
+            rightTitleTv.setVisibility(View.GONE);
 
             Context ctx=getBaseContext();
             int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
@@ -228,7 +234,7 @@ public class BaseActivity extends AppCompatActivity {
 
     //若不是返回就重写该方法
     public void leftImgTap(View view){
-        MyTool.log("left img tap");
+        MyTool.log("left img tap base activity");
         finish();
     }
 
@@ -236,7 +242,7 @@ public class BaseActivity extends AppCompatActivity {
         MyTool.log("left title tap");
     }
 
-    public void backViewTap(View view){
+    public void mainViewTap(View view){
         MyTool.log("back view tap");
 
     }
@@ -255,9 +261,37 @@ public class BaseActivity extends AppCompatActivity {
         MyTool.log("right two img tap");
 
     }
-//------------------------------------------------其他基础方法----------------------------------------------------------------
+//------------------------------------------------其他方法----------------------------------------------------------------
 
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.left_img:
+                leftImgTap(view);
+                break;
+            case R.id.left_title_tv:
+                leftTitleTap(view);
+                break;
+            case R.id.right_title_tv:
+                rightTitleTap(view);
+                break;
+            case R.id.right_one_img:
+                rightOneImgTap(view);
+                break;
+            case R.id.right_two_img:
+                rightTwoImgTap(view);
+                break;
+            case R.id.main_view:
+                mainViewTap(view);
+                break;
+        }
+    }
 
+    public void setImageWithName(ImageView image,String imgName){
+        Context ctx=getBaseContext();
+        int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
+        image.setImageResource(imgId);
+    }
 
 
 }

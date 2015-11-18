@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/father_view"
+    android:clickable="true"
     tools:context="com.suguiming.myandroid.base.BaseActivity">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:visibility="gone"
             android:id="@+id/title_layout"
@@ -25,7 +27,6 @@
             <ImageView
                 android:id="@+id/left_img"
                 android:visibility="gone"
-                android:onClick="leftImgTap"
                 android:layout_centerVertical="true"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
@@ -33,7 +34,6 @@
             <TextView
                 android:visibility="gone"
                 android:id="@+id/left_title_tv"
-                android:onClick="leftTitleTap"
                 android:clickable="true"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -47,7 +47,6 @@
             <TextView
                 android:visibility="gone"
                 android:id="@+id/right_title_tv"
-                android:onClick="rightTitleTap"
                 android:clickable="true"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -59,7 +58,6 @@
                 android:layout_height="match_parent" />
             <ImageView
                 android:id="@+id/right_one_img"
-                android:onClick="rightOneImgTap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_width="45dp"
@@ -68,17 +66,14 @@
             <ImageView
                 android:id="@+id/right_two_img"
                 android:layout_toLeftOf="@id/right_one_img"
-                android:onClick="rightTwoImgTap"
                 android:layout_centerVertical="true"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
-
         </RelativeLayout>
-
         <LinearLayout
-            android:onClick="backViewTap"
             android:id="@+id/main_view"
             android:orientation="vertical"
+            android:clickable="true"
             android:background="@color/back_view_gray"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
