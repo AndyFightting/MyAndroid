@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/father_view"
+    tools:context="com.suguiming.myandroid.base.BaseActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <TextView
+                android:id="@+id/title_tv"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@color/blue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!-- left part-->
+            <ImageView
+                android:id="@+id/left_img"
+                android:visibility="gone"
+                android:onClick="leftImgTap"
+                android:layout_centerVertical="true"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/left_title_tv"
+                android:onClick="leftTitleTap"
+                android:clickable="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:paddingLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="hello"
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+
+            <!-- right part-->
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/right_title_tv"
+                android:onClick="rightTitleTap"
+                android:clickable="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical|right"
+                android:paddingRight="15dp"
+                android:text="hello"
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/right_one_img"
+                android:onClick="rightOneImgTap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+            <ImageView
+                android:id="@+id/right_two_img"
+                android:layout_toLeftOf="@id/right_one_img"
+                android:onClick="rightTwoImgTap"
+                android:layout_centerVertical="true"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:onClick="backViewTap"
+            android:id="@+id/main_view"
+            android:orientation="vertical"
+            android:background="@color/back_view_gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
