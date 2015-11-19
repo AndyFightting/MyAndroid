@@ -32,10 +32,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView rightOneImg;
     private ImageView rightTwoImg;
 
+    public LayoutInflater mInflater;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MyTool.log("onCreate");
+        mInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
