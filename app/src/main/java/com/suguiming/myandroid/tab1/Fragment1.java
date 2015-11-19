@@ -21,7 +21,7 @@ public class Fragment1 extends BaseFragment {
 
         //------这里面初始化fragment view----------
         setMainView(R.layout.fragment1_layout);
-        showTitleView("fragment 1");
+        showTitleView("日历排期");
 
         return view;
     }

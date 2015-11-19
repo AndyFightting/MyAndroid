@@ -21,7 +21,7 @@ public class Fragment0 extends BaseFragment {
 
         //------这里面初始化fragment view----------
          setMainView(R.layout.fragment0_layout);
-         showTitleView("fragment 0");
+         showTitleView("课程统计");
 
         return view;
     }

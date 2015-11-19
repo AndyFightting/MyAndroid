@@ -20,7 +20,7 @@ public class Fragment3 extends BaseFragment {
 
         //------这里面初始化fragment view----------
         setMainView(R.layout.fragment3_layout);
-        showTitleView("fragment 3");
+        showTitleView("我");
 
         return view;
     }

@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.bean.Student;
@@ -15,7 +17,7 @@ import java.util.List;
 /**
  * Created by suguiming on 15/11/19.
  */
-public class StudentAdapter extends BaseAdapter {
+public class StudentAdapter extends BaseAdapter{
 
     private Context mContext;
     private List<Student> studentList;
@@ -35,18 +37,28 @@ public class StudentAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        ViewHolder viewHolder;
+    public View getView (final int position, View convertView, ViewGroup parent){
+         ViewHolder viewHolder;
         if (convertView == null){
             convertView = mInflater.inflate(R.layout.item_student,null);
             viewHolder = new ViewHolder();
             viewHolder.name = (TextView)convertView.findViewById(R.id.name);
+            viewHolder.imageView = (ImageView)convertView.findViewById(R.id.image);
             convertView.setTag(viewHolder);
-        }else {
+            //------设置点击事件，item里面控件 的点击都放adapter里处理--------------------
+            viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    headImageTap(position);
+                }
+            });
+
+           }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
         //-------------设置值 holder -----------------------------------------------
-        viewHolder.name.setText("hello");
+        viewHolder.name.setText("hello "+position);
+        viewHolder.imageView.setImageResource(R.mipmap.tab2s);
 
         return convertView;
     }
@@ -63,5 +75,12 @@ public class StudentAdapter extends BaseAdapter {
 
     class ViewHolder{
         TextView name;
+        ImageView imageView;
     }
+
+//--------------------------------------------------------------------------------------------------
+    private void headImageTap(int position){
+       Toast.makeText(mContext,"图片点击"+position,Toast.LENGTH_SHORT).show();
+    }
+
 }

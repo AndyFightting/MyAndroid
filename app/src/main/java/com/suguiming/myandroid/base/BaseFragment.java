@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suguiming.myandroid.MainActivity;
 import com.suguiming.myandroid.R;
@@ -316,6 +317,9 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
       MyTool.log("base fragment tab tap");
     }
 
+    public void showToast(String message){
+        Toast.makeText(mainActivity,message,Toast.LENGTH_SHORT).show();
+    }
 
 
 }

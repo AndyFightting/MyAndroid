@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.tool.MyTool;
@@ -296,5 +297,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         image.setImageResource(imgId);
     }
 
+    public void showToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 
 }
