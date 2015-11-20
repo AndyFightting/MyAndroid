@@ -42,6 +42,8 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     public MainActivity mainActivity;
     public LayoutInflater mInflater;
 
+    private View loadMoreFooterView;
+
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
@@ -321,6 +323,23 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
 
     public void showToast(String message){
         Toast.makeText(mainActivity,message,Toast.LENGTH_SHORT).show();
+    }
+
+    public void showLoadMoreFooter(String message){
+        loadMoreFooterView = mInflater.inflate(R.layout.refresh_footer,null);
+        TextView titleTv = (TextView)loadMoreFooterView.findViewById(R.id.title);
+        titleTv.setText(message);
+        fatherView.addView(loadMoreFooterView);
+
+        fatherView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideLoadMoreFooter();
+            }
+        }, 1000);
+    }
+    private void hideLoadMoreFooter(){
+            fatherView.removeView(loadMoreFooterView);
     }
 
 

@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool.customRefreshHeader;
+package com.suguiming.myandroid.tool.customRefresh;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -34,16 +34,10 @@ public class SGMRefreshHeader extends RelativeLayout implements PtrUIHandler {
         titleTv = (TextView) view.findViewById(R.id.title);
     }
 
-   public void onUIReset(PtrFrameLayout var1){
-       titleTv.setText("下拉刷新...");
-       reachRefreshFlag = false;
-       headViewHeightDip = MyTool.pixFromDip(mContext,60); //头部view高度 60dp
-       flag = var1.getRatioOfHeaderToHeightRefresh()*headViewHeightDip;
-   }
-
-    public void onUIRefreshPrepare(PtrFrameLayout var1){
-        titleTv.setText("下拉刷新...");
+    public void onUIRefreshPrepare(PtrFrameLayout var1){ //准备开始下拉
+        titleTv.setText("下拉刷新");
         reachRefreshFlag = false;
+
         headViewHeightDip = MyTool.pixFromDip(mContext,60);
         flag = var1.getRatioOfHeaderToHeightRefresh()*headViewHeightDip;
     }
@@ -55,7 +49,7 @@ public class SGMRefreshHeader extends RelativeLayout implements PtrUIHandler {
     }
 
     public void onUIRefreshComplete(PtrFrameLayout var1){
-        titleTv.setText("刷新完成...");
+        titleTv.setText("刷新完成");
 
     }
 
@@ -72,9 +66,13 @@ public class SGMRefreshHeader extends RelativeLayout implements PtrUIHandler {
                 if (reachRefreshFlag){
                     reachRefreshFlag = false;
                     //不可以刷新的转折点-------
-                    titleTv.setText("下拉刷新...");
+                    titleTv.setText("下拉刷新");
                 }
             }
         }
+    }
+
+    public void onUIReset(PtrFrameLayout var1){//手放开后重置，在onUIRefreshPrepare里处理就可以了
+
     }
 }

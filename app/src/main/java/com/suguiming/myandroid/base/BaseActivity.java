@@ -39,6 +39,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView rightTwoImg;
 
     public LayoutInflater mInflater;
+    private View loadMoreFooterView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -312,5 +313,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     public void showToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    public void showLoadMoreFooter(String message){
+        loadMoreFooterView = mInflater.inflate(R.layout.refresh_footer,null);
+        TextView titleTv = (TextView)loadMoreFooterView.findViewById(R.id.title);
+        titleTv.setText(message);
+        fatherView.addView(loadMoreFooterView);
+
+        fatherView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideLoadMoreFooter();
+            }
+        }, 3000);
+    }
+    public void hideLoadMoreFooter(){
+            fatherView.removeView(loadMoreFooterView);
+    }
+
+
 
 }
