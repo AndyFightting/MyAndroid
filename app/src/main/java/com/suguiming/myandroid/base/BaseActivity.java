@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suguiming.myandroid.R;
+import com.suguiming.myandroid.tool.ActivityManager;
 import com.suguiming.myandroid.tool.MyTool;
 
 /**
@@ -23,6 +27,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected RelativeLayout fatherView;
     protected RelativeLayout titleView;
     protected LinearLayout mainView;
+    protected View statusBackView;
 
     private boolean hasTitle = false;
     private TextView titleTv;
@@ -38,8 +43,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyTool.log("onCreate");
         mInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ActivityManager.addActivity(this);
+        //透明状态栏 mine sdk 19
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        MyTool.log("onCreate");
+
+
     }
 
     @Override
@@ -67,7 +77,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
         MyTool.log("onStop");
     }
@@ -75,7 +85,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        MyTool.log("onDestroy");
+        ActivityManager.removeActivity(this);
+        MyTool.log("onDestroy activityList count "+ActivityManager.getActivityNum());
     }
 
     //Activity被系统杀死时被调用，在onPause之前被调用
@@ -123,6 +134,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         mainView = (LinearLayout)findViewById(R.id.main_view);
         titleView = (RelativeLayout)findViewById(R.id.title_layout);
         titleTv = (TextView)findViewById(R.id.title_tv);
+        statusBackView = findViewById(R.id.status_back_view);
 
         leftImg = (ImageView)findViewById(R.id.left_img);
         leftTitleTv = (TextView)findViewById(R.id.left_title_tv);

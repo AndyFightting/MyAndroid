@@ -28,6 +28,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     protected RelativeLayout fatherView;
     protected RelativeLayout titleView;
     protected LinearLayout mainView;
+    protected View statusBackView;
 
     private boolean hasTitle = false;
     private TextView titleTv;
@@ -77,6 +78,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         mainView = (LinearLayout)view.findViewById(R.id.main_view);
         titleView = (RelativeLayout)view.findViewById(R.id.title_layout);
         titleTv = (TextView)view.findViewById(R.id.title_tv);
+        statusBackView = view.findViewById(R.id.status_back_view);
 
         leftImg = (ImageView)view.findViewById(R.id.left_img);
         leftTitleTv = (TextView)view.findViewById(R.id.left_title_tv);
