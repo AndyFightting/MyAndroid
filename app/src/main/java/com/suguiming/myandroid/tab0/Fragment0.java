@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
+import com.orhanobut.logger.Logger;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
@@ -33,7 +34,7 @@ public class Fragment0 extends BaseFragment {
     private UserAdapter userAdapter;
     private List<String> nameList = new ArrayList<>();
 
-    private PtrFrameLayout ptrFrameLayout;//刷新框架
+    private PtrFrameLayout refreshLayout;//刷新框架
     private boolean canLoadMore = true;
 
     @Override
@@ -59,24 +60,24 @@ public class Fragment0 extends BaseFragment {
     }
 
     private void addRefreshHeader(){
-        ptrFrameLayout = (PtrFrameLayout) mainView.findViewById(R.id.fragment_ptr_home_ptr_frame);
+        refreshLayout = (PtrFrameLayout) mainView.findViewById(R.id.fragment_ptr_home_ptr_frame);
         StoreHouseHeader header = new StoreHouseHeader(mainActivity);
         header.setPadding(0, LocalDisplay.dp2px(20), 0, LocalDisplay.dp2px(20));
         header.initWithString("HELLO WORLD"); //只能用字母A到Z,以数字0到9。
 
-        ptrFrameLayout.setDurationToCloseHeader(1500);
-        ptrFrameLayout.setHeaderView(header);
-        ptrFrameLayout.addPtrUIHandler(header);
+        refreshLayout.setDurationToCloseHeader(1500);
+        refreshLayout.setHeaderView(header);
+        refreshLayout.addPtrUIHandler(header);
 
-        ptrFrameLayout.setPtrHandler(new PtrHandler() {
+        refreshLayout.setPtrHandler(new PtrHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //开始刷新
                 beginRefresh();
-                ptrFrameLayout.postDelayed(new Runnable() {
+                refreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        ptrFrameLayout.refreshComplete();
+                        refreshLayout.refreshComplete();
                     }
                 }, 1500);
             }
@@ -132,8 +133,7 @@ public class Fragment0 extends BaseFragment {
     }
 
     public void tabTap(){
-        MyTool.log("0 fragment tab tap");
-        ptrFrameLayout.autoRefresh();
+        refreshLayout.autoRefresh();
     }
 
     //构造假数据

@@ -57,59 +57,50 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart(){
         super.onStart();
-        MyTool.log("onStart");
     }
 
     @Override
     protected void onRestart(){
         super.onRestart();
-        MyTool.log("onRestart");
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        MyTool.log("onResume");
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        MyTool.log("onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        MyTool.log("onStop");
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
         ActivityManager.removeActivity(this);
-        MyTool.log("onDestroy activityList count "+ActivityManager.getActivityNum());
     }
 
     //Activity被系统杀死时被调用，在onPause之前被调用,用于保存状态数据等
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        MyTool.log("onSaveInstanceState");
     }
 
     //Activity被系统杀死后再重建时被调用,在onStart之后被调用
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        MyTool.log("onRestoreInstanceState");
     }
 
     //Activity窗口获得或失去焦点时被调用,在onResume之后或onPause之后
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        MyTool.log("onWindowFocusChanged");
     }
 
     //方向改变时被调用
@@ -118,10 +109,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         super.onConfigurationChanged(newConfig);
         switch (newConfig.orientation) {
             case Configuration.ORIENTATION_PORTRAIT:
-                MyTool.log("ORIENTATION_PORTRAIT");
                 break;
             case Configuration.ORIENTATION_LANDSCAPE:
-                MyTool.log("ORIENTATION_LANDSCAPE");
                 break;
         }
     }
@@ -256,31 +245,25 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     //若不是返回就重写该方法
     public void leftImgTap(View view){
-        MyTool.log("left img tap base activity");
         finish();
     }
 
     public void leftTitleTap(View view){
-        MyTool.log("left title tap");
     }
 
     public void mainViewTap(View view){
-        MyTool.log("back view tap");
 
     }
 
     public void rightTitleTap(View view){
-        MyTool.log("right title tap");
 
     }
 
     public void rightOneImgTap(View view){
-        MyTool.log("right one img tap");
 
     }
 
     public void rightTwoImgTap(View view){
-        MyTool.log("right two img tap");
 
     }
 //------------------------------------------------其他方法----------------------------------------------------------------

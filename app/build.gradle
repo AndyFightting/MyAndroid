@@ -25,4 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     compile 'in.srain.cube:cube-sdk:1.0.44@aar'
+    compile 'com.orhanobut:logger:1.11'
+
 }

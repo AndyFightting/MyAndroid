@@ -1,14 +1,9 @@
 package com.suguiming.myandroid.tool;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.TextView;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by suguiming on 15/11/18.
@@ -16,7 +11,7 @@ import android.widget.TextView;
 public class MyTool {
 
     public static void log(String message){
-        Log.i("myLog",message);
+        Log.d("myLog",message);
     }
 
     public static boolean isEmptyTv(TextView textView){

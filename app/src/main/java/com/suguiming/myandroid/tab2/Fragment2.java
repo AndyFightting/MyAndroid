@@ -31,7 +31,7 @@ public class Fragment2 extends BaseFragment {
     private StudentAdapter studentAdapter;
     private List<Student> studentList = new ArrayList<>();
 
-    private PtrClassicFrameLayout mPtrFrame;//刷新框架
+    private PtrClassicFrameLayout refreshLayout;//刷新框架
     private boolean canLoadMore = true;
 
     @Override
@@ -61,25 +61,25 @@ public class Fragment2 extends BaseFragment {
     }
 
     private void addRefreshHeader(){
-        mPtrFrame = (PtrClassicFrameLayout) mainView.findViewById(R.id.rotate_header_list_view_frame);
+        refreshLayout = (PtrClassicFrameLayout) mainView.findViewById(R.id.rotate_header_list_view_frame);
         //方案一:用框架自带的刷新
-//        mPtrFrame.setLastUpdateTimeRelateObject(this);//显示距离上次刷新时间
+//        refreshLayout.setLastUpdateTimeRelateObject(this);//显示距离上次刷新时间
 
         //方案二:用自定义刷新头部--------
         SGMRefreshHeader  header = new SGMRefreshHeader(mainActivity);
-        mPtrFrame.setHeaderView(header);
-        mPtrFrame.addPtrUIHandler(header);
+        refreshLayout.setHeaderView(header);
+        refreshLayout.addPtrUIHandler(header);
         //----------方案二end----------
-        mPtrFrame.setPtrHandler(new PtrHandler() {
+        refreshLayout.setPtrHandler(new PtrHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //开始刷新 ------
                 beginRefresh();
-                //demo 1.8秒后结束刷新----实际项目在请求成功或失败后调用 mPtrFrame.refreshComplete();
+                //demo 1.8秒后结束刷新----实际项目在请求成功或失败后调用 refreshLayout.refreshComplete();
                 frame.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mPtrFrame.refreshComplete();
+                        refreshLayout.refreshComplete();
                     }
                 }, 1500);
             }
@@ -117,7 +117,7 @@ public class Fragment2 extends BaseFragment {
     }
 
     public void tabTap(){
-        mPtrFrame.autoRefresh();
+        refreshLayout.autoRefresh();
     }
 
     private void beginRefresh(){

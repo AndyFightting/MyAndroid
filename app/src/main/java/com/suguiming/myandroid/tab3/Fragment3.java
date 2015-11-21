@@ -27,7 +27,6 @@ public class Fragment3 extends BaseFragment {
     }
 
     public void tabTap(){
-        MyTool.log("3 fragment tab tap");
 
     }
 }

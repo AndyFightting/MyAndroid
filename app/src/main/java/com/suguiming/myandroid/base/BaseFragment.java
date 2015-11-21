@@ -65,14 +65,11 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyTool.log("fragment onCreate");
-
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        MyTool.log("fragment onCreateView");
         View view = inflater.inflate(R.layout.layout_base, container, false);
 
         mInflater = inflater;
@@ -99,57 +96,48 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        MyTool.log("fragment onActivityCreated");
 
     }
 
     @Override
     public void onStart(){
         super.onStart();
-        MyTool.log("fragment onStart");
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        MyTool.log("fragment onResume");
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        MyTool.log("fragment onPause");
     }
 
     @Override
     public void onStop(){
         super.onStop();
-        MyTool.log("fragment onStop");
     }
 
     @Override
     public void onDestroyView(){
         super.onDestroyView();
-        MyTool.log("fragment onDestroyView");
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
-        MyTool.log("fragment onDestroy");
     }
 
     @Override
     public void onDetach(){
         super.onDetach();
-        MyTool.log("fragment onDetach");
     }
 
     //Activity被系统杀死时被调用，在onPause之前被调用
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        MyTool.log("fragment onSaveInstanceState");
     }
 
     //方向改变时被调用
@@ -158,10 +146,8 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         super.onConfigurationChanged(newConfig);
         switch (newConfig.orientation) {
             case Configuration.ORIENTATION_PORTRAIT:
-                MyTool.log("fragment ORIENTATION_PORTRAIT");
                 break;
             case Configuration.ORIENTATION_LANDSCAPE:
-                MyTool.log("fragment ORIENTATION_LANDSCAPE");
                 break;
         }
     }
@@ -271,30 +257,26 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     }
 
     public void leftImgTap(View view){
-        MyTool.log("left img tap base fragment");
+
     }
 
     public void leftTitleTap(View view){
-        MyTool.log("left title tap");
+
     }
 
     public void mainViewTap(View view){
-        MyTool.log("back view tap");
 
     }
 
     public void rightTitleTap(View view){
-        MyTool.log("right title tap");
 
     }
 
     public void rightOneImgTap(View view){
-        MyTool.log("right one img tap");
 
     }
 
     public void rightTwoImgTap(View view){
-        MyTool.log("right two img tap");
 
     }
 //------------------------------------------------其他方法----------------------------------------------------------------
@@ -323,7 +305,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     }
 
     public void tabTap(){
-      MyTool.log("base fragment tab tap");
+
     }
 
     public void showToast(String message){
