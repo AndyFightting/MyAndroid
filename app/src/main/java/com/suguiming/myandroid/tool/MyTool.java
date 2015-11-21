@@ -57,26 +57,32 @@ public class MyTool {
         return  android.os.Build.VERSION.RELEASE;
     }
 
-    public static int getScreenWidth(Context context){
-        DisplayMetrics dm = new DisplayMetrics();
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        windowManager.getDefaultDisplay().getMetrics(dm);
-        return  dm.widthPixels;
+    public static int getScreenWidthPx(Context context){
+        return  context.getResources().getDisplayMetrics().widthPixels;
     }
 
-    public static int getScreenHeight(Context context){
-        DisplayMetrics dm = new DisplayMetrics();
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        windowManager.getDefaultDisplay().getMetrics(dm);
-        return  dm.heightPixels;
+    public static int getScreenHeightPx(Context context){
+        return  context.getResources().getDisplayMetrics().heightPixels;
     }
 
-    public static int pixFromDip(Context context, float dpValue) {
+    public static float getXdpi(Context context){
+        return  context.getResources().getDisplayMetrics().xdpi;
+    }
+
+    public static float getYdpi(Context context){
+        return  context.getResources().getDisplayMetrics().ydpi;
+    }
+
+    public static float getDensity(Context context){
+       return context.getResources().getDisplayMetrics().density;
+    }
+
+    public static int pxFromDp(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public static int dipFromPix(Context context, float pxValue) {
+    public static int dpFromPx(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }

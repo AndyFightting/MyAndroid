@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool.customRefresh;
+package com.suguiming.myandroid.tool;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -12,7 +12,7 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.StudentAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.Student;
-import com.suguiming.myandroid.tool.customRefresh.SGMRefreshHeader;
+import com.suguiming.myandroid.tool.SGMRefreshHeader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +30,8 @@ public class Fragment2 extends BaseFragment {
     private ListView studentListView;
     private StudentAdapter studentAdapter;
     private List<Student> studentList = new ArrayList<>();
-    private PtrClassicFrameLayout mPtrFrame;//刷新框架
 
-    private int listTmpNum = 9;
+    private PtrClassicFrameLayout mPtrFrame;//刷新框架
     private boolean canLoadMore = true;
 
     @Override
@@ -43,7 +42,7 @@ public class Fragment2 extends BaseFragment {
         setMainView(R.layout.fragment2_layout);
         showTitleView("学员列表");
 
-        addStudentToList(listTmpNum);
+        addStudentToList(9);
 
         studentListView = (ListView)mainView.findViewById(R.id.student_list);
         studentAdapter = new StudentAdapter(mainActivity,studentList,fatherView);
@@ -122,19 +121,18 @@ public class Fragment2 extends BaseFragment {
     }
 
     private void beginRefresh(){
-         listTmpNum = 9;
          canLoadMore = true;
 
          studentList.clear();
-         addStudentToList(listTmpNum);
+         addStudentToList(9);
+
          studentAdapter.notifyDataSetChanged();
     }
     private void beginLoadMore(){
-        listTmpNum +=3; //假设每次增加3条数据
         addStudentToList(3);
         studentAdapter.notifyDataSetChanged();
 
-        if (listTmpNum >20){ //假设最多20条数据
+        if (studentList.size() >15){ //假设最多15条数据
             canLoadMore = false;
         }
     }

@@ -1,6 +1,7 @@
 package com.suguiming.myandroid.tool;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +17,21 @@ public class ActivityManager {
         activityList.add(activity);
     }
 
-    public static void removeAllActivity(){
-        activityList.clear();
-    }
-
     public static void removeActivity(Activity activity){
         activityList.remove(activity);
     }
 
+    public static void finishAllActivity(){
+        for (Activity activity : activityList){
+            if (!activity.isFinishing()){
+                activity.finish();
+            }
+        }
+        activityList.clear();
+    }
+
     public static int getActivityNum(){
+
         return activityList.size();
     }
 

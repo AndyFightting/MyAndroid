@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool.customRefresh;
+package com.suguiming.myandroid.tool;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -38,7 +38,7 @@ public class SGMRefreshHeader extends RelativeLayout implements PtrUIHandler {
         titleTv.setText("下拉刷新");
         reachRefreshFlag = false;
 
-        headViewHeightDip = MyTool.pixFromDip(mContext,60);
+        headViewHeightDip = MyTool.pxFromDp(mContext,60);
         flag = var1.getRatioOfHeaderToHeightRefresh()*headViewHeightDip;
     }
 

@@ -42,7 +42,8 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     public MainActivity mainActivity;
     public LayoutInflater mInflater;
 
-    private View loadMoreFooterView;
+    private RelativeLayout footerView;
+    private TextView footerTv;
 
     @Override
     public void onAttach(Context context){
@@ -88,6 +89,10 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         rightTv = (TextView)view.findViewById(R.id.right_title_tv);
         rightOneImg = (ImageView)view.findViewById(R.id.right_one_img);
         rightTwoImg = (ImageView)view.findViewById(R.id.right_two_img);
+
+        footerView =(RelativeLayout)mInflater.inflate(R.layout.refresh_footer, null);
+        footerTv = (TextView)footerView.findViewById(R.id.title);
+        fatherView.addView(footerView);
 
         return view;
     }
@@ -326,20 +331,18 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     }
 
     public void showLoadMoreFooter(String message){
-        loadMoreFooterView = mInflater.inflate(R.layout.refresh_footer,null);
-        TextView titleTv = (TextView)loadMoreFooterView.findViewById(R.id.title);
-        titleTv.setText(message);
-        fatherView.addView(loadMoreFooterView);
+        footerView.setVisibility(View.VISIBLE);
+        footerTv.setText(message);
 
         fatherView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 hideLoadMoreFooter();
             }
-        }, 1000);
+        }, 1000);//最迟1秒后也会自带消失
     }
-    private void hideLoadMoreFooter(){
-            fatherView.removeView(loadMoreFooterView);
+    public void hideLoadMoreFooter(){
+        footerView.setVisibility(View.GONE);
     }
 
 

@@ -39,7 +39,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView rightTwoImg;
 
     public LayoutInflater mInflater;
-    private View loadMoreFooterView;
+
+    private RelativeLayout footerView;
+    private TextView footerTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +50,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         ActivityManager.addActivity(this);
         //透明状态栏 mine sdk 19
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        MyTool.log("onCreate");
 
-
+        MyTool.log("onCreate----------------- 当前位置："+getClass().getSimpleName());
     }
 
     @Override
@@ -90,7 +91,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         MyTool.log("onDestroy activityList count "+ActivityManager.getActivityNum());
     }
 
-    //Activity被系统杀死时被调用，在onPause之前被调用
+    //Activity被系统杀死时被调用，在onPause之前被调用,用于保存状态数据等
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -147,6 +148,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         LayoutInflater inflater = LayoutInflater.from(this);
         View tmpView = inflater.inflate(viewId, null);
         mainView.addView(tmpView);
+
+        footerView =(RelativeLayout)mInflater.inflate(R.layout.refresh_footer, null);
+        footerTv = (TextView)footerView.findViewById(R.id.title);
+        fatherView.addView(footerView);
         
     }
 
@@ -315,22 +320,19 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void showLoadMoreFooter(String message){
-        loadMoreFooterView = mInflater.inflate(R.layout.refresh_footer,null);
-        TextView titleTv = (TextView)loadMoreFooterView.findViewById(R.id.title);
-        titleTv.setText(message);
-        fatherView.addView(loadMoreFooterView);
+        footerView.setVisibility(View.VISIBLE);
+        footerTv.setText(message);
 
         fatherView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 hideLoadMoreFooter();
             }
-        }, 3000);
+        }, 1000);//最迟1秒后也会自带消失
     }
     public void hideLoadMoreFooter(){
-            fatherView.removeView(loadMoreFooterView);
+        footerView.setVisibility(View.GONE);
     }
-
 
 
 }

@@ -56,7 +56,7 @@ public class StudentAdapter extends BaseAdapter{
            }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        //-------------设置值 holder -----------------------------------------------
+        //-------------设置值 holder ----------------------
         viewHolder.name.setText("hello "+position);
         viewHolder.imageView.setImageResource(R.mipmap.tab2s);
 
