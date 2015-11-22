@@ -1,19 +1,19 @@
 package com.suguiming.myandroid.tab0;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.orhanobut.logger.Logger;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
-import com.suguiming.myandroid.bean.Student;
 import com.suguiming.myandroid.bean.User;
-import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +52,12 @@ public class Fragment0 extends BaseFragment {
         userListView = (ListView)mainView.findViewById(R.id.user_list);
         userAdapter = new UserAdapter(mainActivity,R.layout.item_user,userList);
         userListView.setAdapter(userAdapter);
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                itemTap(position);
+            }
+        });
 
         addRefreshHeader();
         addRefreshFooter();
@@ -152,8 +158,17 @@ public class Fragment0 extends BaseFragment {
 
     //构造假数据
     private void initNameList(){
-        nameList.add("ormList使用");
-        nameList.add("volley使用");
+        nameList.add("模拟强制下线，在任何地方都可以");
+    }
+
+    private void itemTap(int position){
+        switch (position){
+            case 0://模拟强制推出
+                Intent intent = new Intent(Task.BROADCAST_LOGIN_OUT);
+                mainActivity.sendBroadcast(intent);
+               break;
+
+        }
     }
 
 }

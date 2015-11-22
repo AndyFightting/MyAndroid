@@ -1,9 +1,15 @@
 package com.suguiming.myandroid.tool;
 
 import android.content.Context;
+import android.location.LocationManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.orhanobut.logger.Logger;
+
+import java.util.List;
 
 /**
  * Created by suguiming on 15/11/18.
@@ -24,27 +30,12 @@ public class MyTool {
 
     // 50 像素
     public static int getStatusHeight(Context context) {
-        //-------方式一 -------------------
-        int statusHeight = 0;
-        try {
-            Class<?> clazz = Class.forName("com.android.internal.R$dimen");
-            Object object = clazz.newInstance();
-            int height = Integer.parseInt(clazz.getField("status_bar_height")
-                    .get(object).toString());
-            statusHeight = context.getResources().getDimensionPixelSize(height); //像素高度
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return statusHeight;
-        //-------方式二 -------------------
-        /*
         int statusHeight = 0;
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             statusHeight = context.getResources().getDimensionPixelSize(resourceId);
         }
         return statusHeight;
-        */
     }
 
     public static String getSysVersion()
@@ -80,6 +71,16 @@ public class MyTool {
     public static int dpFromPx(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+    public static boolean isGpsEnabled(Context context) {
+        LocationManager locationManager = ((LocationManager) context.getSystemService(Context.LOCATION_SERVICE));
+        List<String> accessibleProviders = locationManager.getProviders(true);
+        return accessibleProviders != null && accessibleProviders.size() > 0;
+    }
+
+    public static void shotToast(Context context,String message){
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
 
 }

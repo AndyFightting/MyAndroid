@@ -1,5 +1,6 @@
 package com.suguiming.myandroid.tab1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.Task;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,18 +2,26 @@ package com.suguiming.myandroid;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.BaseFragment;
+import com.suguiming.myandroid.tool.MainBroadcastReceiver;
+import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
+    private MainBroadcastReceiver mainBroadcastReceiver;
     private List<BaseFragment> fragmentList = new ArrayList<>();
     private List<ImageView> tabImgList =new ArrayList<>();
 
@@ -44,8 +52,9 @@ public class MainActivity extends BaseActivity {
             }
         }
         transaction.commit();
-
         selectFragment(selectedIndex);
+
+        addBroadcastReceiver();//添加广播监听
     }
 
     @Override
@@ -61,6 +70,11 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        removeBroadcastReceiver();//移除广播监听
     }
 //-----------------------------------------------自己方法----------------------------------------------------------------
     public void tabTap(View view){
@@ -101,7 +115,21 @@ public class MainActivity extends BaseActivity {
         }
         String selectName = "tab"+selectedIndex+"s";//如tab0s
         ImageView tabImg = tabImgList.get(selectedIndex);
-        setImageWithName(tabImg,selectName);
+        setImageWithName(tabImg, selectName);
     }
+
+    public void addBroadcastReceiver(){
+
+        mainBroadcastReceiver = new MainBroadcastReceiver();
+        IntentFilter mainBroadFilter = new IntentFilter();
+        mainBroadFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        mainBroadFilter.addAction(Task.BROADCAST_LOGIN_OUT);
+        registerReceiver(mainBroadcastReceiver, mainBroadFilter);
+    }
+
+    public void removeBroadcastReceiver(){
+        unregisterReceiver(mainBroadcastReceiver);
+    }
+
 
 }
