@@ -3,12 +3,20 @@ package com.suguiming.myandroid.tool;
 import android.content.Context;
 import android.location.LocationManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 /**
@@ -82,5 +90,50 @@ public class MyTool {
     public static void shotToast(Context context,String message){
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
+
+    public static void saveTextFile(Context context,String fileName,String text){
+        FileOutputStream outputStream ;
+        BufferedWriter bufferedWriter = null;
+        try {
+           outputStream = context.openFileOutput(fileName,Context.MODE_PRIVATE);
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+            bufferedWriter.write(text);
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if (bufferedWriter != null){
+                    bufferedWriter.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void getTextFile(Context context,String fileName){
+        FileInputStream inputStream;
+        BufferedReader bufferReader = null;
+        StringBuilder contentBuilder = new StringBuilder();
+        try {
+            inputStream = context.openFileInput(fileName);
+            bufferReader = new BufferedReader(new InputStreamReader(inputStream));
+            String lineText = "";
+            while ((lineText = bufferReader.readLine()) != null){
+                contentBuilder.append(lineText);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+           if (bufferReader != null){
+               try {
+                   bufferReader.close();
+               }catch (IOException e){
+                   e.printStackTrace();
+               }
+           }
+        }
+    }
+
 
 }
