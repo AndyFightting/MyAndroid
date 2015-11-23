@@ -152,18 +152,18 @@ public class Fragment0 extends BaseFragment {
             }else {
                 nameStr = "未完待续";
             }
-            userList.add(new User(nameStr+(i+listNum),R.mipmap.tab0s));
+            userList.add(new User(nameStr,R.mipmap.tab0s));
         }
     }
 
     //构造假数据
     private void initNameList(){
-        nameList.add("模拟强制下线，在任何地方都可以");
+        nameList.add("模拟下线通知，在任何地方都可以");
     }
 
     private void itemTap(int position){
         switch (position){
-            case 0://模拟强制推出
+            case 0://模拟强制退出
                 Intent intent = new Intent(Task.BROADCAST_LOGIN_OUT);
                 mainActivity.sendBroadcast(intent);
                break;

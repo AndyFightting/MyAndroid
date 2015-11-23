@@ -56,7 +56,6 @@ public class MainBroadcastReceiver extends BroadcastReceiver {
                 dialog.show();
                 //----下面做本地数据清理工作----
                 MyTool.shotToast(context,"本地数据已清理完毕");
-
           break;
         }
     }
