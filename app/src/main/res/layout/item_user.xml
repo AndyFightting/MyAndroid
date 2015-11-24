@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
+    <!-- item 滑动看到的底部view-->
     <RelativeLayout
-        android:gravity="center_vertical"
+        android:background="@color/red"
+        android:id="@+id/swipelist_backview"
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
+        <TextView
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="删除"
+            android:layout_width="80dp"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <!-- item 表面显示的view-->
+    <RelativeLayout
+        android:id="@+id/swipelist_frontview"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
         <ImageView
             android:id="@+id/head_img"
             android:clickable="true"
             android:layout_marginLeft="15dp"
             android:layout_width="40dp"
             android:layout_height="40dp" />
-
         <TextView
             android:id="@+id/name_tv"
             android:layout_toEndOf="@id/head_img"
@@ -27,5 +44,4 @@
             android:layout_height="40dp" />
     </RelativeLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

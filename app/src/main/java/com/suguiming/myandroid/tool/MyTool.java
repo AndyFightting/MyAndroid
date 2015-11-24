@@ -1,7 +1,9 @@
 package com.suguiming.myandroid.tool;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.LocationManager;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;

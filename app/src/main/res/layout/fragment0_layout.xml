@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:background="@color/blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <!-- 下拉刷新框架用-->
     <in.srain.cube.views.ptr.PtrFrameLayout
@@ -16,12 +19,15 @@
         cube_ptr:ptr_pull_to_fresh="false"
         cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
         cube_ptr:ptr_resistance="1.7">
-    <ListView
-        android:id="@+id/user_list"
-        android:background="@color/back_view_gray"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+
+        <com.suguiming.myandroid.tool.swipListView.SwipeListView
+            android:id="@+id/user_list"
+            android:listSelector="#00000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            swipe:swipeFrontView="@+id/swipelist_frontview"
+            swipe:swipeBackView="@+id/swipelist_backview" />
+
   </in.srain.cube.views.ptr.PtrFrameLayout>
 
 </LinearLayout>
