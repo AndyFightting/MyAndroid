@@ -16,9 +16,6 @@ import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.swipListView.BaseSwipeListViewListener;
-import com.suguiming.myandroid.tool.swipListView.SwipeListView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,15 +30,13 @@ import in.srain.cube.views.ptr.header.StoreHouseHeader;
  */
 public class Fragment0 extends BaseFragment {
 
-    private SwipeListView userListView;
+    private ListView userListView;
     private List<User> userList = new ArrayList<>();
     private UserAdapter userAdapter;
     private List<String> nameList = new ArrayList<>();
 
     private PtrFrameLayout refreshLayout;//刷新框架
     private boolean canLoadMore = true;
-
-    public String TAG = "smgLog";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +50,7 @@ public class Fragment0 extends BaseFragment {
         initNameList();
         addUserToList(9);
 
-        userListView = (SwipeListView)mainView.findViewById(R.id.user_list);
+        userListView = (ListView)mainView.findViewById(R.id.user_list);
         userAdapter = new UserAdapter(mainActivity,R.layout.item_user,userList);
         userListView.setAdapter(userAdapter);
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -67,105 +62,6 @@ public class Fragment0 extends BaseFragment {
 
         addRefreshHeader();
         addRefreshFooter();
-
-        //SwipeListView 属性设置----
-        userListView.setSwipeMode(3);
-        userListView.setOffsetLeft(MyTool.getScreenWidthPx(mainActivity) * 2 / 3);
-        userListView.setAnimationTime(300);
-        userListView.setSwipeOpenOnLongPress(false);
-        userListView.setSwipeCloseAllItemsWhenMoveList(true);
-
-
-        userListView.setSwipeListViewListener(new BaseSwipeListViewListener()
-        {
-            @Override
-            public void onChoiceChanged(int position, boolean selected)
-            {
-                Log.d(TAG, "onChoiceChanged:" + position + ", " + selected);
-            }
-
-            @Override
-            public void onChoiceEnded()
-            {
-                Log.d(TAG, "onChoiceEnded");
-            }
-
-            @Override
-            public void onChoiceStarted()
-            {
-                Log.d(TAG, "onChoiceStarted");
-            }
-
-            @Override
-            public void onClickBackView(int position)
-            {
-                Log.d(TAG, "onClickBackView:" + position);
-            }
-
-            @Override
-            public void onClickFrontView(int position)
-            {
-                Log.d(TAG, "onClickFrontView:" + position);
-            }
-
-            @Override
-            public void onClosed(int position, boolean fromRight)
-            {
-                Log.d(TAG, "onClosed:" + position + "," + fromRight);
-            }
-
-            @Override
-            public void onDismiss(int[] reverseSortedPositions)
-            {
-                Log.d(TAG, "onDismiss");
-
-            }
-
-            @Override
-            public void onFirstListItem()
-            {
-                Log.d(TAG, "onFirstListItem");
-            }
-
-            @Override
-            public void onLastListItem()
-            {
-                Log.d(TAG, "onLastListItem");
-            }
-
-            @Override
-            public void onListChanged()
-            {
-                Log.d(TAG, "onListChanged");
-
-
-            }
-
-            @Override
-            public void onMove(int position, float x)
-            {
-                Log.d(TAG, "onMove:" + position + "," + x);
-            }
-
-            @Override
-            public void onOpened(int position, boolean toRight)
-            {
-                Log.d(TAG, "onOpened:" + position + "," + toRight);
-            }
-
-            @Override
-            public void onStartClose(int position, boolean right)
-            {
-                Log.d(TAG, "onStartClose:" + position + "," + right);
-            }
-
-            @Override
-            public void onStartOpen(int position, int action, boolean right)
-            {
-                Log.d(TAG, "onStartOpen:" + position + "," + action + ","
-                        + right);
-            }
-        });
 
         return view;
     }
@@ -227,8 +123,6 @@ public class Fragment0 extends BaseFragment {
     }
 
     private void beginRefresh(){
-        userListView.closeOpenedItems();
-
         canLoadMore = true;
         userList.clear();
         addUserToList(9);
@@ -266,14 +160,20 @@ public class Fragment0 extends BaseFragment {
     //构造假数据
     private void initNameList(){
         nameList.add("模拟下线通知，在任何地方都可以");
+        nameList.add("SwipeListView Demo");
     }
 
     private void itemTap(int position){
+        Intent intent;
         switch (position){
             case 0://模拟强制退出
-                Intent intent = new Intent(Task.BROADCAST_LOGIN_OUT);
+                intent = new Intent(Task.BROADCAST_LOGIN_OUT);
                 mainActivity.sendBroadcast(intent);
                break;
+            case 1:
+                intent = new Intent(mainActivity,SwipeListViewActivity.class);
+                mainActivity.startActivity(intent);
+                break;
 
         }
     }

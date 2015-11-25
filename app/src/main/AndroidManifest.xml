@@ -23,6 +23,10 @@
             android:name=".login.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".tab0.SwipeListViewActivity"
+            android:label="@string/title_activity_swipe_list_view" >
+        </activity>
     </application>
 
 </manifest>

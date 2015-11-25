@@ -555,6 +555,8 @@ public class SwipeListView extends ListView {
      * @param offsetLeft Offset
      */
     public void setOffsetLeft(float offsetLeft) {
+
+
         touchListener.setLeftOffset(offsetLeft);
     }
 
