@@ -8,6 +8,16 @@
         android:background="@color/red"
         android:layout_width="match_parent"
         android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/deleteTv"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/white"
+            android:layout_width="80dp"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -15,6 +25,12 @@
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="60dp">
+        <TextView
+            android:id="@+id/titleTv"
+            android:gravity="center"
+            android:text="hhhhh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 

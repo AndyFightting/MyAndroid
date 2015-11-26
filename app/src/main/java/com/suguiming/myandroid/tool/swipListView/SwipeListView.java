@@ -32,6 +32,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.suguiming.myandroid.R;
+import com.suguiming.myandroid.tool.MyTool;
 
 import java.util.List;
 
@@ -176,30 +177,13 @@ public class SwipeListView extends ListView {
      */
     private void init(AttributeSet attrs) {
 
-        int swipeMode = SWIPE_MODE_BOTH;
-        boolean swipeOpenOnLongPress = true;
-        boolean swipeCloseAllItemsWhenMoveList = true;
-        long swipeAnimationTime = 0;
         float swipeOffsetLeft = 0;
-        float swipeOffsetRight = 0;
         int swipeDrawableChecked = 0;
         int swipeDrawableUnchecked = 0;
 
-        int swipeActionLeft = SWIPE_ACTION_REVEAL;
-        int swipeActionRight = SWIPE_ACTION_REVEAL;
-
         if (attrs != null) {
             TypedArray styled = getContext().obtainStyledAttributes(attrs, R.styleable.SwipeListView);
-            swipeMode = styled.getInt(R.styleable.SwipeListView_swipeMode, SWIPE_MODE_BOTH);
-            swipeActionLeft = styled.getInt(R.styleable.SwipeListView_swipeActionLeft, SWIPE_ACTION_REVEAL);
-            swipeActionRight = styled.getInt(R.styleable.SwipeListView_swipeActionRight, SWIPE_ACTION_REVEAL);
-            swipeOffsetLeft = styled.getDimension(R.styleable.SwipeListView_swipeOffsetLeft, 0);
-            swipeOffsetRight = styled.getDimension(R.styleable.SwipeListView_swipeOffsetRight, 0);
-            swipeOpenOnLongPress = styled.getBoolean(R.styleable.SwipeListView_swipeOpenOnLongPress, true);
-            swipeAnimationTime = styled.getInteger(R.styleable.SwipeListView_swipeAnimationTime, 0);
-            swipeCloseAllItemsWhenMoveList = styled.getBoolean(R.styleable.SwipeListView_swipeCloseAllItemsWhenMoveList, true);
-            swipeDrawableChecked = styled.getResourceId(R.styleable.SwipeListView_swipeDrawableChecked, 0);
-            swipeDrawableUnchecked = styled.getResourceId(R.styleable.SwipeListView_swipeDrawableUnchecked, 0);
+
             swipeFrontView = styled.getResourceId(R.styleable.SwipeListView_swipeFrontView, 0);
             swipeBackView = styled.getResourceId(R.styleable.SwipeListView_swipeBackView, 0);
             styled.recycle();
@@ -217,74 +201,11 @@ public class SwipeListView extends ListView {
         final ViewConfiguration configuration = ViewConfiguration.get(getContext());
         touchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);
         touchListener = new SwipeListViewTouchListener(this, swipeFrontView, swipeBackView);
-        if (swipeAnimationTime > 0) {
-            touchListener.setAnimationTime(swipeAnimationTime);
-        }
-        touchListener.setRightOffset(swipeOffsetRight);
         touchListener.setLeftOffset(swipeOffsetLeft);
-        touchListener.setSwipeActionLeft(swipeActionLeft);
-        touchListener.setSwipeActionRight(swipeActionRight);
-        touchListener.setSwipeMode(swipeMode);
-        touchListener.setSwipeClosesAllItemsWhenListMoves(swipeCloseAllItemsWhenMoveList);
-        touchListener.setSwipeOpenOnLongPress(swipeOpenOnLongPress);
         touchListener.setSwipeDrawableChecked(swipeDrawableChecked);
         touchListener.setSwipeDrawableUnchecked(swipeDrawableUnchecked);
         setOnTouchListener(touchListener);
         setOnScrollListener(touchListener.makeScrollListener());
-    }
-
-    /**
-     * Recycle cell. This method should be called from getView in Adapter when use SWIPE_ACTION_CHOICE
-     *
-     * @param convertView parent view
-     * @param position    position in list
-     */
-    public void recycle(View convertView, int position) {
-        touchListener.reloadChoiceStateInView(convertView.findViewById(swipeFrontView), position);
-        touchListener.reloadSwipeStateInView(convertView.findViewById(swipeFrontView), position);
-
-        // Clean pressed state (if dismiss is fire from a cell, to this cell, with a press drawable, in a swipelistview
-        // when this cell will be recycle it will still have his pressed state. This ensure the pressed state is
-        // cleaned.
-        for(int j=0; j<((ViewGroup)convertView).getChildCount(); ++j) {
-            View nextChild = ((ViewGroup)convertView).getChildAt(j);
-            nextChild.setPressed(false);
-        }
-    }
-
-    /**
-     * Get if item is selected
-     *
-     * @param position position in list
-     * @return
-     */
-    public boolean isChecked(int position) {
-        return touchListener.isChecked(position);
-    }
-
-    /**
-     * Get positions selected
-     *
-     * @return
-     */
-    public List<Integer> getPositionsSelected() {
-        return touchListener.getPositionsSelected();
-    }
-
-    /**
-     * Count selected
-     *
-     * @return
-     */
-    public int getCountSelected() {
-        return touchListener.getCountSelected();
-    }
-
-    /**
-     * Unselected choice state in item
-     */
-    public void unselectedChoiceStates() {
-        touchListener.unselectedChoiceStates();
     }
 
     /**
@@ -540,97 +461,11 @@ public class SwipeListView extends ListView {
         touchState = TOUCH_STATE_REST;
     }
 
-    /**
-     * Set offset on right
-     *
-     * @param offsetRight Offset
-     */
-    public void setOffsetRight(float offsetRight) {
-        touchListener.setRightOffset(offsetRight);
+    //左边滑出多长，单位dip
+    public void setOffsetLeft(float leftLengthDip) {
+        touchListener.setLeftOffset(MyTool.getScreenWidthPx(getContext()) - MyTool.pxFromDp(getContext(), leftLengthDip));
     }
 
-    /**
-     * Set offset on left
-     *
-     * @param offsetLeft Offset
-     */
-    public void setOffsetLeft(float offsetLeft) {
-
-
-        touchListener.setLeftOffset(offsetLeft);
-    }
-
-    /**
-     * Set if all items opened will be closed when the user moves the ListView
-     *
-     * @param swipeCloseAllItemsWhenMoveList
-     */
-    public void setSwipeCloseAllItemsWhenMoveList(boolean swipeCloseAllItemsWhenMoveList) {
-        touchListener.setSwipeClosesAllItemsWhenListMoves(swipeCloseAllItemsWhenMoveList);
-    }
-
-    /**
-     * Sets if the user can open an item with long pressing on cell
-     *
-     * @param swipeOpenOnLongPress
-     */
-    public void setSwipeOpenOnLongPress(boolean swipeOpenOnLongPress) {
-        touchListener.setSwipeOpenOnLongPress(swipeOpenOnLongPress);
-    }
-
-    /**
-     * Set swipe mode
-     *
-     * @param swipeMode
-     */
-    public void setSwipeMode(int swipeMode) {
-        touchListener.setSwipeMode(swipeMode);
-    }
-
-    /**
-     * Return action on left
-     *
-     * @return Action
-     */
-    public int getSwipeActionLeft() {
-        return touchListener.getSwipeActionLeft();
-    }
-
-    /**
-     * Set action on left
-     *
-     * @param swipeActionLeft Action
-     */
-    public void setSwipeActionLeft(int swipeActionLeft) {
-        touchListener.setSwipeActionLeft(swipeActionLeft);
-    }
-
-    /**
-     * Return action on right
-     *
-     * @return Action
-     */
-    public int getSwipeActionRight() {
-        return touchListener.getSwipeActionRight();
-    }
-
-    /**
-     * Set action on right
-     *
-     * @param swipeActionRight Action
-     */
-    public void setSwipeActionRight(int swipeActionRight) {
-        touchListener.setSwipeActionRight(swipeActionRight);
-    }
-
-    /**
-     * Sets animation time when user drops cell
-     *
-     * @param animationTime milliseconds
-     */
-    public void setAnimationTime(long animationTime) {
-        touchListener.setAnimationTime(animationTime);
-    }
 
     /**
      * @see ListView#onInterceptTouchEvent(MotionEvent)

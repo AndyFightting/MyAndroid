@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
 import com.suguiming.myandroid.R;
 
 /**
@@ -15,6 +17,8 @@ public class SwipeListAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
     private int num;
+    private InnerItemTapListener innerItemTapListener;
+
 
     public SwipeListAdapter(Context context,int num){
         this.num = num;
@@ -33,11 +37,22 @@ public class SwipeListAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = mInflater.inflate(R.layout.item_swipe,null);
             viewHolder = new ViewHolder();
+            viewHolder.titleTv = (TextView)convertView.findViewById(R.id.titleTv);
+            viewHolder.deleteTv = (TextView)convertView.findViewById(R.id.deleteTv);
             convertView.setTag(viewHolder);
 
         }else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
+        viewHolder.titleTv.setText("向左滑动  "+position);
+        viewHolder.deleteTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (innerItemTapListener != null){
+                    innerItemTapListener.innerItemTap(v,position);
+                }
+            }
+        });
 
         return convertView;
     }
@@ -53,9 +68,21 @@ public class SwipeListAdapter extends BaseAdapter {
     }
 
     class ViewHolder{
+        TextView titleTv;
+        TextView deleteTv;
 
     }
 
+    public void setNum(int num){
+        this.num = num;
+    }
+
+    public interface InnerItemTapListener{
+        void innerItemTap(View view,int position);
+    }
+    public void setInnerItemTapListener(InnerItemTapListener innerItemTapListener) {
+        this.innerItemTapListener = innerItemTapListener;
+    }
 
 
 }

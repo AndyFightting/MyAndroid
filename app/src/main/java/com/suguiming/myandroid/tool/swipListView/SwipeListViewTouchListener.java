@@ -37,6 +37,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.suguiming.myandroid.tool.MyTool;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +54,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
 
     private static final int DISPLACE_CHOICE = 80;
 
-    private int swipeMode = SwipeListView.SWIPE_MODE_BOTH;
+    private int swipeMode = SwipeListView.SWIPE_MODE_LEFT;
     private boolean swipeOpenOnLongPress = true;
     private boolean swipeClosesAllItemsWhenListMoves = true;
 
@@ -103,6 +104,8 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
     private List<Boolean> checked = new ArrayList<Boolean>();
     private int oldSwipeActionRight;
     private int oldSwipeActionLeft;
+
+    private  float moveFlag;
 
     /**
      * Constructor
@@ -184,27 +187,6 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         return listViewMoving;
     }
 
-    /**
-     * Sets animation time when the user drops the cell
-     *
-     * @param animationTime milliseconds
-     */
-    public void setAnimationTime(long animationTime) {
-        if (animationTime > 0) {
-            this.animationTime = animationTime;
-        } else {
-            this.animationTime = configShortAnimationTime;
-        }
-    }
-
-    /**
-     * Sets the right offset
-     *
-     * @param rightOffset Offset
-     */
-    public void setRightOffset(float rightOffset) {
-        this.rightOffset = rightOffset;
-    }
 
     /**
      * Set the left offset
@@ -213,34 +195,10 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
      */
     public void setLeftOffset(float leftOffset) {
         this.leftOffset = leftOffset;
+        //sgmChange
+        this.moveFlag = MyTool.getScreenWidthPx(swipeListView.getContext())-leftOffset;
     }
 
-    /**
-     * Set if all item opened will be close when the user move ListView
-     *
-     * @param swipeClosesAllItemsWhenListMoves
-     */
-    public void setSwipeClosesAllItemsWhenListMoves(boolean swipeClosesAllItemsWhenListMoves) {
-        this.swipeClosesAllItemsWhenListMoves = swipeClosesAllItemsWhenListMoves;
-    }
-
-    /**
-     * Set if the user can open an item with long press on cell
-     *
-     * @param swipeOpenOnLongPress
-     */
-    public void setSwipeOpenOnLongPress(boolean swipeOpenOnLongPress) {
-        this.swipeOpenOnLongPress = swipeOpenOnLongPress;
-    }
-
-    /**
-     * Sets the swipe mode
-     *
-     * @param swipeMode
-     */
-    public void setSwipeMode(int swipeMode) {
-        this.swipeMode = swipeMode;
-    }
 
     /**
      * Check is swiping is enabled
@@ -251,41 +209,6 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         return swipeMode != SwipeListView.SWIPE_MODE_NONE;
     }
 
-    /**
-     * Return action on left
-     *
-     * @return Action
-     */
-    public int getSwipeActionLeft() {
-        return swipeActionLeft;
-    }
-
-    /**
-     * Set action on left
-     *
-     * @param swipeActionLeft Action
-     */
-    public void setSwipeActionLeft(int swipeActionLeft) {
-        this.swipeActionLeft = swipeActionLeft;
-    }
-
-    /**
-     * Return action on right
-     *
-     * @return Action
-     */
-    public int getSwipeActionRight() {
-        return swipeActionRight;
-    }
-
-    /**
-     * Set action on right
-     *
-     * @param swipeActionRight Action
-     */
-    public void setSwipeActionRight(int swipeActionRight) {
-        this.swipeActionRight = swipeActionRight;
-    }
 
     /**
      * Set drawable checked (only SWIPE_ACTION_CHOICE)
@@ -955,15 +878,12 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
      * @param deltaX delta
      */
     public void move(float deltaX) {
-        Log.i("sgmChange",deltaX+"------"+leftOffset);
+        //sgmChange
         if (deltaX>0){
             deltaX = 0;
-        }else if (deltaX < -170){
-            deltaX = -170;
+        }else if (deltaX < -moveFlag){
+            deltaX = -moveFlag;
         }
-
-
-
 
         swipeListView.onMove(downPosition, deltaX);
         float posX = ViewHelper.getX(frontView);

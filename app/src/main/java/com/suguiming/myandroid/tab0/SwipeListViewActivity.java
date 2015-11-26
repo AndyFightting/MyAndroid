@@ -1,23 +1,18 @@
 package com.suguiming.myandroid.tab0;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.SwipeListAdapter;
 import com.suguiming.myandroid.base.BaseActivity;
-import com.suguiming.myandroid.tool.MyTool;
-import com.suguiming.myandroid.tool.swipListView.BaseSwipeListViewListener;
 import com.suguiming.myandroid.tool.swipListView.SwipeListView;
 
 public class SwipeListViewActivity extends BaseActivity {
 
     private SwipeListView swipeListView;
-    private int num = 30;
-
+    private int num = 10;
+    private SwipeListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,53 +21,26 @@ public class SwipeListViewActivity extends BaseActivity {
         showLeftImg("back_img");
 
         swipeListView = (SwipeListView)findViewById(R.id.swipe_list);
-        swipeListView.setAdapter(new SwipeListAdapter(this,num));
+        adapter = new SwipeListAdapter(this,num);
+        swipeListView.setAdapter(adapter);
+        swipeListView.setOffsetLeft(80);//设置滑动距离 单位dip
 
-        swipeListView.setSwipeMode(SwipeListView.SWIPE_MODE_LEFT);
-        swipeListView.setOffsetLeft(MyTool.getScreenWidthPx(this) - MyTool.pxFromDp(this, 40));
-
-        swipeListView.setSwipeListViewListener(new BaseSwipeListViewListener() {
+        adapter.setInnerItemTapListener(new SwipeListAdapter.InnerItemTapListener() {
             @Override
-            public void onOpened(int position, boolean toRight) {
+            public void innerItemTap(View view, int position) {
+                swipeListView.closeOpenedItems();
+                swipeListView.dismiss(position);
+
+                //动画结束后再刷新listView
+                swipeListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        num = num -1;
+                        adapter.setNum(num);
+                        adapter.notifyDataSetChanged();
+                    }
+                },200); //动画时间
             }
-
-            @Override
-            public void onClosed(int position, boolean fromRight) {
-            }
-
-            @Override
-            public void onListChanged() {
-            }
-
-            @Override
-            public void onMove(int position, float x) {
-            }
-
-            @Override
-            public void onStartOpen(int position, int action, boolean right) {
-                Log.d("swipe", String.format("onStartOpen %d - action %d", position, action));
-            }
-
-            @Override
-            public void onStartClose(int position, boolean right) {
-                Log.d("swipe", String.format("onStartClose %d", position));
-            }
-
-            @Override
-            public void onClickFrontView(int position) {
-                Log.d("swipe", String.format("onClickFrontView %d", position));
-            }
-
-            @Override
-            public void onClickBackView(int position) {
-                Log.d("swipe", String.format("onClickBackView %d", position));
-            }
-
-            @Override
-            public void onDismiss(int[] reverseSortedPositions) {
-
-            }
-
         });
 
 
