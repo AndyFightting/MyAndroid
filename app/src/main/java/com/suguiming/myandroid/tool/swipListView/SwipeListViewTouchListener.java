@@ -196,7 +196,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
     public void setLeftOffset(float leftOffset) {
         this.leftOffset = leftOffset;
         //sgmChange
-        this.moveFlag = MyTool.getScreenWidthPx(swipeListView.getContext())-leftOffset;
+        this.moveFlag = swipeListView.getContext().getResources().getDisplayMetrics().widthPixels-leftOffset;
     }
 
 

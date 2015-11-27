@@ -1,5 +1,6 @@
 package com.suguiming.myandroid.tab0;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,9 @@ import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.Task;
+import com.suguiming.myandroid.tool.customDialog.MyDialog;
+import com.suguiming.myandroid.tool.customDialog.PopActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +50,7 @@ public class Fragment0 extends BaseFragment {
         //------这里面初始化fragment view----------
          setMainView(R.layout.fragment0_layout);
          showTitleView("课程统计");
+         showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()
 
         initNameList();
         addUserToList(9);
@@ -157,10 +162,19 @@ public class Fragment0 extends BaseFragment {
         }
     }
 
+    @Override
+    public void rightTitleTap(View view) {
+        Intent intent = new Intent(mainActivity, PopActivity.class);
+        startActivity(intent);
+
+    }
+
     //构造假数据
     private void initNameList(){
         nameList.add("模拟下线通知，在任何地方都可以");
         nameList.add("SwipeListView Demo");
+        nameList.add("自定义Dialog");
+        nameList.add("showHUD");
     }
 
     private void itemTap(int position){
@@ -173,6 +187,26 @@ public class Fragment0 extends BaseFragment {
             case 1:
                 intent = new Intent(mainActivity,SwipeListViewActivity.class);
                 mainActivity.startActivity(intent);
+                break;
+            case 2:
+                MyDialog myDialog = new MyDialog(mainActivity, new MyDialog.ItemTapListener() {
+                    @Override
+                    public void itemTap(View view) {
+                        switch (view.getId()){
+                            case R.id.out_tv:
+                                showToast("点击退出");
+                                break;
+                            case R.id.close_tv:
+                                showToast("点击关闭");
+                                break;
+                        }
+                    }
+                });
+                myDialog.show();
+
+                break;
+            case 3:
+
                 break;
 
         }

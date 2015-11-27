@@ -14,6 +14,7 @@ import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,7 +28,7 @@ import java.util.List;
 public class MyTool {
 
     public static void log(String message){
-        Log.d("myLog",message);
+        Log.d("myLog", message);
     }
 
     public static boolean isEmptyTv(TextView textView){
@@ -113,7 +114,7 @@ public class MyTool {
         }
     }
 
-    public static void getTextFile(Context context,String fileName){
+    public static String getTextFile(Context context,String fileName){
         FileInputStream inputStream;
         BufferedReader bufferReader = null;
         StringBuilder contentBuilder = new StringBuilder();
@@ -135,7 +136,25 @@ public class MyTool {
                }
            }
         }
+      return contentBuilder.toString();
     }
+
+    public static void deleteFile(Context context, String fileName) {
+        String filePath = context.getFilesDir()+"/"+fileName;
+        File file = new File(filePath);
+        if (file.exists()){
+            file.delete();
+        }
+    }
+
+    public static void createDirectory(Context context,String directoryName){
+        String dirPath = context.getFilesDir()+"/"+directoryName;
+        File dirFile = new File(dirPath);
+        if (!dirFile.exists()) {
+            dirFile.mkdirs();
+        }
+    }
+
 
 
 }

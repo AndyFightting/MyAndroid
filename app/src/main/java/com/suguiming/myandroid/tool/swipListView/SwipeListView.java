@@ -463,7 +463,11 @@ public class SwipeListView extends ListView {
 
     //左边滑出多长，单位dip
     public void setOffsetLeft(float leftLengthDip) {
-        touchListener.setLeftOffset(MyTool.getScreenWidthPx(getContext()) - MyTool.pxFromDp(getContext(), leftLengthDip));
+        float screenWidthPix =getContext().getResources().getDisplayMetrics().widthPixels;
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        float leftPix = (leftLengthDip * scale + 0.5f);
+
+        touchListener.setLeftOffset(screenWidthPix - leftPix);
     }
 
 
