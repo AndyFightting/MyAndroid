@@ -1,5 +1,6 @@
 package com.suguiming.myandroid.tool.customView;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import com.suguiming.myandroid.R;

@@ -1,13 +1,16 @@
 package com.suguiming.myandroid.tab0;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
@@ -19,6 +22,7 @@ import com.suguiming.myandroid.tool.customView.ActionSheet;
 import com.suguiming.myandroid.tool.customView.CustomDialog;
 import com.suguiming.myandroid.tool.customView.HUD;
 import com.suguiming.myandroid.tool.customView.PopMenue;
+import com.suguiming.myandroid.tool.customView.PopWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +55,7 @@ public class Fragment0 extends BaseFragment {
          setMainView(R.layout.fragment0_layout);
          showTitleView("课程统计");
          showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()得到点击事件
+         showLeftTitle("popView");
 
         initNameList();
         addUserToList(9);
@@ -179,6 +184,12 @@ public class Fragment0 extends BaseFragment {
         });
     }
 
+    @Override
+    public void leftTitleTap(View view) {
+
+
+    }
+
     //构造假数据
     private void initNameList(){
         nameList.add("模拟下线通知，在任何地方都可以");
@@ -243,6 +254,9 @@ public class Fragment0 extends BaseFragment {
                 break;
             case 6:
                 HUD.show(mainActivity,"登录中...");
+                break;
+            case 7:
+
                 break;
 
         }
