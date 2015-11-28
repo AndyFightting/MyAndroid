@@ -8,16 +8,17 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.suguiming.myandroid.R;
+import com.suguiming.myandroid.tool.ItemTapListener;
 
 /**
  * Created by suguiming on 15/11/27.
  */
-public class MyDialog extends Dialog implements View.OnClickListener{
+public class CustomDialog extends Dialog implements View.OnClickListener{
 
     private Context context;
     private ItemTapListener itemTapListener;
 
-    public MyDialog(Context context,ItemTapListener itemTapListener){
+    public CustomDialog(Context context, ItemTapListener itemTapListener){
         super(context);
         this.context = context;
         this.itemTapListener = itemTapListener;
@@ -27,7 +28,7 @@ public class MyDialog extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_my);
+        setContentView(R.layout.custom_dialog);
 
         TextView outTv = (TextView)findViewById(R.id.out_tv);
         TextView closeTv = (TextView)findViewById(R.id.close_tv);
@@ -45,7 +46,4 @@ public class MyDialog extends Dialog implements View.OnClickListener{
         }
     }
 
-    public interface ItemTapListener{
-      void itemTap(View view);
-    }
 }

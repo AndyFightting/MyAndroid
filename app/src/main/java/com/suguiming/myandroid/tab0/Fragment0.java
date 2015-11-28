@@ -1,9 +1,7 @@
 package com.suguiming.myandroid.tab0;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +13,11 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
-import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.customDialog.MyDialog;
-import com.suguiming.myandroid.tool.customDialog.PopActivity;
+import com.suguiming.myandroid.tool.customDialog.ActionSheet;
+import com.suguiming.myandroid.tool.customDialog.CustomDialog;
+import com.suguiming.myandroid.tool.customDialog.PopMenue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class Fragment0 extends BaseFragment {
         //------这里面初始化fragment view----------
          setMainView(R.layout.fragment0_layout);
          showTitleView("课程统计");
-         showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()
+         showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()得到点击事件
 
         initNameList();
         addUserToList(9);
@@ -164,9 +163,19 @@ public class Fragment0 extends BaseFragment {
 
     @Override
     public void rightTitleTap(View view) {
-        Intent intent = new Intent(mainActivity, PopActivity.class);
-        startActivity(intent);
-
+        PopMenue.show(mainActivity, PopMenue.class, new ItemTapListener() {
+            @Override
+            public void itemTap(View view) {
+                switch (view.getId()) {
+                    case R.id.activity_tv:
+                        showToast("点了第一个");
+                        break;
+                    case R.id.pop_tv:
+                        showToast("点了第二个");
+                        break;
+                }
+            }
+        });
     }
 
     //构造假数据
@@ -174,7 +183,9 @@ public class Fragment0 extends BaseFragment {
         nameList.add("模拟下线通知，在任何地方都可以");
         nameList.add("SwipeListView Demo");
         nameList.add("自定义Dialog");
-        nameList.add("showHUD");
+        nameList.add("淡入淡出");
+        nameList.add("模仿 iOS present push");
+        nameList.add("模仿 iOS action sheet");
     }
 
     private void itemTap(int position){
@@ -189,7 +200,7 @@ public class Fragment0 extends BaseFragment {
                 mainActivity.startActivity(intent);
                 break;
             case 2:
-                MyDialog myDialog = new MyDialog(mainActivity, new MyDialog.ItemTapListener() {
+                CustomDialog customDialog = new CustomDialog(mainActivity, new ItemTapListener() {
                     @Override
                     public void itemTap(View view) {
                         switch (view.getId()){
@@ -202,11 +213,31 @@ public class Fragment0 extends BaseFragment {
                         }
                     }
                 });
-                myDialog.show();
+                customDialog.show();
 
                 break;
             case 3:
-
+                intent = new Intent(mainActivity,FadeInOutActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent(mainActivity,PresentActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 5:
+                 ActionSheet.show(mainActivity, ActionSheet.class, new ItemTapListener() {
+                     @Override
+                     public void itemTap(View view) {
+                         switch (view.getId()) {
+                             case R.id.camera_tv:
+                                 showToast("相机");
+                                 break;
+                             case R.id.phone_tv:
+                                 showToast("相册");
+                                 break;
+                         }
+                     }
+                 });
                 break;
 
         }

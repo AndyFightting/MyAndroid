@@ -1,32 +1,61 @@
 <resources>
 
+    <!-- app default theme-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
-    <style name="MyDialogTopRight">
+    <!-- pop menu theme-->
+    <style name="PopActivityTheme">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowAnimationStyle">@style/Anim_scale</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/PopActivityAnimation</item>
+    </style>
+    <style name="PopActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/pop_menu_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/pop_menu_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/pop_menu_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/pop_menu_out</item>
     </style>
 
-    <style name="Anim_scale" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/scale_in</item>
-        <item name="android:activityOpenExitAnimation">@anim/scale_out</item>
-
-        <item name="android:activityCloseEnterAnimation">@anim/scale_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/scale_out</item>
+      <!-- fade in out Activity theme-->
+    <style name="ActivityFadeInOutTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/ActivityFadeInOutAnimation</item>
+    </style>
+    <style name="ActivityFadeInOutAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_fade_out</item>
     </style>
 
-    <style name="Anim_fade" parent="android:Theme.NoTitleBar">
-        <item name="android:windowAnimationStyle">@style/fade</item>
+    <!-- iOS present activity theme-->
+    <style name="ActivityPresentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item> //这个必须有
+        <item name="android:windowAnimationStyle">@style/ActivityPresentAnimation</item>
+    </style>
+    <style name="ActivityPresentAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_present_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_present_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_present_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_present_out</item>
     </style>
 
-    <style name="fade" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
-        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
-        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
+    <!-- iOs action sheet theme-->
+    <style name="ActionSheetTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/ActionSheetAnimation</item>
     </style>
+    <style name="ActionSheetAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/action_sheet_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/action_sheet_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/action_sheet_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/action_sheet_out</item>
+    </style>
+
 
 
 </resources>

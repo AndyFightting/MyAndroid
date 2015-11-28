@@ -9,8 +9,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -29,10 +28,23 @@
             android:label="@string/title_activity_swipe_list_view" >
         </activity>
         <activity
-            android:name=".tool.customDialog.PopActivity"
-            android:theme="@style/MyDialogTopRight"
-            android:label="@string/title_activity_pop" >
+            android:name=".tool.customDialog.PopMenue"
+            android:label="@string/title_activity_pop"
+            android:theme="@style/PopActivityTheme" >
         </activity>
+        <activity
+            android:name=".tab0.FadeInOutActivity"
+            android:label="@string/title_activity_fade_in_out"
+            android:theme="@style/ActivityFadeInOutTheme" >
+        </activity>
+        <activity
+            android:name=".tab0.PresentActivity"
+            android:label="@string/title_activity_present"
+            android:theme="@style/ActivityPresentTheme">
+        </activity>
+        <activity
+            android:name=".tool.customDialog.ActionSheet"
+            android:theme="@style/ActionSheetTheme"/>
     </application>
 
 </manifest>

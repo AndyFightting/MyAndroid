@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="70dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/gray"
+        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/activity_tv"
+            android:onClick="itemTap"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="这是用Activity"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/pop_tv"
+            android:onClick="itemTap"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="做的pop view"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>  

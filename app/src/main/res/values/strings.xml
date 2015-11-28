@@ -6,4 +6,6 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_swipe_list_view">SwipeListViewActivity</string>
     <string name="title_activity_pop">PopActivity</string>
+    <string name="title_activity_fade_in_out">FadeInOutActivity</string>
+    <string name="title_activity_present">PresentActivity</string>
 </resources>

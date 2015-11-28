@@ -2,6 +2,7 @@ package com.suguiming.myandroid.base;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -43,6 +44,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout footerView;
     private TextView footerTv;
 
+    protected int activityCloseEnterAnimation;
+    protected int activityCloseExitAnimation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         ActivityManager.addActivity(this);
         //透明状态栏 mine sdk 19
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        //自定义退出动画要用的，不然退出的效果不行...
+        TypedArray activityStyle = getTheme().obtainStyledAttributes(new int[] {android.R.attr.windowAnimationStyle});
+        int windowAnimationStyleResId = activityStyle.getResourceId(0, 0);
+        activityStyle.recycle();
+        activityStyle = getTheme().obtainStyledAttributes(windowAnimationStyleResId, new int[] {android.R.attr.activityCloseEnterAnimation, android.R.attr.activityCloseExitAnimation});
+        activityCloseEnterAnimation = activityStyle.getResourceId(0, 0);
+        activityCloseExitAnimation = activityStyle.getResourceId(1, 0);
+        activityStyle.recycle();
 
         MyTool.log("onCreate----------------- 当前位置："+getClass().getSimpleName());
     }
@@ -83,6 +96,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy(){
         super.onDestroy();
         ActivityManager.removeActivity(this);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(activityCloseEnterAnimation, activityCloseExitAnimation);
     }
 
     //Activity被系统杀死时被调用，在onPause之前被调用,用于保存状态数据等
