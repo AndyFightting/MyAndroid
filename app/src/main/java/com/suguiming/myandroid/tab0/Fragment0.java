@@ -15,9 +15,10 @@ import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.customDialog.ActionSheet;
-import com.suguiming.myandroid.tool.customDialog.CustomDialog;
-import com.suguiming.myandroid.tool.customDialog.PopMenue;
+import com.suguiming.myandroid.tool.customView.ActionSheet;
+import com.suguiming.myandroid.tool.customView.CustomDialog;
+import com.suguiming.myandroid.tool.customView.HUD;
+import com.suguiming.myandroid.tool.customView.PopMenue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -186,6 +187,7 @@ public class Fragment0 extends BaseFragment {
         nameList.add("淡入淡出");
         nameList.add("模仿 iOS present push");
         nameList.add("模仿 iOS action sheet");
+        nameList.add("show HUD");
     }
 
     private void itemTap(int position){
@@ -238,6 +240,9 @@ public class Fragment0 extends BaseFragment {
                          }
                      }
                  });
+                break;
+            case 6:
+                HUD.show(mainActivity,"登录中...");
                 break;
 
         }

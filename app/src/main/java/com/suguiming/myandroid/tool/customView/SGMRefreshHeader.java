@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool;
+package com.suguiming.myandroid.tool.customView;
 
 import android.content.Context;
 import android.view.LayoutInflater;

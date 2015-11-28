@@ -28,7 +28,7 @@
             android:label="@string/title_activity_swipe_list_view" >
         </activity>
         <activity
-            android:name=".tool.customDialog.PopMenue"
+            android:name=".tool.customView.PopMenue"
             android:label="@string/title_activity_pop"
             android:theme="@style/PopActivityTheme" >
         </activity>
@@ -43,7 +43,7 @@
             android:theme="@style/ActivityPresentTheme">
         </activity>
         <activity
-            android:name=".tool.customDialog.ActionSheet"
+            android:name=".tool.customView.ActionSheet"
             android:theme="@style/ActionSheetTheme"/>
     </application>
 

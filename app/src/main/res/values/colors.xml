@@ -10,6 +10,7 @@
     <color name="gray">#959494</color>
     <color name="light_gray">#ebe9e9</color>
     <color name="black">#000000</color>
+    <color name="black_alpha">#A0000000</color>
     <color name="green_dark">#ff669900</color>
     <color name="green_light">#ff99cc00</color>
     <color name="orange_dark">#ffff8800</color>

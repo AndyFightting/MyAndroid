@@ -1,16 +1,19 @@
-package com.suguiming.myandroid.tool.customDialog;
+package com.suguiming.myandroid.tool.customView;
 
 import android.os.Bundle;
 import android.view.View;
+
 import com.suguiming.myandroid.R;
 
-//使用的时候就是继承 BaseAlphaView，然后在item点击事件中...像下面那样调用即可
-public class PopMenue extends BaseAlphaView {
+/**
+ * Created by suguiming on 15/11/28.
+ */
+public class ActionSheet extends BaseAlphaView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pop_menu);
+        setContentView(R.layout.action_sheet);
 
     }
 
@@ -20,4 +23,5 @@ public class PopMenue extends BaseAlphaView {
             dismiss();
         }
     }
+
 }

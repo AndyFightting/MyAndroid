@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool.customDialog;
+package com.suguiming.myandroid.tool.customView;
 
 import android.app.Dialog;
 import android.content.Context;

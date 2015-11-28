@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool.customDialog;
+package com.suguiming.myandroid.tool.customView;
 
 import android.app.Activity;
 import android.content.Context;
@@ -42,13 +42,18 @@ public class BaseAlphaView extends Activity {
         return super.onTouchEvent(event);
     }
 
+    @Override
+    public void finish() {
+        dismiss();
+    }
+
     public void dismiss(){
         super.finish();
         overridePendingTransition(activityCloseEnterAnimation, activityCloseExitAnimation);
     }
 
     public static void show(Context context,Class showedActivityClass, ItemTapListener itemTapListener){
-        com.suguiming.myandroid.tool.customDialog.BaseAlphaView.itemTapListener = itemTapListener;
+        com.suguiming.myandroid.tool.customView.BaseAlphaView.itemTapListener = itemTapListener;
         Intent intent = new Intent(context,showedActivityClass);
         context.startActivity(intent);
     }

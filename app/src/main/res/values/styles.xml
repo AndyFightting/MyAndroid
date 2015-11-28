@@ -56,6 +56,16 @@
         <item name="android:activityCloseExitAnimation">@anim/action_sheet_out</item>
     </style>
 
+    <!-- hud theme -->
+    <style name="hudTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@drawable/hud_shape</item>
+    </style>
 
 
 </resources>
