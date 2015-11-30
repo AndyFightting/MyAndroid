@@ -155,6 +155,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View tmpView = inflater.inflate(viewId, null);
+        mainView.removeAllViews();
         mainView.addView(tmpView);
 
         footerView =(RelativeLayout)mInflater.inflate(R.layout.refresh_footer, null);

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseFragment;
-import com.suguiming.myandroid.tool.MyTool;
 
 /**
  * Created by suguiming on 15/11/18.

@@ -28,7 +28,7 @@ import java.util.List;
 public class MyTool {
 
     public static void log(String message){
-        Log.d("myLog", message);
+        Log.i("myLog", message);
     }
 
     public static boolean isEmptyTv(TextView textView){

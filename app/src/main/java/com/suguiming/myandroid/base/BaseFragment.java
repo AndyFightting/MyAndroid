@@ -155,6 +155,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
 
     public void setMainView(int viewId){
         View tmpView = mInflater.inflate(viewId, null);
+        mainView.removeAllViews();
         mainView.addView(tmpView);
     }
 

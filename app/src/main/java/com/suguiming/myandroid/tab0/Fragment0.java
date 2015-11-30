@@ -1,28 +1,30 @@
 package com.suguiming.myandroid.tab0;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
+import com.suguiming.myandroid.login.LoginActivity;
 import com.suguiming.myandroid.tool.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
 import com.suguiming.myandroid.tool.customView.ActionSheet;
 import com.suguiming.myandroid.tool.customView.CustomDialog;
 import com.suguiming.myandroid.tool.customView.HUD;
 import com.suguiming.myandroid.tool.customView.PopMenue;
-import com.suguiming.myandroid.tool.customView.PopWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,7 +165,7 @@ public class Fragment0 extends BaseFragment {
             }else {
                 nameStr = "未完待续";
             }
-            userList.add(new User(nameStr,R.mipmap.tab0s));
+            userList.add(new User(nameStr, R.mipmap.tab0s));
         }
     }
 
@@ -256,6 +258,8 @@ public class Fragment0 extends BaseFragment {
                 HUD.show(mainActivity,"登录中...");
                 break;
             case 7:
+
+
 
                 break;
 
