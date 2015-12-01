@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/light_gray"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:id="@+id/status_back_view"
         android:background="@color/blue"
         android:layout_width="match_parent"
         android:layout_height="25dp" />
-
-    <TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+        <TextView
         android:id="@+id/title_view"
         android:text="sliding menu"
         android:textSize="16sp"
@@ -18,6 +24,28 @@
         android:gravity="center"
         android:background="@color/blue"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+            <Button
+                android:id="@+id/left_bt"
+                android:text="左点击"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/right_bt"
+                android:text="右点击"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/center_bt"
+        android:text="点击"
+        android:layout_marginTop="150dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp" />
 
-</LinearLayout>
+
+</RelativeLayout>

@@ -6,6 +6,10 @@ import android.view.WindowManager;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.suguiming.myandroid.R;
+import com.suguiming.myandroid.base.BaseActivity;
+import com.suguiming.myandroid.tool.slidingMenu.SlidingMenuLeftView;
+import com.suguiming.myandroid.tool.slidingMenu.SlidingMenuMainView;
+import com.suguiming.myandroid.tool.slidingMenu.SlidingMenuRightView;
 
 /**
  * slidingMenu 框架使用方法，
@@ -21,59 +25,59 @@ import com.suguiming.myandroid.R;
  *
  */
 
-public class SlidingMenuActivity extends AppCompatActivity {
+public class SlidingMenuActivity extends BaseActivity {
 
-    private SlidingMenu slidingLayout;
+    private SlidingMenu slidingMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //透明状态栏 mine sdk 19
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //透明状态栏， 不是继承 BaseActivity 就加这行
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_sliding_menu);
 
-        slidingLayout = (SlidingMenu) findViewById(R.id.sliding_layout);
-        slidingLayout.setMode(SlidingMenu.LEFT_RIGHT);//设置左右菜单，有右菜单一定就要有右菜单布局 secondaryMenu
+        slidingMenu = (SlidingMenu) findViewById(R.id.sliding_layout);
+        slidingMenu.setMode(SlidingMenu.LEFT_RIGHT);//设置左右菜单，有右菜单一定就要有右菜单布局 secondaryMenu
 
-        slidingLayout.setContent(R.layout.sliding_menu_main_frame);//设置主页面
-        slidingLayout.setMenu(R.layout.sliding_menu_left_frame);//设置菜单 必须
-        slidingLayout.setSecondaryMenu(R.layout.sliding_menu_right_frame);//设置菜单 必须
+        slidingMenu.setContent(new SlidingMenuMainView(this,slidingMenu));//设置主页面
+        slidingMenu.setMenu(new SlidingMenuLeftView(this,slidingMenu));//设置菜单 必须
+        slidingMenu.setSecondaryMenu(new SlidingMenuRightView(this,slidingMenu));//设置菜单 必须
 
-        slidingLayout.setBehindOffsetRes(R.dimen.sliding_left_offset);//越大滑动距离越小。必须
-        slidingLayout.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);////设置要使菜单滑动，触碰屏幕的范围
+        slidingMenu.setBehindOffsetRes(R.dimen.sliding_left_offset);//越大滑动距离越小。必须
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);////设置要使菜单滑动，触碰屏幕的范围
+        slidingMenu.setBehindScrollScale(0.5f);//差异滑动 0 -- 1
 
         //设置边界阴影，和暗淡渐变效果，可以不设置
-//        slidingLayout.setShadowWidthRes(R.dimen.sliding_shadow_width);
-//        slidingLayout.setShadowDrawable(R.drawable.sliding_frame_shadow);
-//        slidingLayout.setSecondaryShadowDrawable(R.drawable.sliding_frame_shadow);
-          slidingLayout.setFadeDegree(0.7f);
+//        slidingMenu.setShadowWidthRes(R.dimen.sliding_shadow_width);
+//        slidingMenu.setShadowDrawable(R.drawable.sliding_frame_shadow);
+//        slidingMenu.setSecondaryShadowDrawable(R.drawable.sliding_frame_shadow);
+          slidingMenu.setFadeDegree(0.7f);
 
         //监听开关（开始开关，完成开关）
-        slidingLayout.setOnOpenListener(new SlidingMenu.OnOpenListener() {
+        slidingMenu.setOnOpenListener(new SlidingMenu.OnOpenListener() {
             @Override
             public void onOpen() {
 
             }
         });
-        slidingLayout.setOnOpenedListener(new SlidingMenu.OnOpenedListener() {
+        slidingMenu.setOnOpenedListener(new SlidingMenu.OnOpenedListener() {
             @Override
             public void onOpened() {
 
             }
         });
-        slidingLayout.setOnCloseListener(new SlidingMenu.OnCloseListener() {
+        slidingMenu.setOnCloseListener(new SlidingMenu.OnCloseListener() {
             @Override
             public void onClose() {
 
             }
         });
-        slidingLayout.setOnClosedListener(new SlidingMenu.OnClosedListener() {
+        slidingMenu.setOnClosedListener(new SlidingMenu.OnClosedListener() {
             @Override
             public void onClosed() {
 
             }
         });
-
     }
 
 }

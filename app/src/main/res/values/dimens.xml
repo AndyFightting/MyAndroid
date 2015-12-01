@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="sliding_left_offset">200dp</dimen>
+    <dimen name="sliding_left_offset">100dp</dimen>
     <dimen name="sliding_shadow_width">3dp</dimen>
 
 </resources>
