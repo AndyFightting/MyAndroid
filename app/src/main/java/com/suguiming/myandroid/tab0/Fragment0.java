@@ -14,6 +14,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
@@ -201,6 +202,7 @@ public class Fragment0 extends BaseFragment {
         nameList.add("模仿 iOS present push");
         nameList.add("模仿 iOS action sheet");
         nameList.add("show HUD");
+        nameList.add("sliding menu");
     }
 
     private void itemTap(int position){
@@ -258,9 +260,8 @@ public class Fragment0 extends BaseFragment {
                 HUD.show(mainActivity,"登录中...");
                 break;
             case 7:
-
-
-
+                intent = new Intent(mainActivity,SlidingMenuActivity.class);
+                mainActivity.startActivity(intent);
                 break;
 
         }

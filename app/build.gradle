@@ -26,4 +26,5 @@ dependencies {
     compile 'in.srain.cube:cube-sdk:1.0.44@aar'
     compile 'com.orhanobut:logger:1.11'
     compile files('libs/nineoldandroids-2.4.0.jar')
+    compile project(':libraries:SlidingMenu/library')
 }

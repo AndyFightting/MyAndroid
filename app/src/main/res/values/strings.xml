@@ -8,4 +8,5 @@
     <string name="title_activity_pop">PopActivity</string>
     <string name="title_activity_fade_in_out">FadeInOutActivity</string>
     <string name="title_activity_present">PresentActivity</string>
+    <string name="title_activity_sliding_menu">SlidingMenuActivity</string>
 </resources>

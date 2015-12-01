@@ -5,15 +5,14 @@ import android.app.FragmentTransaction;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.tool.MainBroadcastReceiver;
-import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.Task;
 
 import java.util.ArrayList;

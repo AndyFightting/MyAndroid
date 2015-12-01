@@ -12,6 +12,7 @@ public class PresentActivity extends BaseActivity {
         setMainView(R.layout.activity_present);
         showTitleView("iOS present view");
         showLeftImg("back_img");
+
     }
 
 }

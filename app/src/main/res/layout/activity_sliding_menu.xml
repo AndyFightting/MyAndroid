@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.suguiming.myandroid.tab0.SlidingMenuActivity">
+
+    <!-- LinearLayout 和 TextView 是为了适配slidingMenu的沉浸试状态栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        android:visibility="gone" />
+
+        <!-- 当做View使用更灵活-->
+        <com.jeremyfeinstein.slidingmenu.lib.SlidingMenu
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</RelativeLayout>

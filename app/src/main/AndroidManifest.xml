@@ -40,11 +40,19 @@
         <activity
             android:name=".tab0.PresentActivity"
             android:label="@string/title_activity_present"
-            android:theme="@style/ActivityPresentTheme">
+            android:theme="@style/ActivityPresentTheme" >
         </activity>
         <activity
             android:name=".tool.customView.ActionSheet"
-            android:theme="@style/ActionSheetTheme"/>
+            android:theme="@style/ActionSheetTheme" />
+        <activity
+            android:name=".SlidingMenuActivity"
+            android:label="@string/title_activity_sliding_menu" >
+        </activity>
+        <activity
+            android:name=".tab0.SlidingMenuActivity"
+            android:label="@string/title_activity_sliding_menu" >
+        </activity>
     </application>
 
 </manifest>
