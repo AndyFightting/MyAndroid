@@ -1,9 +1,6 @@
 package com.suguiming.myandroid.tab0;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.WindowManager;
-
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;

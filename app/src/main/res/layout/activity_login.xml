@@ -12,7 +12,7 @@
         android:background="@color/purple"
         wave:above_wave_color="@color/white"
         wave:blow_wave_color="@color/white"
-        wave:progress="40"
+        wave:progress="0"
         wave:wave_height="little"
         wave:wave_hz="normal"
         wave:wave_length="middle" />
@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
-        android:progress="40" />
+        android:progress="0" />
 
 </RelativeLayout>
