@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
+import com.suguiming.myandroid.tool.HanZi2PinYin.PinYinToolkit;
+
 import java.util.ArrayList;
 import java.util.List;
 import in.srain.cube.util.LocalDisplay;
@@ -49,6 +52,12 @@ public class Fragment1 extends BaseFragment {
         userListView = (ListView)mainView.findViewById(R.id.user_list1);
         userAdapter = new UserAdapter(mainActivity,R.layout.item_user,userList);
         userListView.setAdapter(userAdapter);
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                itemTap(position);
+            }
+        });
 
         addRefreshHeader();
         addRefreshFooter();
@@ -157,14 +166,25 @@ public class Fragment1 extends BaseFragment {
             }else {
                 nameStr = "未完待续";
             }
-            userList.add(new User(nameStr+(i+listNum),R.mipmap.tab1s));
+            userList.add(new User(nameStr,R.mipmap.tab1s));
         }
     }
 
     //构造假数据
     private void initNameList(){
-        nameList.add("动画使用");
-        nameList.add("EventBuse");
+        nameList.add("汉字转拼音 Pinyin4j");
+    }
+
+    private void itemTap(int position){
+        switch (position){
+            case 0:
+                String hanZi = "汉 字 转 拼 音";
+                String pinYin = PinYinToolkit.getFullLetter(hanZi);
+                showToast(pinYin);
+
+                break;
+
+        }
     }
 
 }
