@@ -7,6 +7,7 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.tool.ItemTapListener;
 import com.suguiming.myandroid.tool.customView.PopWindow;
+import com.suguiming.myandroid.tool.customView.TapAnimationImageView;
 
 public class FadeInOutActivity extends BaseActivity {
 
@@ -17,6 +18,14 @@ public class FadeInOutActivity extends BaseActivity {
         showTitleView("淡入淡出");
         showLeftImg("back_img");//点击事件默认退出，也可以重写leftImgTap()方法
         showRightTitle("pop window");
+
+        TapAnimationImageView imageView = (TapAnimationImageView)findViewById(R.id.animation_img);
+        imageView.setTapListener(new TapAnimationImageView.TapListener() {
+            @Override
+            public void onImageViewTap(TapAnimationImageView view) {
+                showToast("hello");
+            }
+        });
 
     }
 
