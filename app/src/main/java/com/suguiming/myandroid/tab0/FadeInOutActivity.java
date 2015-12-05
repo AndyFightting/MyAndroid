@@ -2,10 +2,13 @@ package com.suguiming.myandroid.tab0;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.tool.ItemTapListener;
+import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.SDCardUtil;
 import com.suguiming.myandroid.tool.customView.PopWindow;
 import com.suguiming.myandroid.tool.customView.TapAnimationImageView;
 
@@ -37,5 +40,18 @@ public class FadeInOutActivity extends BaseActivity {
                 showToast("hello");
             }
         });
+    }
+
+    //屏幕截图
+    public void screenShot(View view){
+        ImageView img = (ImageView)view;
+        switch (view.getId()){
+            case R.id.screen_img0:
+                img.setImageBitmap(MyTool.getScreenShotWithStatusBar(this));
+                break;
+            case R.id.screen_img1:
+                img.setImageBitmap(MyTool.getScreenShotWithoutStatusBar(this));
+                break;
+        }
     }
 }

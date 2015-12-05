@@ -13,6 +13,10 @@ import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.HanZi2PinYin.PinYinToolkit;
+import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.NetworkUtil;
+import com.suguiming.myandroid.tool.SDCardUtil;
+import com.suguiming.myandroid.tool.SharedPreUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -181,7 +185,11 @@ public class Fragment1 extends BaseFragment {
                 String hanZi = "汉 字 转 拼 音";
                 String pinYin = PinYinToolkit.getFullLetter(hanZi);
                 showToast(pinYin);
+                break;
+            case 1:
 
+                break;
+            case 2:
                 break;
 
         }

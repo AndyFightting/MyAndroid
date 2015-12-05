@@ -1,12 +1,16 @@
 package com.suguiming.myandroid.tool;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.location.LocationManager;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +22,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -139,7 +146,7 @@ public class MyTool {
       return contentBuilder.toString();
     }
 
-    public static void deleteFile(Context context, String fileName) {
+    public static void removeFile(Context context, String fileName) {
         String filePath = context.getFilesDir()+"/"+fileName;
         File file = new File(filePath);
         if (file.exists()){
@@ -147,14 +154,72 @@ public class MyTool {
         }
     }
 
-    public static void createDirectory(Context context,String directoryName){
+    public static File createDir(Context context,String directoryName){
         String dirPath = context.getFilesDir()+"/"+directoryName;
         File dirFile = new File(dirPath);
         if (!dirFile.exists()) {
             dirFile.mkdirs();
         }
+       return dirFile;
+    }
+
+    public static void removeDir(Context context,String directoryName){
+        String dirPath = context.getFilesDir()+"/"+directoryName;
+        File dirFile = new File(dirPath);
+        removeDir(dirFile);
+    }
+
+    public static void removeDir(File file) {
+        if (file.isFile()) {
+            file.delete();
+            return;
+        }
+        if(file.isDirectory()){
+            File[] childFiles = file.listFiles();
+            if (childFiles == null || childFiles.length == 0) {
+                file.delete();
+                return;
+            }
+
+            for (int i = 0; i < childFiles.length; i++) {
+                removeDir(childFiles[i]);
+            }
+            file.delete();
+        }
     }
 
 
+    //截屏 包括状态栏
+    public static Bitmap getScreenShotWithStatusBar(Activity activity)
+        {
+           View view = activity.getWindow().getDecorView();
+           view.setDrawingCacheEnabled(true);
+           view.buildDrawingCache();
+           Bitmap bmp = view.getDrawingCache();
+           int width = getScreenWidthPx(activity);
+           int height = getScreenHeightPx(activity);
+           Bitmap bp = Bitmap.createBitmap(bmp, 0, 0, width, height);
+           view.destroyDrawingCache();
+           return bp;
+
+       }
+
+    //截屏 不包括状态栏
+     public static Bitmap getScreenShotWithoutStatusBar(Activity activity)
+     {
+             View view = activity.getWindow().getDecorView();
+             view.setDrawingCacheEnabled(true);
+             view.buildDrawingCache();
+             Bitmap bmp = view.getDrawingCache();
+             Rect frame = new Rect();
+             activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+             int statusBarHeight = frame.top;
+
+             int width = getScreenWidthPx(activity);
+             int height = getScreenHeightPx(activity);
+             Bitmap bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height - statusBarHeight);
+             view.destroyDrawingCache();
+             return bp;
+         }
 
 }
