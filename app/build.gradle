@@ -28,4 +28,6 @@ dependencies {
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile project(':libraries:SlidingMenu/library')
     compile files('libs/pinyin4j-2.5.0.jar')
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/ormlite-core-4.48.jar')
 }

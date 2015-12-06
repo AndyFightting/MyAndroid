@@ -6,11 +6,15 @@ import android.widget.ImageView;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
+import com.suguiming.myandroid.tool.FileUtil;
 import com.suguiming.myandroid.tool.ItemTapListener;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.SDCardUtil;
+import com.suguiming.myandroid.tool.ScreenUtil;
 import com.suguiming.myandroid.tool.customView.PopWindow;
 import com.suguiming.myandroid.tool.customView.TapAnimationImageView;
+
+import in.srain.cube.diskcache.FileUtils;
 
 public class FadeInOutActivity extends BaseActivity {
 
@@ -42,15 +46,14 @@ public class FadeInOutActivity extends BaseActivity {
         });
     }
 
-    //屏幕截图
     public void screenShot(View view){
         ImageView img = (ImageView)view;
         switch (view.getId()){
             case R.id.screen_img0:
-                img.setImageBitmap(MyTool.getScreenShotWithStatusBar(this));
+                img.setImageBitmap(ScreenUtil.getScreenShotWithStatusBar(this));
                 break;
             case R.id.screen_img1:
-                img.setImageBitmap(MyTool.getScreenShotWithoutStatusBar(this));
+                img.setImageBitmap(ScreenUtil.getScreenShotWithoutStatusBar(this));
                 break;
         }
     }

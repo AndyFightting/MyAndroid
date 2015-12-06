@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.ScreenUtil;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrUIHandler;
@@ -38,7 +39,7 @@ public class SGMRefreshHeader extends RelativeLayout implements PtrUIHandler {
         titleTv.setText("下拉刷新");
         reachRefreshFlag = false;
 
-        headViewHeightDip = MyTool.pxFromDp(mContext,60);
+        headViewHeightDip = ScreenUtil.pxFromDp(mContext, 60);
         flag = var1.getRatioOfHeaderToHeightRefresh()*headViewHeightDip;
     }
 

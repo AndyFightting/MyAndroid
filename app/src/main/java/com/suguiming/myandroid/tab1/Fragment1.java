@@ -15,6 +15,8 @@ import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.HanZi2PinYin.PinYinToolkit;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.NetworkUtil;
+import com.suguiming.myandroid.tool.ORMLiteUse.OrmTestBean;
+import com.suguiming.myandroid.tool.ORMLiteUse.OrmTestDao;
 import com.suguiming.myandroid.tool.SDCardUtil;
 import com.suguiming.myandroid.tool.SharedPreUtil;
 
@@ -187,6 +189,12 @@ public class Fragment1 extends BaseFragment {
                 showToast(pinYin);
                 break;
             case 1:
+                OrmTestBean bean = new OrmTestBean("andy",18);
+                OrmTestDao dao = new OrmTestDao(mainActivity);
+                dao.add(bean);
+
+                List<OrmTestBean> list =  dao.findByName("andy");
+                MyTool.log(list.size()+" -------");
 
                 break;
             case 2:
