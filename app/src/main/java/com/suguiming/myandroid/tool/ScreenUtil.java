@@ -13,24 +13,24 @@ import android.widget.EditText;
  */
 public class ScreenUtil {
 
-    public static int getScreenWidthPx(Context context){
-        return  context.getResources().getDisplayMetrics().widthPixels;
+    public static int getScreenWidthPx(Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
     }
 
-    public static int getScreenHeightPx(Context context){
-        return  context.getResources().getDisplayMetrics().heightPixels;
+    public static int getScreenHeightPx(Context context) {
+        return context.getResources().getDisplayMetrics().heightPixels;
     }
 
-    public static float getDensity(Context context){
+    public static float getDensity(Context context) {
         return context.getResources().getDisplayMetrics().density;
     }
 
-    public static float getXdpi(Context context){
-        return  context.getResources().getDisplayMetrics().xdpi;
+    public static float getXdpi(Context context) {
+        return context.getResources().getDisplayMetrics().xdpi;
     }
 
-    public static float getYdpi(Context context){
-        return  context.getResources().getDisplayMetrics().ydpi;
+    public static float getYdpi(Context context) {
+        return context.getResources().getDisplayMetrics().ydpi;
     }
 
     public static int pxFromDp(Context context, float dpValue) {
@@ -54,8 +54,7 @@ public class ScreenUtil {
     }
 
     //截屏 包括状态栏
-    public static Bitmap getScreenShotWithStatusBar(Activity activity)
-    {
+    public static Bitmap getScreenShotWithStatusBar(Activity activity) {
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();

@@ -6,15 +6,10 @@ import android.widget.ImageView;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
-import com.suguiming.myandroid.tool.FileUtil;
 import com.suguiming.myandroid.tool.ItemTapListener;
-import com.suguiming.myandroid.tool.MyTool;
-import com.suguiming.myandroid.tool.SDCardUtil;
 import com.suguiming.myandroid.tool.ScreenUtil;
 import com.suguiming.myandroid.tool.customView.PopWindow;
 import com.suguiming.myandroid.tool.customView.TapAnimationImageView;
-
-import in.srain.cube.diskcache.FileUtils;
 
 public class FadeInOutActivity extends BaseActivity {
 
@@ -26,7 +21,7 @@ public class FadeInOutActivity extends BaseActivity {
         showLeftImg("back_img");//点击事件默认退出，也可以重写leftImgTap()方法
         showRightTitle("pop window");
 
-        TapAnimationImageView imageView = (TapAnimationImageView)findViewById(R.id.animation_img);
+        TapAnimationImageView imageView = (TapAnimationImageView) findViewById(R.id.animation_img);
         imageView.setTapListener(new TapAnimationImageView.TapListener() {
             @Override
             public void onImageViewTap(TapAnimationImageView view) {
@@ -46,9 +41,9 @@ public class FadeInOutActivity extends BaseActivity {
         });
     }
 
-    public void screenShot(View view){
-        ImageView img = (ImageView)view;
-        switch (view.getId()){
+    public void screenShot(View view) {
+        ImageView img = (ImageView) view;
+        switch (view.getId()) {
             case R.id.screen_img0:
                 img.setImageBitmap(ScreenUtil.getScreenShotWithStatusBar(this));
                 break;

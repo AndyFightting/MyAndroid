@@ -3,14 +3,10 @@ package com.suguiming.myandroid.base;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +21,7 @@ import com.suguiming.myandroid.tool.MyTool;
 /**
  * Created by suguiming on 15/11/18.
  */
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected RelativeLayout fatherView;
     protected RelativeLayout titleView;
@@ -53,40 +49,40 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ActivityManager.addActivity(this);
         //透明状态栏 mine sdk 19
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         //自定义退出动画要用的，不然退出的效果不行...
-        TypedArray activityStyle = getTheme().obtainStyledAttributes(new int[] {android.R.attr.windowAnimationStyle});
+        TypedArray activityStyle = getTheme().obtainStyledAttributes(new int[]{android.R.attr.windowAnimationStyle});
         int windowAnimationStyleResId = activityStyle.getResourceId(0, 0);
         activityStyle.recycle();
-        activityStyle = getTheme().obtainStyledAttributes(windowAnimationStyleResId, new int[] {android.R.attr.activityCloseEnterAnimation, android.R.attr.activityCloseExitAnimation});
+        activityStyle = getTheme().obtainStyledAttributes(windowAnimationStyleResId, new int[]{android.R.attr.activityCloseEnterAnimation, android.R.attr.activityCloseExitAnimation});
         activityCloseEnterAnimation = activityStyle.getResourceId(0, 0);
         activityCloseExitAnimation = activityStyle.getResourceId(1, 0);
         activityStyle.recycle();
 
-        MyTool.log("onCreate----------------- 当前位置："+getClass().getSimpleName());
+        MyTool.log("onCreate----------------- 当前位置：" + getClass().getSimpleName());
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
     }
 
     @Override
-    protected void onRestart(){
+    protected void onRestart() {
         super.onRestart();
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
     }
 
@@ -96,7 +92,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         ActivityManager.removeActivity(this);
     }
@@ -139,73 +135,73 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //------------------------------------------------title view 相关的方法----------------------------------------------------------------
 
     //若要用公共 title View 就用这方法
-    public void setMainView(int viewId){
+    public void setMainView(int viewId) {
         setContentView(R.layout.layout_base);
         hasTitle = true;
 
-        fatherView = (RelativeLayout)findViewById(R.id.father_view);
-        mainView = (LinearLayout)findViewById(R.id.main_view);
-        titleView = (RelativeLayout)findViewById(R.id.title_layout);
-        titleTv = (TextView)findViewById(R.id.title_tv);
+        fatherView = (RelativeLayout) findViewById(R.id.father_view);
+        mainView = (LinearLayout) findViewById(R.id.main_view);
+        titleView = (RelativeLayout) findViewById(R.id.title_layout);
+        titleTv = (TextView) findViewById(R.id.title_tv);
         statusBackView = findViewById(R.id.status_back_view);
 
-        leftImg = (ImageView)findViewById(R.id.left_img);
-        leftTitleTv = (TextView)findViewById(R.id.left_title_tv);
+        leftImg = (ImageView) findViewById(R.id.left_img);
+        leftTitleTv = (TextView) findViewById(R.id.left_title_tv);
 
-        rightTitleTv = (TextView)findViewById(R.id.right_title_tv);
-        rightOneImg = (ImageView)findViewById(R.id.right_one_img);
-        rightTwoImg = (ImageView)findViewById(R.id.right_two_img);
+        rightTitleTv = (TextView) findViewById(R.id.right_title_tv);
+        rightOneImg = (ImageView) findViewById(R.id.right_one_img);
+        rightTwoImg = (ImageView) findViewById(R.id.right_two_img);
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View tmpView = inflater.inflate(viewId, null);
         mainView.removeAllViews();
         mainView.addView(tmpView);
 
-        footerView =(RelativeLayout)mInflater.inflate(R.layout.refresh_footer, null);
-        footerTv = (TextView)footerView.findViewById(R.id.title);
+        footerView = (RelativeLayout) mInflater.inflate(R.layout.refresh_footer, null);
+        footerTv = (TextView) footerView.findViewById(R.id.title);
         fatherView.addView(footerView);
-        
+
     }
 
-    public void hideTitleView(){
-        if (hasTitle){
+    public void hideTitleView() {
+        if (hasTitle) {
             titleView.setVisibility(View.GONE);
         }
     }
 
-    public void showTitleView(String titleName){
-        if (hasTitle){
+    public void showTitleView(String titleName) {
+        if (hasTitle) {
             titleView.setVisibility(View.VISIBLE);
             titleTv.setText(titleName);
         }
     }
 
-    public void hideLeftImg(){
-        if (hasTitle){
+    public void hideLeftImg() {
+        if (hasTitle) {
             leftImg.setVisibility(View.GONE);
         }
     }
 
-    public void showLeftImg(String imgName){
-        if (hasTitle){
+    public void showLeftImg(String imgName) {
+        if (hasTitle) {
             leftImg.setOnClickListener(this);
             leftImg.setVisibility(View.VISIBLE);
             leftTitleTv.setVisibility(View.GONE);
 
-            Context ctx=getBaseContext();
+            Context ctx = getBaseContext();
             int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
             leftImg.setImageResource(imgId);
         }
     }
 
-    private void hideLeftTitle(){
-        if (hasTitle){
+    private void hideLeftTitle() {
+        if (hasTitle) {
             leftTitleTv.setVisibility(View.GONE);
         }
     }
 
-    public void showLeftTitle(String titleName){
-        if (hasTitle){
+    public void showLeftTitle(String titleName) {
+        if (hasTitle) {
             leftTitleTv.setOnClickListener(this);
             leftTitleTv.setVisibility(View.VISIBLE);
             leftImg.setVisibility(View.GONE);
@@ -214,14 +210,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void hideRightTitle(){
-        if (hasTitle){
+    private void hideRightTitle() {
+        if (hasTitle) {
             rightTitleTv.setVisibility(View.GONE);
         }
     }
 
-    public void showRightTitle(String titleName){
-        if (hasTitle){
+    public void showRightTitle(String titleName) {
+        if (hasTitle) {
             rightTitleTv.setOnClickListener(this);
             rightTitleTv.setVisibility(View.VISIBLE);
             rightOneImg.setVisibility(View.GONE);
@@ -230,70 +226,70 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void hideRightOneImg(){
-        if (hasTitle){
+    public void hideRightOneImg() {
+        if (hasTitle) {
             rightOneImg.setVisibility(View.GONE);
         }
     }
 
-    public void showRightOneImg(String imgName){
-        if (hasTitle){
+    public void showRightOneImg(String imgName) {
+        if (hasTitle) {
             rightOneImg.setOnClickListener(this);
             rightOneImg.setVisibility(View.VISIBLE);
             rightTitleTv.setVisibility(View.GONE);
 
-            Context ctx=getBaseContext();
+            Context ctx = getBaseContext();
             int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
             rightOneImg.setImageResource(imgId);
         }
     }
 
-    public void hideRightTwoImg(){
-        if (hasTitle){
+    public void hideRightTwoImg() {
+        if (hasTitle) {
             rightTwoImg.setVisibility(View.GONE);
         }
     }
 
-    public void showRightTwoImg(String imgName){
-        if (hasTitle){
+    public void showRightTwoImg(String imgName) {
+        if (hasTitle) {
             rightTwoImg.setOnClickListener(this);
             rightTwoImg.setVisibility(View.VISIBLE);
             rightTitleTv.setVisibility(View.GONE);
 
-            Context ctx=getBaseContext();
+            Context ctx = getBaseContext();
             int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
             rightTwoImg.setImageResource(imgId);
         }
     }
 
     //若不是返回就重写该方法
-    public void leftImgTap(View view){
+    public void leftImgTap(View view) {
         finish();
     }
 
-    public void leftTitleTap(View view){
+    public void leftTitleTap(View view) {
     }
 
-    public void mainViewTap(View view){
-
-    }
-
-    public void rightTitleTap(View view){
+    public void mainViewTap(View view) {
 
     }
 
-    public void rightOneImgTap(View view){
+    public void rightTitleTap(View view) {
 
     }
 
-    public void rightTwoImgTap(View view){
+    public void rightOneImgTap(View view) {
+
+    }
+
+    public void rightTwoImgTap(View view) {
 
     }
 //------------------------------------------------其他方法----------------------------------------------------------------
 
     @Override
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.left_img:
                 leftImgTap(view);
                 break;
@@ -315,17 +311,17 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void setImageWithName(ImageView image,String imgName){
-        Context ctx=getBaseContext();
+    public void setImageWithName(ImageView image, String imgName) {
+        Context ctx = getBaseContext();
         int imgId = getResources().getIdentifier(imgName, "mipmap", ctx.getPackageName());
         image.setImageResource(imgId);
     }
 
-    public void showToast(String message){
+    public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void showLoadMoreFooter(String message){
+    public void showLoadMoreFooter(String message) {
         footerView.setVisibility(View.VISIBLE);
         footerTv.setText(message);
 
@@ -336,7 +332,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
         }, 1000);//最迟1秒后也会自带消失
     }
-    public void hideLoadMoreFooter(){
+
+    public void hideLoadMoreFooter() {
         footerView.setVisibility(View.GONE);
     }
 

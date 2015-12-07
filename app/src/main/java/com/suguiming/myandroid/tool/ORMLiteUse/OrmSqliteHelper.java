@@ -17,16 +17,16 @@ import java.util.Map;
  */
 public class OrmSqliteHelper extends OrmLiteSqliteOpenHelper {
 
-   public static final String DB_NAME = "orm_test.db";
-   public Map<String,Dao> daoMap = new HashMap<>();
-   public Context mContext;
-   public static OrmSqliteHelper helper;
+    public static final String DB_NAME = "orm_test.db";
+    public Map<String, Dao> daoMap = new HashMap<>();
+    public Context mContext;
+    public static OrmSqliteHelper helper;
 
 
-   public OrmSqliteHelper(Context context){
-       super(context,DB_NAME,null,1);// 1是数据库版本号
-       mContext = context;
-   }
+    public OrmSqliteHelper(Context context) {
+        super(context, DB_NAME, null, 1);// 1是数据库版本号
+        mContext = context;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
@@ -42,7 +42,7 @@ public class OrmSqliteHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
-            switch (newVersion){
+            switch (newVersion) {
                 // 在不同版本中数据库的变化， 不要 break;
                 case 2:
                     Dao testBeanDao = getHelper(mContext).getDao(OrmTestBean.class);

@@ -17,9 +17,10 @@ public class OrmTestBean {
     @DatabaseField(columnName = "age")
     private int age;
 
-    public OrmTestBean(){}
+    public OrmTestBean() {
+    }
 
-    public OrmTestBean(String name,int age){
+    public OrmTestBean(String name, int age) {
         this.name = name;
         this.age = age;
     }

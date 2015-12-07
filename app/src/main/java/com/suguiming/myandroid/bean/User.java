@@ -8,7 +8,7 @@ public class User {
     private String name;
     private int headImgId;
 
-    public User(String name,int headImgId){
+    public User(String name, int headImgId) {
         this.name = name;
         this.headImgId = headImgId;
     }

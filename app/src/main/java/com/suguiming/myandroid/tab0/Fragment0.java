@@ -45,19 +45,19 @@ public class Fragment0 extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater,container,savedInstanceState);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
         //------这里面初始化fragment view----------
-         setMainView(R.layout.fragment0_layout);
-         showTitleView("课程统计");
-         showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()得到点击事件
-         showLeftTitle("popView");
+        setMainView(R.layout.fragment0_layout);
+        showTitleView("课程统计");
+        showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()得到点击事件
+        showLeftTitle("popView");
 
         initNameList();
         addUserToList(9);
 
-        userListView = (ListView)mainView.findViewById(R.id.user_list);
-        userAdapter = new UserAdapter(mainActivity,R.layout.item_user,userList);
+        userListView = (ListView) mainView.findViewById(R.id.user_list);
+        userAdapter = new UserAdapter(mainActivity, R.layout.item_user, userList);
         userListView.setAdapter(userAdapter);
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class Fragment0 extends BaseFragment {
         return view;
     }
 
-    private void addRefreshHeader(){
+    private void addRefreshHeader() {
         refreshLayout = (PtrFrameLayout) mainView.findViewById(R.id.fragment_ptr_home_ptr_frame);
         StoreHouseHeader header = new StoreHouseHeader(mainActivity);
         header.setPadding(0, LocalDisplay.dp2px(20), 0, LocalDisplay.dp2px(20));
@@ -103,7 +103,7 @@ public class Fragment0 extends BaseFragment {
 
     }
 
-    public void addRefreshFooter(){
+    public void addRefreshFooter() {
         userListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -128,7 +128,7 @@ public class Fragment0 extends BaseFragment {
         });
     }
 
-    private void beginRefresh(){
+    private void beginRefresh() {
         canLoadMore = true;
         userList.clear();
         addUserToList(9);
@@ -140,23 +140,23 @@ public class Fragment0 extends BaseFragment {
         addUserToList(3);
         userAdapter.notifyDataSetChanged();
 
-        if (userList.size() >15){ //假设最多15条数据
+        if (userList.size() > 15) { //假设最多15条数据
             canLoadMore = false;
         }
     }
 
-    public void tabTap(){
+    public void tabTap() {
         refreshLayout.autoRefresh();
     }
 
     //构造假数据
-    private void addUserToList(int addNum){
+    private void addUserToList(int addNum) {
         int listNum = userList.size();
-        for (int i=0;i<addNum;i++){
+        for (int i = 0; i < addNum; i++) {
             String nameStr;
-            if (listNum+i < nameList.size()){
-                nameStr = nameList.get(listNum+i);
-            }else {
+            if (listNum + i < nameList.size()) {
+                nameStr = nameList.get(listNum + i);
+            } else {
                 nameStr = "未完待续";
             }
             userList.add(new User(nameStr, R.mipmap.tab0s));
@@ -187,7 +187,7 @@ public class Fragment0 extends BaseFragment {
     }
 
     //构造假数据
-    private void initNameList(){
+    private void initNameList() {
         nameList.add("模拟下线通知，在任何地方都可以");
         nameList.add("SwipeListView Demo");
         nameList.add("自定义Dialog");
@@ -198,22 +198,22 @@ public class Fragment0 extends BaseFragment {
         nameList.add("sliding menu");
     }
 
-    private void itemTap(int position){
+    private void itemTap(int position) {
         Intent intent;
-        switch (position){
+        switch (position) {
             case 0://模拟强制退出
                 intent = new Intent(Task.BROADCAST_LOGIN_OUT);
                 mainActivity.sendBroadcast(intent);
-               break;
+                break;
             case 1:
-                intent = new Intent(mainActivity,SwipeListViewActivity.class);
+                intent = new Intent(mainActivity, SwipeListViewActivity.class);
                 mainActivity.startActivity(intent);
                 break;
             case 2:
                 CustomDialog customDialog = new CustomDialog(mainActivity, new ItemTapListener() {
                     @Override
                     public void itemTap(View view) {
-                        switch (view.getId()){
+                        switch (view.getId()) {
                             case R.id.out_tv:
                                 showToast("点击退出");
                                 break;
@@ -227,33 +227,33 @@ public class Fragment0 extends BaseFragment {
 
                 break;
             case 3:
-                intent = new Intent(mainActivity,FadeInOutActivity.class);
+                intent = new Intent(mainActivity, FadeInOutActivity.class);
                 mainActivity.startActivity(intent);
                 break;
             case 4:
-                intent = new Intent(mainActivity,PresentActivity.class);
+                intent = new Intent(mainActivity, PresentActivity.class);
                 mainActivity.startActivity(intent);
                 break;
             case 5:
-                 ActionSheet.show(mainActivity, ActionSheet.class, new ItemTapListener() {
-                     @Override
-                     public void itemTap(View view) {
-                         switch (view.getId()) {
-                             case R.id.camera_tv:
-                                 showToast("相机");
-                                 break;
-                             case R.id.phone_tv:
-                                 showToast("相册");
-                                 break;
-                         }
-                     }
-                 });
+                ActionSheet.show(mainActivity, ActionSheet.class, new ItemTapListener() {
+                    @Override
+                    public void itemTap(View view) {
+                        switch (view.getId()) {
+                            case R.id.camera_tv:
+                                showToast("相机");
+                                break;
+                            case R.id.phone_tv:
+                                showToast("相册");
+                                break;
+                        }
+                    }
+                });
                 break;
             case 6:
-                HUD.show(mainActivity,"登录中...");
+                HUD.show(mainActivity, "登录中...");
                 break;
             case 7:
-                intent = new Intent(mainActivity,SlidingMenuActivity.class);
+                intent = new Intent(mainActivity, SlidingMenuActivity.class);
                 mainActivity.startActivity(intent);
                 break;
 

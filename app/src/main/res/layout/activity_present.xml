@@ -4,5 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.suguiming.myandroid.tab0.PresentActivity">
 
+    <com.suguiming.myandroid.tool.customView.CircleImageView
+        android:src="@mipmap/atest"
+        android:id="@+id/test"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
 </RelativeLayout>

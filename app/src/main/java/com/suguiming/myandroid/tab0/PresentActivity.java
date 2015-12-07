@@ -1,8 +1,10 @@
 package com.suguiming.myandroid.tab0;
 
 import android.os.Bundle;
+
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
+import com.suguiming.myandroid.tool.customView.CircleImageView;
 
 public class PresentActivity extends BaseActivity {
 
@@ -12,6 +14,7 @@ public class PresentActivity extends BaseActivity {
         setMainView(R.layout.activity_present);
         showTitleView("iOS present view");
         showLeftImg("back_img");
+
 
     }
 

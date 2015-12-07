@@ -23,7 +23,7 @@ import com.suguiming.myandroid.tool.MyTool;
 /**
  * Created by suguiming on 15/11/18.
  */
-public class BaseFragment extends Fragment implements View.OnClickListener{
+public class BaseFragment extends Fragment implements View.OnClickListener {
 
     protected RelativeLayout fatherView;
     protected RelativeLayout titleView;
@@ -46,7 +46,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     private TextView footerTv;
 
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
     }
 
@@ -56,8 +56,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         super.onAttach(activity);
         try {
             mainActivity = (MainActivity) activity;
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -74,21 +73,21 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
 
         mInflater = inflater;
         hasTitle = true;
-        fatherView = (RelativeLayout)view.findViewById(R.id.father_view);
-        mainView = (LinearLayout)view.findViewById(R.id.main_view);
-        titleView = (RelativeLayout)view.findViewById(R.id.title_layout);
-        titleTv = (TextView)view.findViewById(R.id.title_tv);
+        fatherView = (RelativeLayout) view.findViewById(R.id.father_view);
+        mainView = (LinearLayout) view.findViewById(R.id.main_view);
+        titleView = (RelativeLayout) view.findViewById(R.id.title_layout);
+        titleTv = (TextView) view.findViewById(R.id.title_tv);
         statusBackView = view.findViewById(R.id.status_back_view);
 
-        leftImg = (ImageView)view.findViewById(R.id.left_img);
-        leftTitleTv = (TextView)view.findViewById(R.id.left_title_tv);
+        leftImg = (ImageView) view.findViewById(R.id.left_img);
+        leftTitleTv = (TextView) view.findViewById(R.id.left_title_tv);
 
-        rightTv = (TextView)view.findViewById(R.id.right_title_tv);
-        rightOneImg = (ImageView)view.findViewById(R.id.right_one_img);
-        rightTwoImg = (ImageView)view.findViewById(R.id.right_two_img);
+        rightTv = (TextView) view.findViewById(R.id.right_title_tv);
+        rightOneImg = (ImageView) view.findViewById(R.id.right_one_img);
+        rightTwoImg = (ImageView) view.findViewById(R.id.right_two_img);
 
-        footerView =(RelativeLayout)mInflater.inflate(R.layout.refresh_footer, null);
-        footerTv = (TextView)footerView.findViewById(R.id.title);
+        footerView = (RelativeLayout) mInflater.inflate(R.layout.refresh_footer, null);
+        footerTv = (TextView) footerView.findViewById(R.id.title);
         fatherView.addView(footerView);
 
         return view;
@@ -100,37 +99,37 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
     }
 
     @Override
-    public void onDestroyView(){
+    public void onDestroyView() {
         super.onDestroyView();
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
     }
 
     @Override
-    public void onDetach(){
+    public void onDetach() {
         super.onDetach();
     }
 
@@ -153,34 +152,34 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
     }
 //------------------------------------------------title view 相关的方法----------------------------------------------------------------
 
-    public void setMainView(int viewId){
+    public void setMainView(int viewId) {
         View tmpView = mInflater.inflate(viewId, null);
         mainView.removeAllViews();
         mainView.addView(tmpView);
     }
 
 
-    public void hideTitleView(){
-        if (hasTitle){
+    public void hideTitleView() {
+        if (hasTitle) {
             titleView.setVisibility(View.GONE);
         }
     }
 
-    public void showTitleView(String titleName){
-        if (hasTitle){
+    public void showTitleView(String titleName) {
+        if (hasTitle) {
             titleView.setVisibility(View.VISIBLE);
             titleTv.setText(titleName);
         }
     }
 
-    public void hideLeftImg(){
-        if (hasTitle){
+    public void hideLeftImg() {
+        if (hasTitle) {
             leftImg.setVisibility(View.GONE);
         }
     }
 
-    public void showLeftImg(String imgName){
-        if (hasTitle){
+    public void showLeftImg(String imgName) {
+        if (hasTitle) {
             leftImg.setOnClickListener(this);
             leftImg.setVisibility(View.VISIBLE);
             leftTitleTv.setVisibility(View.GONE);
@@ -191,14 +190,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    private void hideLeftTitle(){
-        if (hasTitle){
+    private void hideLeftTitle() {
+        if (hasTitle) {
             leftTitleTv.setVisibility(View.GONE);
         }
     }
 
-    public void showLeftTitle(String titleName){
-        if (hasTitle){
+    public void showLeftTitle(String titleName) {
+        if (hasTitle) {
             leftTitleTv.setOnClickListener(this);
             leftTitleTv.setVisibility(View.VISIBLE);
             leftImg.setVisibility(View.GONE);
@@ -207,14 +206,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    private void hideRightTitle(){
-        if (hasTitle){
+    private void hideRightTitle() {
+        if (hasTitle) {
             rightTv.setVisibility(View.GONE);
         }
     }
 
-    public void showRightTitle(String titleName){
-        if (hasTitle){
+    public void showRightTitle(String titleName) {
+        if (hasTitle) {
             rightTv.setOnClickListener(this);
             rightTv.setVisibility(View.VISIBLE);
             rightOneImg.setVisibility(View.GONE);
@@ -223,14 +222,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void hideRightOneImg(){
-        if (hasTitle){
+    public void hideRightOneImg() {
+        if (hasTitle) {
             rightOneImg.setVisibility(View.GONE);
         }
     }
 
-    public void showRightOneImg(String imgName){
-        if (hasTitle){
+    public void showRightOneImg(String imgName) {
+        if (hasTitle) {
             rightOneImg.setOnClickListener(this);
             rightOneImg.setVisibility(View.VISIBLE);
             rightTv.setVisibility(View.GONE);
@@ -240,14 +239,14 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void hideRightTwoImg(){
-        if (hasTitle){
+    public void hideRightTwoImg() {
+        if (hasTitle) {
             rightTwoImg.setVisibility(View.GONE);
         }
     }
 
-    public void showRightTwoImg(String imgName){
-        if (hasTitle){
+    public void showRightTwoImg(String imgName) {
+        if (hasTitle) {
             rightTwoImg.setOnClickListener(this);
             rightTwoImg.setVisibility(View.VISIBLE);
             rightTv.setVisibility(View.GONE);
@@ -257,33 +256,34 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void leftImgTap(View view){
+    public void leftImgTap(View view) {
 
     }
 
-    public void leftTitleTap(View view){
+    public void leftTitleTap(View view) {
 
     }
 
-    public void mainViewTap(View view){
+    public void mainViewTap(View view) {
 
     }
 
-    public void rightTitleTap(View view){
+    public void rightTitleTap(View view) {
 
     }
 
-    public void rightOneImgTap(View view){
+    public void rightOneImgTap(View view) {
 
     }
 
-    public void rightTwoImgTap(View view){
+    public void rightTwoImgTap(View view) {
 
     }
-//------------------------------------------------其他方法----------------------------------------------------------------
+
+    //------------------------------------------------其他方法----------------------------------------------------------------
     @Override
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.left_img:
                 leftImgTap(view);
                 break;
@@ -305,15 +305,15 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void tabTap(){
+    public void tabTap() {
 
     }
 
-    public void showToast(String message){
-        Toast.makeText(mainActivity,message,Toast.LENGTH_SHORT).show();
+    public void showToast(String message) {
+        Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void showLoadMoreFooter(String message){
+    public void showLoadMoreFooter(String message) {
         footerView.setVisibility(View.VISIBLE);
         footerTv.setText(message);
 
@@ -324,7 +324,8 @@ public class BaseFragment extends Fragment implements View.OnClickListener{
             }
         }, 1000);//最迟1秒后也会自带消失
     }
-    public void hideLoadMoreFooter(){
+
+    public void hideLoadMoreFooter() {
         footerView.setVisibility(View.GONE);
     }
 

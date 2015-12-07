@@ -9,8 +9,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HttpUtil
-{
+public class HttpUtil {
 
     private static final int TIMEOUT_IN_MILLIONS = 5000;
 
@@ -18,7 +17,7 @@ public class HttpUtil
         void onComplete(String result);
     }
 
-     //异步的Get请求
+    //异步的Get请求
     public static void doGetAsyn(final String urlStr, final ResultListener callBack) {
         new Thread() {
             public void run() {
@@ -34,7 +33,7 @@ public class HttpUtil
         }.start();
     }
 
-     //异步的Post请求
+    //异步的Post请求
     public static void doPostAsyn(final String urlStr, final String params,
                                   final ResultListener callBack) throws Exception {
         new Thread() {
@@ -51,9 +50,8 @@ public class HttpUtil
         }.start();
     }
 
-     //Get请求，获得返回数据
-    public static String doGet(String urlStr)
-    {
+    //Get请求，获得返回数据
+    public static String doGet(String urlStr) {
         URL url;
         HttpURLConnection conn = null;
         InputStream is = null;
@@ -95,10 +93,10 @@ public class HttpUtil
             }
             conn.disconnect();
         }
-        return null ;
+        return null;
     }
 
-     // 请求参数应该是 name1=value1&name2=value2 的形式
+    // 请求参数应该是 name1=value1&name2=value2 的形式
     public static String doPost(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;

@@ -1,6 +1,7 @@
 package com.suguiming.myandroid.tool.ORMLiteUse;
 
 import android.content.Context;
+
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -14,60 +15,60 @@ import java.util.List;
 public class OrmTestDao {
 
     private OrmSqliteHelper helper;
-    private Dao<OrmTestBean,Integer> dao;
+    private Dao<OrmTestBean, Integer> dao;
 
-    public OrmTestDao(Context context){
+    public OrmTestDao(Context context) {
         try {
             helper = OrmSqliteHelper.getHelper(context);
             dao = helper.getDao(OrmTestBean.class);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void add(OrmTestBean bean){
+    public void add(OrmTestBean bean) {
         try {
-           dao.create(bean);
-        }catch (SQLException e){
+            dao.create(bean);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void update(OrmTestBean bean){
+    public void update(OrmTestBean bean) {
         try {
             dao.update(bean);
             //----- 发个通知 告诉页面数据已经更新了---
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public  List<OrmTestBean> findByName(String name){
+    public List<OrmTestBean> findByName(String name) {
         try {
             QueryBuilder queryBuilder = dao.queryBuilder();
-            queryBuilder.where().eq("name",name);
+            queryBuilder.where().eq("name", name);
             return queryBuilder.query();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public  List<OrmTestBean> getAll(){
+    public List<OrmTestBean> getAll() {
         try {
-          return dao.queryForAll();
-        }catch (SQLException e){
+            return dao.queryForAll();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public void removeAll(){
+    public void removeAll() {
         try {
             DeleteBuilder deleteBuilder = dao.deleteBuilder();
             deleteBuilder.delete();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

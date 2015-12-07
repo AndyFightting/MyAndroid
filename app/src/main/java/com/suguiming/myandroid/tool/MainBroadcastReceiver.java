@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+
 import com.suguiming.myandroid.login.LoginActivity;
 
 /**
@@ -13,11 +14,11 @@ import com.suguiming.myandroid.login.LoginActivity;
  */
 public class MainBroadcastReceiver extends BroadcastReceiver {
     @Override
-    public void onReceive(final Context context, final Intent intent){
-        switch (intent.getAction()){
+    public void onReceive(final Context context, final Intent intent) {
+        switch (intent.getAction()) {
             //网络变化监听
             case ConnectivityManager.CONNECTIVITY_ACTION:
-                 NetworkUtil.showType(context);
+                NetworkUtil.showType(context);
                 break;
             //强制退出
             case Task.BROADCAST_LOGIN_OUT:
@@ -38,8 +39,8 @@ public class MainBroadcastReceiver extends BroadcastReceiver {
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 //----下面做本地数据清理工作----
-                MyTool.shotToast(context,"本地数据已清理完毕");
-          break;
+                MyTool.shotToast(context, "本地数据已清理完毕");
+                break;
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.suguiming.myandroid.base;
 
 import android.app.Application;
+
 import com.orhanobut.logger.Logger;
 
 /**
