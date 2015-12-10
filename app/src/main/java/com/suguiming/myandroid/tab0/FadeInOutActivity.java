@@ -6,8 +6,8 @@ import android.widget.ImageView;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
-import com.suguiming.myandroid.tool.ItemTapListener;
-import com.suguiming.myandroid.tool.ScreenUtil;
+import com.suguiming.myandroid.tool.utils.ItemTapListener;
+import com.suguiming.myandroid.tool.utils.ScreenUtil;
 import com.suguiming.myandroid.tool.customView.PopWindow;
 import com.suguiming.myandroid.tool.customView.TapAnimationImageView;
 

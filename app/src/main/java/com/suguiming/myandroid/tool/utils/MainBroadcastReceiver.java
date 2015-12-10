@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool;
+package com.suguiming.myandroid.tool.utils;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 
 import com.suguiming.myandroid.login.LoginActivity;
+import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.Task;
 
 /**
  * Created by suguiming on 15/11/22.

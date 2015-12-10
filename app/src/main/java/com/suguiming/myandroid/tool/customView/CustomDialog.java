@@ -8,7 +8,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.suguiming.myandroid.R;
-import com.suguiming.myandroid.tool.ItemTapListener;
+import com.suguiming.myandroid.tool.utils.ItemTapListener;
 
 /**
  * Created by suguiming on 15/11/27.

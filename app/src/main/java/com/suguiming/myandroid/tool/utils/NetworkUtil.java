@@ -1,10 +1,12 @@
-package com.suguiming.myandroid.tool;
+package com.suguiming.myandroid.tool.utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.suguiming.myandroid.tool.MyTool;
 
 /**
  * Created by suguiming on 15/12/5.
@@ -43,7 +45,7 @@ public class NetworkUtil {
     public static void showType(Context context){
         NetworkType type = getType(context);
         if (type == NetworkType.WIFI){
-            MyTool.shotToast(context,"已连接wifi");
+            MyTool.shotToast(context, "已连接wifi");
         }else if(type == NetworkType.MOBILE){
             MyTool.shotToast(context,"使用移动网络");
         }else {

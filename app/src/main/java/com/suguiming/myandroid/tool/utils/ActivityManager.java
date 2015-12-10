@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool;
+package com.suguiming.myandroid.tool.utils;
 
 import android.app.Activity;
 import android.content.Intent;

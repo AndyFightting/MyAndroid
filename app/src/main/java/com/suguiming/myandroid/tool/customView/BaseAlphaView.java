@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 
-import com.suguiming.myandroid.tool.ItemTapListener;
+import com.suguiming.myandroid.tool.utils.ItemTapListener;
 
 /**
  * Created by suguiming on 15/11/28.

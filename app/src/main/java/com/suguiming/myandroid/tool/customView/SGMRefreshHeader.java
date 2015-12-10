@@ -7,8 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.suguiming.myandroid.R;
-import com.suguiming.myandroid.tool.MyTool;
-import com.suguiming.myandroid.tool.ScreenUtil;
+import com.suguiming.myandroid.tool.utils.ScreenUtil;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrUIHandler;

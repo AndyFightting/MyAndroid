@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.BaseFragment;
-import com.suguiming.myandroid.tool.MainBroadcastReceiver;
+import com.suguiming.myandroid.tool.utils.MainBroadcastReceiver;
 import com.suguiming.myandroid.tool.Task;
 
 import java.util.ArrayList;

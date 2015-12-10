@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool;
+package com.suguiming.myandroid.tool.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
