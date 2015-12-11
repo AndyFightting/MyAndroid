@@ -41,32 +41,10 @@ public class PresentActivity extends BaseActivity implements OnItemClickListener
         showTitleView("iOS present view");
         showLeftImg("back_img");
 
-        initImageLoader();
-
         showNetworkImageBanner();
 //        showLocalImageBanner();
     }
 
-    //一般放 Application 里初始化
-    private void initImageLoader() {
-        DisplayImageOptions defaultOptions = new DisplayImageOptions
-                .Builder()
-                .showImageForEmptyUri(R.mipmap.ic_default_adimage)
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .build();
-
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration
-                .Builder(getApplicationContext())
-                .defaultDisplayImageOptions(defaultOptions)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .tasksProcessingOrder(QueueProcessingType.LIFO)
-                .build();
-
-        ImageLoader.getInstance().init(config);
-    }
 
     private void showLocalImageBanner() {
         banner = (ConvenientBanner) findViewById(R.id.banner);
