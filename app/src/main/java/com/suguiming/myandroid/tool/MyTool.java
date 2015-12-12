@@ -11,11 +11,15 @@ import java.lang.reflect.Field;
  */
 public class MyTool {
 
+    public static final int RESULT_CANCELED    = 0;
+    public static final int RESULT_OK           = -1;
+    public static final int RESULT_FIRST_USER   = 1;
+
     public static void log(String message){
         Log.i("myLog", message);
     }
 
-    public static void shotToast(Context context,String message){
+    public static void showToast(Context context,String message){
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
 

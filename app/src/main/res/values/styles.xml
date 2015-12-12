@@ -11,6 +11,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowAnimationStyle">@style/PopActivityAnimation</item>
     </style>
+
     <style name="PopActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/pop_menu_in</item>
         <item name="android:activityOpenExitAnimation">@anim/pop_menu_out</item>
@@ -18,10 +19,11 @@
         <item name="android:activityCloseExitAnimation">@anim/pop_menu_out</item>
     </style>
 
-      <!-- fade in out Activity theme-->
+    <!-- fade in out Activity theme-->
     <style name="ActivityFadeInOutTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@style/ActivityFadeInOutAnimation</item>
     </style>
+
     <style name="ActivityFadeInOutAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/activity_fade_in</item>
         <item name="android:activityOpenExitAnimation">@anim/activity_fade_out</item>
@@ -31,9 +33,11 @@
 
     <!-- iOS present activity theme-->
     <style name="ActivityPresentTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowIsTranslucent">true</item> //这个必须有
+        <item name="android:windowIsTranslucent">true</item>
+        //这个必须有
         <item name="android:windowAnimationStyle">@style/ActivityPresentAnimation</item>
     </style>
+
     <style name="ActivityPresentAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/activity_present_in</item>
         <item name="android:activityOpenExitAnimation">@anim/activity_present_out</item>
@@ -49,6 +53,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowAnimationStyle">@style/ActionSheetAnimation</item>
     </style>
+
     <style name="ActionSheetAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/action_sheet_in</item>
         <item name="android:activityOpenExitAnimation">@anim/action_sheet_out</item>
@@ -66,6 +71,10 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@drawable/hud_shape</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

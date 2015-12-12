@@ -92,9 +92,10 @@ public class SDCardUtil {
 
             //再在默认文件夹里建文件
             File file = new File(getFilePath(fileName));
-            if (!file.exists()) {
-                file.createNewFile();
+            if (file.exists()) {
+                file.delete();
             }
+            file.createNewFile();
             return file;
         } catch (Exception e) {
             e.printStackTrace();

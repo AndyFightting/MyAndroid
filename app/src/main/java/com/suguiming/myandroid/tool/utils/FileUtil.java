@@ -94,6 +94,21 @@ public class FileUtil {
         return dirFile;
     }
 
+    public static File createFile(Context context, String fileName) {
+        try {
+            String filePath = context.getFilesDir()+"/"+fileName;
+            File file = new File(filePath);
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void removeFile(Context context, String fileName) {
         String filePath = context.getFilesDir()+"/"+fileName;
         File file = new File(filePath);

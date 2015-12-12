@@ -45,11 +45,11 @@ public class NetworkUtil {
     public static void showType(Context context){
         NetworkType type = getType(context);
         if (type == NetworkType.WIFI){
-            MyTool.shotToast(context, "已连接wifi");
+            MyTool.showToast(context, "已连接wifi");
         }else if(type == NetworkType.MOBILE){
-            MyTool.shotToast(context,"使用移动网络");
+            MyTool.showToast(context,"使用移动网络");
         }else {
-            MyTool.shotToast(context,"无网络链接");
+            MyTool.showToast(context,"无网络链接");
         }
     }
 

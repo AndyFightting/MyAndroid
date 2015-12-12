@@ -2,11 +2,11 @@
 <resources>
 
     <!--  自定义属性 集合   -->
-    <attr name="cornerRadius" format="dimension" />
-    <attr name="borderWidth" format="dimension" />
-    <attr name="borderColor" format="color"/>
-    <attr name="innerColor" format="color"/>
-    <attr name="imageType">
+    <attr name="corner_radius" format="dimension" />
+    <attr name="border_width" format="dimension" />
+    <attr name="border_color" format="color"/>
+    <attr name="inner_color" format="color"/>
+    <attr name="image_type">
         <enum name="circle_image" value="0" />
         <enum name="corner_image" value="1" />
     </attr>
@@ -14,18 +14,18 @@
 
     <!--  RoundImageView   -->
     <declare-styleable name="RoundImageView">
-        <attr name="borderWidth" />
-        <attr name="borderColor"/>
-        <attr name="cornerRadius" />
-        <attr name="imageType" />
+        <attr name="border_width" />
+        <attr name="border_color"/>
+        <attr name="corner_radius" />
+        <attr name="image_type" />
     </declare-styleable>
 
     <!--  BorderTextView   -->
     <declare-styleable name="BorderTextView">
-        <attr name="borderColor"/>
-        <attr name="borderWidth" />
-        <attr name="cornerRadius" />
-        <attr name="innerColor"/>
+        <attr name="border_width" />
+        <attr name="corner_radius" />
+        <attr name="inner_color"/>
+        <attr name="border_color"/>
     </declare-styleable>
 
 

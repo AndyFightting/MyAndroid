@@ -15,7 +15,7 @@ import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.utils.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.customView.ActionSheet;
+import com.suguiming.myandroid.tool.customView.PhotoSheet;
 import com.suguiming.myandroid.tool.customView.CustomDialog;
 import com.suguiming.myandroid.tool.customView.HUD;
 import com.suguiming.myandroid.tool.customView.PopMenue;
@@ -196,13 +196,15 @@ public class Fragment0 extends BaseFragment {
         nameList.add("模仿 iOS action sheet");
         nameList.add("show HUD");
         nameList.add("sliding menu");
+        nameList.add("通讯录,短信,通知");
+        nameList.add("相机,相册");
     }
 
     private void itemTap(int position) {
         Intent intent;
         switch (position) {
             case 0://模拟强制退出
-                intent = new Intent(Task.BROADCAST_LOGIN_OUT);
+                intent = new Intent(Task.LOGIN_OUT_ACTION);
                 mainActivity.sendBroadcast(intent);
                 break;
             case 1:
@@ -235,7 +237,7 @@ public class Fragment0 extends BaseFragment {
                 mainActivity.startActivity(intent);
                 break;
             case 5:
-                ActionSheet.show(mainActivity, ActionSheet.class, new ItemTapListener() {
+                PhotoSheet.show(mainActivity, PhotoSheet.class, new ItemTapListener() {
                     @Override
                     public void itemTap(View view) {
                         switch (view.getId()) {
@@ -254,6 +256,14 @@ public class Fragment0 extends BaseFragment {
                 break;
             case 7:
                 intent = new Intent(mainActivity, SlidingMenuActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 8:
+                intent = new Intent(mainActivity,ReadContactActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 9:
+                intent = new Intent(mainActivity,SelectPhotoActivity.class);
                 mainActivity.startActivity(intent);
                 break;
 

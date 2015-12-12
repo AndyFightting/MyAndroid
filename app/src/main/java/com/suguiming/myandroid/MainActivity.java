@@ -122,7 +122,9 @@ public class MainActivity extends BaseActivity {
         mainBroadcastReceiver = new MainBroadcastReceiver();
         IntentFilter mainBroadFilter = new IntentFilter();
         mainBroadFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        mainBroadFilter.addAction(Task.BROADCAST_LOGIN_OUT);
+        mainBroadFilter.addAction(Task.LOGIN_OUT_ACTION);
+        mainBroadFilter.addAction(Task.RECEIVE_SMS_ACTION);
+        mainBroadFilter.addAction(Task.SEND_SMS_RESULT_ACTION);
         registerReceiver(mainBroadcastReceiver, mainBroadFilter);
     }
 

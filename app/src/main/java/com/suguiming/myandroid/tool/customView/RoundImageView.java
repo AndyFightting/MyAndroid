@@ -46,19 +46,19 @@ public class RoundImageView extends ImageView {
         super(context, attrs);
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView);
-        cornerRadius = array.getDimensionPixelSize(R.styleable.RoundImageView_cornerRadius,
+        cornerRadius = array.getDimensionPixelSize(R.styleable.RoundImageView_corner_radius,
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                         6,
                         getResources().getDisplayMetrics()));//圆角默认6
 
-        borderWidth = array.getDimensionPixelSize(R.styleable.RoundImageView_borderWidth,
+        borderWidth = array.getDimensionPixelSize(R.styleable.RoundImageView_border_width,
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                         0,
                         getResources().getDisplayMetrics()));//border默认 0
 
-        borderColor = array.getColor(R.styleable.RoundImageView_borderColor,0xFFFFFFFF);
+        borderColor = array.getColor(R.styleable.RoundImageView_border_color,0xFFFFFFFF);
 
-        imageType = array.getInt(R.styleable.RoundImageView_imageType, TYPE_CIRCLE);// 默认为Circle
+        imageType = array.getInt(R.styleable.RoundImageView_image_type, TYPE_CIRCLE);// 默认为Circle
         array.recycle();
 
         mMatrix = new Matrix();

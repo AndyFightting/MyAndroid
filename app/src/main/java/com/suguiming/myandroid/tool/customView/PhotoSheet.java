@@ -8,7 +8,7 @@ import com.suguiming.myandroid.R;
 /**
  * Created by suguiming on 15/11/28.
  */
-public class ActionSheet extends BaseAlphaView {
+public class PhotoSheet extends BaseAlphaView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

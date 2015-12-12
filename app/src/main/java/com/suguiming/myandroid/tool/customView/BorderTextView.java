@@ -3,10 +3,7 @@ package com.suguiming.myandroid.tool.customView;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
@@ -43,18 +40,17 @@ public class BorderTextView extends TextView {
     public BorderTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView);
-        innerColor = array.getColor(R.styleable.BorderTextView_innerColor, Color.YELLOW);
-        borderColor = array.getColor(R.styleable.BorderTextView_borderColor, 0);
-        borderWidth = array.getDimensionPixelSize(R.styleable.BorderTextView_borderWidth,
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.BorderTextView);
+        innerColor = array.getColor(R.styleable.BorderTextView_inner_color, 0);
+        borderColor = array.getColor(R.styleable.BorderTextView_border_color, 0);
+        borderWidth = array.getDimensionPixelSize(R.styleable.BorderTextView_border_width,
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                         0,
                         getResources().getDisplayMetrics()));
-        cornerRadius = array.getDimensionPixelSize(R.styleable.BorderTextView_cornerRadius,
+        cornerRadius = array.getDimensionPixelSize(R.styleable.BorderTextView_corner_radius,
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                         0,
                         getResources().getDisplayMetrics()));
-        array.recycle();
 
         borderPaint = new Paint();
         borderPaint.setColor(borderColor);
@@ -65,13 +61,14 @@ public class BorderTextView extends TextView {
         innerPaint.setAntiAlias(true);
 
         textPaint = new Paint();
+        textPaint.setAntiAlias(true);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         borderRect = new RectF(0, 0, w, h);
-        innerRect = new RectF(borderWidth, borderWidth, w-borderWidth, h-borderWidth);
+        innerRect = new RectF(borderWidth, borderWidth, w - borderWidth, h - borderWidth);
     }
 
     @Override
@@ -88,9 +85,7 @@ public class BorderTextView extends TextView {
         textPaint.setTextAlign(Paint.Align.CENTER);
         Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
         float fontHeight = fontMetrics.bottom - fontMetrics.top;
-        float textBaseY = getHeight() - (getHeight() - fontHeight)/2 - fontMetrics.bottom;
-        canvas.drawText(getText().toString(), getWidth()/2, textBaseY,textPaint);
+        float textBaseY = getHeight() - (getHeight() - fontHeight) / 2 - fontMetrics.bottom;
+        canvas.drawText(getText().toString(), getWidth() / 2, textBaseY, textPaint);
     }
-
-
 }
