@@ -198,6 +198,8 @@ public class Fragment0 extends BaseFragment {
         nameList.add("sliding menu");
         nameList.add("通讯录,短信,通知");
         nameList.add("相机,相册");
+        nameList.add("音频,视频");
+        nameList.add("Thread,Service");
     }
 
     private void itemTap(int position) {
@@ -264,6 +266,14 @@ public class Fragment0 extends BaseFragment {
                 break;
             case 9:
                 intent = new Intent(mainActivity,SelectPhotoActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 10:
+                intent = new Intent(mainActivity,AudioActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 11:
+                intent = new Intent(mainActivity,ThreadActivity.class);
                 mainActivity.startActivity(intent);
                 break;
 

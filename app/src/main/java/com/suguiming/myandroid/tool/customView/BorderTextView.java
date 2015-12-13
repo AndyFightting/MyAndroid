@@ -73,19 +73,19 @@ public class BorderTextView extends TextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        //弄个边框
+        //先画个边框
         canvas.drawRoundRect(borderRect, cornerRadius, cornerRadius, borderPaint);
         canvas.drawRoundRect(innerRect, cornerRadius, cornerRadius, innerPaint);
+        //自带的文字绘制
+        super.onDraw(canvas);
 
-        //文字居中
-        textPaint.setColor(getTextColors().getDefaultColor());
-        textPaint.setTextSize(getTextSize());
-        textPaint.setTextAlign(Paint.Align.CENTER);
-        Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
-        float fontHeight = fontMetrics.bottom - fontMetrics.top;
-        float textBaseY = getHeight() - (getHeight() - fontHeight) / 2 - fontMetrics.bottom;
-        canvas.drawText(getText().toString(), getWidth() / 2, textBaseY, textPaint);
+        //自己写的文字居中绘制
+//        textPaint.setColor(getTextColors().getDefaultColor());
+//        textPaint.setTextSize(getTextSize());
+//        textPaint.setTextAlign(Paint.Align.CENTER);
+//        Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
+//        float fontHeight = fontMetrics.bottom - fontMetrics.top;
+//        float textBaseY = getHeight() - (getHeight() - fontHeight) / 2 - fontMetrics.bottom;
+//        canvas.drawText(getText().toString(), getWidth() / 2, textBaseY, textPaint);
     }
 }

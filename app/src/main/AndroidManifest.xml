@@ -37,6 +37,8 @@
         <activity android:name=".tab0.SelectPhotoActivity"/>
         <activity android:name=".tab0.SwipeListViewActivity"/>
         <activity android:name=".tab0.SlidingMenuActivity"/>
+        <activity android:name=".tab0.AudioActivity"/>
+        <activity android:name=".tab0.ThreadActivity"/>
 
         <activity
             android:name=".tool.customView.PopMenue"

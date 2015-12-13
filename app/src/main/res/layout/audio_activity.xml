@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.suguiming.myandroid.tool.customView.BorderTextView
+            android:text="mp3播放"
+            android:onClick="playTap"
+            android:layout_margin="10dp"
+            app:border_width="1dp"
+            android:gravity="center"
+            app:corner_radius="8dp"
+            android:textColor="@color/yellow"
+            app:inner_color="@color/red"
+            app:border_color="@color/blue"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+        <com.suguiming.myandroid.tool.customView.BorderTextView
+            android:text="mp3暂停"
+            android:onClick="pauseTap"
+            android:layout_margin="10dp"
+            app:border_width="1dp"
+            app:corner_radius="8dp"
+            android:gravity="center"
+            app:inner_color="@color/white"
+            app:border_color="@color/blue"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+        <com.suguiming.myandroid.tool.customView.BorderTextView
+            android:text="mp3停止"
+            android:onClick="stopTap"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            app:border_width="1dp"
+            app:corner_radius="8dp"
+            app:inner_color="@color/white"
+            app:border_color="@color/blue"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.suguiming.myandroid.tool.customView.BorderTextView
+            android:text="mp4播放"
+            android:onClick="mp4PlayTap"
+            android:layout_margin="10dp"
+            app:border_width="1dp"
+            android:gravity="center"
+            app:corner_radius="8dp"
+            app:inner_color="@color/white"
+            app:border_color="@color/blue"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+        <com.suguiming.myandroid.tool.customView.BorderTextView
+            android:text="mp4暂停"
+            android:onClick="mp4PauseTap"
+            android:layout_margin="10dp"
+            app:border_width="1dp"
+            app:corner_radius="8dp"
+            app:inner_color="@color/white"
+            android:gravity="center"
+            app:border_color="@color/blue"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+        <com.suguiming.myandroid.tool.customView.BorderTextView
+            android:text="mp4停止"
+            android:onClick="mp4StopTap"
+            android:layout_margin="10dp"
+            app:border_width="1dp"
+            android:gravity="center"
+            app:corner_radius="8dp"
+            app:inner_color="@color/white"
+            app:border_color="@color/blue"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+
+</LinearLayout>
