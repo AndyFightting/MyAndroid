@@ -60,5 +60,10 @@
             android:name=".tab0.ReadContactActivity"
             android:theme="@style/AppTheme"/>
 
+        <!-- service -->
+        <service android:name=".tool.other.MyService"/>
+        <service android:name=".tool.other.MyIntentService"/>
+        <service android:name=".tool.other.BackCycleService"/>
+
     </application>
 </manifest>

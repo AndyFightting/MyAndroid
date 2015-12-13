@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.BaseFragment;
+import com.suguiming.myandroid.tool.other.BackCycleService;
 import com.suguiming.myandroid.tool.utils.MainBroadcastReceiver;
 import com.suguiming.myandroid.tool.Task;
 
@@ -54,6 +55,8 @@ public class MainActivity extends BaseActivity {
         selectFragment(selectedIndex);
 
         addBroadcastReceiver();//添加广播监听
+
+        BackCycleService.startService(this);//第一次开始后环执行任务service，之后靠通知循环启动service
     }
 
     @Override
@@ -125,6 +128,7 @@ public class MainActivity extends BaseActivity {
         mainBroadFilter.addAction(Task.LOGIN_OUT_ACTION);
         mainBroadFilter.addAction(Task.RECEIVE_SMS_ACTION);
         mainBroadFilter.addAction(Task.SEND_SMS_RESULT_ACTION);
+        mainBroadFilter.addAction(Task.BACKGROUND_CYCLE_ACTION);//后台循环执行任务通知
         registerReceiver(mainBroadcastReceiver, mainBroadFilter);
     }
 

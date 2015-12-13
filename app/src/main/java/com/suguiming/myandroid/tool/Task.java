@@ -16,11 +16,14 @@ public class Task {
     public static final String CAMERA_ACTION = "android.media.action.IMAGE_CAPTURE";
     public static final String CROP_ACTION = "com.android.camera.action.CROP";
     public static final String ALBUM_ACTION = "android.intent.action.GET_CONTENT";
+    public static final String BACKGROUND_CYCLE_ACTION = "sgm.background.cycle.alarm";
 
 
     public static final int TAKE_PHOTO_CODE = 1;
     public static final int ALBUM_CHOOSE_CODE = 2;
     public static final int CROP_PHOTO_CODE = 3;
+
+    public static final int CYCLE_SERVICE_CODE = 4;
 
 
 }
