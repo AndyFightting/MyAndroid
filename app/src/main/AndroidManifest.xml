@@ -39,6 +39,16 @@
         <activity android:name=".tab0.SlidingMenuActivity"/>
         <activity android:name=".tab0.AudioActivity"/>
         <activity android:name=".tab0.ThreadActivity"/>
+        <activity android:name=".tab0.ActionSheetActivity"/>
+
+        <activity android:name=".tool.customView.actionSheets.DateSheet"
+            android:theme="@style/ActionSheetTheme"/>
+
+        <activity android:name=".tool.customView.actionSheets.TimeSheet"
+            android:theme="@style/ActionSheetTheme"/>
+
+        <activity android:name=".tool.customView.actionSheets.ShareSheet"
+            android:theme="@style/ActionSheetTheme"/>
 
         <activity
             android:name=".tool.customView.PopMenue"
@@ -53,7 +63,7 @@
             android:theme="@style/ActivityPresentTheme"/>
 
         <activity
-            android:name=".tool.customView.PhotoSheet"
+            android:name=".tool.customView.actionSheets.PhotoSheet"
             android:theme="@style/ActionSheetTheme" />
 
         <activity

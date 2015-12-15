@@ -1,4 +1,4 @@
-package com.suguiming.myandroid.tool.customView;
+package com.suguiming.myandroid.tool.customView.actionSheets;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,8 @@ import com.suguiming.myandroid.tool.utils.ItemTapListener;
 /**
  * Created by suguiming on 15/11/28.
  */
-//用作透明弹出框的 base activity
-public class BaseAlphaView extends Activity {
+//用作弹出 action sheet 效果的 base activity
+public class BaseSheetActivity extends Activity {
     protected int activityCloseEnterAnimation;
     protected int activityCloseExitAnimation;
 
@@ -53,7 +53,7 @@ public class BaseAlphaView extends Activity {
     }
 
     public static void show(Context context,Class showedActivityClass, ItemTapListener itemTapListener){
-        com.suguiming.myandroid.tool.customView.BaseAlphaView.itemTapListener = itemTapListener;
+        BaseSheetActivity.itemTapListener = itemTapListener;
         Intent intent = new Intent(context,showedActivityClass);
         context.startActivity(intent);
     }

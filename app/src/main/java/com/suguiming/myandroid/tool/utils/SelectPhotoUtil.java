@@ -12,7 +12,7 @@ import android.view.View;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.customView.PhotoSheet;
+import com.suguiming.myandroid.tool.customView.actionSheets.PhotoSheet;
 
 import java.io.File;
 import java.io.FileNotFoundException;

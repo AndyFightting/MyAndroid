@@ -13,10 +13,8 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
-import com.suguiming.myandroid.tool.other.BackCycleService;
 import com.suguiming.myandroid.tool.utils.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.customView.PhotoSheet;
 import com.suguiming.myandroid.tool.customView.CustomDialog;
 import com.suguiming.myandroid.tool.customView.HUD;
 import com.suguiming.myandroid.tool.customView.PopMenue;
@@ -240,19 +238,8 @@ public class Fragment0 extends BaseFragment {
                 mainActivity.startActivity(intent);
                 break;
             case 5:
-                PhotoSheet.show(mainActivity, PhotoSheet.class, new ItemTapListener() {
-                    @Override
-                    public void itemTap(View view) {
-                        switch (view.getId()) {
-                            case R.id.camera_tv:
-                                showToast("相机");
-                                break;
-                            case R.id.phone_tv:
-                                showToast("相册");
-                                break;
-                        }
-                    }
-                });
+                intent = new Intent(mainActivity, ActionSheetActivity.class);
+                mainActivity.startActivity(intent);
                 break;
             case 6:
                 HUD.show(mainActivity, "登录中...");
