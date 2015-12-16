@@ -43,42 +43,32 @@ public class DateUtil {
         return calendar.get(Calendar.DAY_OF_MONTH);
     }
 
+    //方式一
     public static int getDayNums(int year, int month) {//某月有多少天,month传1到12
-        if (month > 12) {
+        if (month < 1){
             month = 1;
-            year += 1;
-        } else if (month < 1) {
+        }else if (month > 12){
             month = 12;
-            year -= 1;
+        }
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,year);
+        cal.set(Calendar.MONTH,month-1);
+        return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+
+    //方式二
+    public static int getDayNums2(int year, int month){//某月有多少天,month传1到12
+        if (month < 1){
+            month = 1;
+        }else if (month > 12){
+            month = 12;
         }
         int[] arr = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
             arr[1] = 29; // 闰年2月29天
         }
-         return arr[month - 1];
-    }
-
-    public static void test1(int year, int month){
-
-        SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");
-
-
-        Calendar cal = Calendar.getInstance();
-
-        cal.set(Calendar.DAY_OF_MONTH, 1);//时期设置成1
-        cal.add(Calendar.MONTH, 1);//月份加1
-        cal.set(Calendar.DAY_OF_MONTH, -1);//再减一天。
-        Date lastDate = cal.getTime();
-
-
-
-
-
-//        Calendar   cDay1   =   Calendar.getInstance();
-//        cDay1.setTime(sDate1);
-//        final   int   lastDay   =   cDay1.getActualMaximum(Calendar.DAY_OF_MONTH);
-//        Date   lastDate   =   cDay1.getTime();
-//        lastDate.setDate(lastDay);
+        return arr[month - 1];
     }
 
     public static long getGapDays(Date startDate, Date endDate) {//相差天数

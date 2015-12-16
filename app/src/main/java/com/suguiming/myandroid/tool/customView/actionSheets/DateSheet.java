@@ -175,4 +175,14 @@ public class DateSheet extends BaseSheetActivity {
         }
         dismiss();
     }
+
+    @Override
+    protected void onDestroy() {
+        yearLayout = null;
+        yearPicker = null;
+        monthPicker = null;
+        dayPicker = null;
+
+        super.onDestroy();
+    }
 }

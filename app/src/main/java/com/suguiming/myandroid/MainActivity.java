@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.tool.other.BackCycleService;
+import com.suguiming.myandroid.tool.utils.DBManager;
 import com.suguiming.myandroid.tool.utils.MainBroadcastReceiver;
 import com.suguiming.myandroid.tool.Task;
 
@@ -57,6 +58,8 @@ public class MainActivity extends BaseActivity {
         addBroadcastReceiver();//添加广播监听
 
         BackCycleService.startService(this);//第一次开始后环执行任务service，之后靠通知循环启动service
+
+        DBManager.copyDB(this, DBManager.ADDRESS_NAME);//导入地区db
     }
 
     @Override

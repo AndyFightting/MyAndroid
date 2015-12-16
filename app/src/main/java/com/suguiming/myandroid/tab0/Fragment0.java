@@ -13,6 +13,7 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
+import com.suguiming.myandroid.tool.utils.DBManager;
 import com.suguiming.myandroid.tool.utils.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
 import com.suguiming.myandroid.tool.customView.CustomDialog;

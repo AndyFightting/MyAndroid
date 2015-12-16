@@ -123,5 +123,11 @@ public class TimeSheet extends BaseSheetActivity {
         dismiss();
     }
 
+    @Override
+    protected void onDestroy() {
+        hourPicker = null;
+        minutePicker = null;
 
+        super.onDestroy();
+    }
 }

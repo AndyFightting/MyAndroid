@@ -10,7 +10,7 @@
 
         <Button
             android:onClick="shareTap"
-            android:text="分享sheet"
+            android:text="分享 sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -23,6 +23,19 @@
         <Button
             android:onClick="dateTap"
             android:text="选择日期 sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:onClick="addressTap"
+            android:text="地区 sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
