@@ -16,6 +16,7 @@ import java.io.InputStream;
 public class DBManager {
 
     public static final String ADDRESS_NAME = "address_sheet"; //不要后缀.db！！
+    public static final String WHEEL_NAME = "wheel"; //不要后缀.db！！
 
     public static String getDbPath(Context context, String dbName) {
         String dbDirPath = "/data/data/" + context.getPackageName() + "/databases";

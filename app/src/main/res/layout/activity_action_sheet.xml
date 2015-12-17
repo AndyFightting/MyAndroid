@@ -39,6 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:onClick="wheelTap"
+            android:text="用android wheel 第二个地区数据库"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 

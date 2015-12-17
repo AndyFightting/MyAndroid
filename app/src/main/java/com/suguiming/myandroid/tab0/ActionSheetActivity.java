@@ -8,6 +8,8 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.customView.actionSheets.AddressSheet;
+import com.suguiming.myandroid.tool.customView.actionSheets.AddressWheelAdapter;
+import com.suguiming.myandroid.tool.customView.actionSheets.AddressWheelSheet;
 import com.suguiming.myandroid.tool.customView.actionSheets.DateSheet;
 import com.suguiming.myandroid.tool.customView.actionSheets.TimeSheet;
 import com.suguiming.myandroid.tool.customView.actionSheets.ShareSheet;
@@ -84,6 +86,25 @@ public class ActionSheetActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    public void wheelTap(View view){
+        AddressWheelSheet.show(this, AddressWheelSheet.class, new ItemTapListener() {
+            @Override
+            public void itemTap(View view) {
+                if (view.getId() == R.id.yes) {
+                    Map map = MyTool.getMapFromObj(view.getTag());
+                    if (map != null) {
+                        String one = (String) map.get("one");
+                        String two = (String) map.get("two");
+                        String three = (String) map.get("three");
+                        showToast(one + " " + two + " " + three );
+                    }
+                }
+            }
+        });
+
+
     }
 
 

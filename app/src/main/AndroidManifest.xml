@@ -41,6 +41,9 @@
         <activity android:name=".tab0.ThreadActivity"/>
         <activity android:name=".tab0.ActionSheetActivity"/>
 
+        <activity android:name=".tool.customView.actionSheets.AddressWheelSheet"
+            android:theme="@style/ActionSheetTheme"/>
+
         <activity android:name=".tool.customView.actionSheets.AddressSheet"
             android:theme="@style/ActionSheetTheme"/>
 

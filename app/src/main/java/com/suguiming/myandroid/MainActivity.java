@@ -60,6 +60,7 @@ public class MainActivity extends BaseActivity {
         BackCycleService.startService(this);//第一次开始后环执行任务service，之后靠通知循环启动service
 
         DBManager.copyDB(this, DBManager.ADDRESS_NAME);//导入地区db
+        DBManager.copyDB(this, DBManager.WHEEL_NAME);//导入地区db
     }
 
     @Override
