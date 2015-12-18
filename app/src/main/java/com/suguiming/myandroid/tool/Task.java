@@ -4,7 +4,7 @@ package com.suguiming.myandroid.tool;
  * Created by suguiming on 15/11/18.
  */
 public class Task {
-
+    public  static String HOST = "http://192.168.9.12:8081/fit/";
 
 
     public static final String BROADCAST_HEAD = "com.suguiming.myandroid.";

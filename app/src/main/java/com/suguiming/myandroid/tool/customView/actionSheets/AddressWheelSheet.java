@@ -10,7 +10,9 @@ import android.widget.TextView;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.tool.utils.DBManager;
 import com.suguiming.myandroid.tool.wheel.OnWheelChangedListener;
+import com.suguiming.myandroid.tool.wheel.OnWheelScrollListener;
 import com.suguiming.myandroid.tool.wheel.WheelView;
+import com.suguiming.myandroid.tool.wheel.adapters.ArrayWheelAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,14 +48,28 @@ public class AddressWheelSheet extends BaseSheetActivity {
         twoPicker = (WheelView) findViewById(R.id.two_pk);
         threePicker = (WheelView) findViewById(R.id.three_pk);
 
-
         oneList.addAll(getList(this, "province", 0));
-        onePicker.setViewAdapter(new AddressWheelAdapter(this, oneList));
-        onePicker.setVisibleItems(3);
+        String[] nameArray = new String[oneList.size()];
+        for (int i = 0; i < oneList.size(); i++) {
+            nameArray[i] = oneList.get(i).getRegionName();
+        }
+        ArrayWheelAdapter<String> adapter = new ArrayWheelAdapter<>(this, nameArray);
+        onePicker.setViewAdapter(adapter);
+
+        onePicker.setVisibleItems(5);
         onePicker.addChangingListener(new OnWheelChangedListener() {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
                 oneIndex = newValue;
+            }
+        });
+        onePicker.addScrollingListener(new OnWheelScrollListener() {
+            @Override
+            public void onScrollingStarted(WheelView wheel) {
+            }
+
+            @Override
+            public void onScrollingFinished(WheelView wheel) {
                 setTwoPicker();
                 setThreePicker();
             }
@@ -67,12 +83,27 @@ public class AddressWheelSheet extends BaseSheetActivity {
         twoList.clear();
         twoList.addAll(getList(this, "city", oneList.get(oneIndex).getRegionId()));
 
-        twoPicker.setViewAdapter(new AddressWheelAdapter(this, twoList));
-        twoPicker.setVisibleItems(3);
+        String[] nameArray = new String[twoList.size()];
+        for (int i = 0; i < twoList.size(); i++) {
+            nameArray[i] = twoList.get(i).getRegionName();
+        }
+        ArrayWheelAdapter<String> adapter = new ArrayWheelAdapter<>(this, nameArray);
+
+        twoPicker.setViewAdapter(adapter);
+        twoPicker.setVisibleItems(5);
         twoPicker.addChangingListener(new OnWheelChangedListener() {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
                 twoIndex = newValue;
+            }
+        });
+        twoPicker.addScrollingListener(new OnWheelScrollListener() {
+            @Override
+            public void onScrollingStarted(WheelView wheel) {
+            }
+
+            @Override
+            public void onScrollingFinished(WheelView wheel) {
                 setThreePicker();
             }
         });
@@ -84,9 +115,14 @@ public class AddressWheelSheet extends BaseSheetActivity {
     private void setThreePicker() {
         threeList.clear();
         threeList.addAll(getList(this, "zone", twoList.get(twoIndex).getRegionId()));
+        String[] nameArray = new String[threeList.size()];
+        for (int i = 0; i < threeList.size(); i++) {
+            nameArray[i] = threeList.get(i).getRegionName();
+        }
+        ArrayWheelAdapter<String> adapter = new ArrayWheelAdapter<>(this, nameArray);
 
-        threePicker.setViewAdapter(new AddressWheelAdapter(this, threeList));
-        threePicker.setVisibleItems(3);
+        threePicker.setViewAdapter(adapter);
+        threePicker.setVisibleItems(5);
         threePicker.addChangingListener(new OnWheelChangedListener() {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
@@ -105,7 +141,12 @@ public class AddressWheelSheet extends BaseSheetActivity {
                     Map<String, String> data = new HashMap<>();
                     data.put("one", oneList.get(oneIndex).getRegionName());
                     data.put("two", twoList.get(twoIndex).getRegionName());
-                    data.put("three", threeList.get(threeIndex).getRegionName());
+
+                    if (threeList.size()>0){
+                        data.put("three", threeList.get(threeIndex).getRegionName());
+                    }else {
+                        data.put("three", "");
+                    }
                     view.setTag(data);
                     break;
                 default:

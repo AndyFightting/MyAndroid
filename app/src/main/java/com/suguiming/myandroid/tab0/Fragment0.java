@@ -197,7 +197,7 @@ public class Fragment0 extends BaseFragment {
         nameList.add("show HUD");
         nameList.add("sliding menu");
         nameList.add("通讯录,短信,通知");
-        nameList.add("相机,相册");
+        nameList.add("Volley 使用");
         nameList.add("音频,视频");
         nameList.add("Thread,Service");
     }

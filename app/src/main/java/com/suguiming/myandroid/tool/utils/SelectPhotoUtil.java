@@ -1,6 +1,7 @@
 package com.suguiming.myandroid.tool.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -46,8 +47,12 @@ public class SelectPhotoUtil {
         });
     }
 
+    public static String getPhotoPath(){
+        return Environment.getExternalStorageDirectory()+"/"+imageName;
+    }
+
     private static void initData() {
-        File outputImage = new File(Environment.getExternalStorageDirectory(), imageName);
+        File outputImage = new File(getPhotoPath());
         try {
             if (outputImage.exists()) {
                 outputImage.delete();
@@ -115,8 +120,8 @@ public class SelectPhotoUtil {
         intent.putExtra("crop", "true");
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", 450);
-        intent.putExtra("outputY", 450);
+        intent.putExtra("outputX", 500);
+        intent.putExtra("outputY", 500);
         intent.putExtra("scale", true);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         intent.putExtra("return-data", false);
@@ -131,8 +136,8 @@ public class SelectPhotoUtil {
         intent.putExtra("crop", "true");
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        intent.putExtra("outputX", 450);
-        intent.putExtra("outputY", 450);
+        intent.putExtra("outputX", 500);
+        intent.putExtra("outputY", 500);
         intent.putExtra("scale", true);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         intent.putExtra("return-data", false);

@@ -1,19 +1,22 @@
 package com.suguiming.myandroid.tab0;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.Task;
+import com.suguiming.myandroid.tool.customView.RoundImageView;
 import com.suguiming.myandroid.tool.customView.actionSheets.AddressSheet;
-import com.suguiming.myandroid.tool.customView.actionSheets.AddressWheelAdapter;
 import com.suguiming.myandroid.tool.customView.actionSheets.AddressWheelSheet;
 import com.suguiming.myandroid.tool.customView.actionSheets.DateSheet;
-import com.suguiming.myandroid.tool.customView.actionSheets.TimeSheet;
 import com.suguiming.myandroid.tool.customView.actionSheets.ShareSheet;
+import com.suguiming.myandroid.tool.customView.actionSheets.TimeSheet;
 import com.suguiming.myandroid.tool.utils.ItemTapListener;
+import com.suguiming.myandroid.tool.utils.SelectPhotoUtil;
 
 import java.util.Map;
 
@@ -22,12 +25,15 @@ import java.util.Map;
  */
 public class ActionSheetActivity extends BaseActivity {
 
+    private RoundImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setMainView(R.layout.activity_action_sheet);
         showTitleView("action sheets");
         showLeftImg("back_img");
+        imageView =(RoundImageView)findViewById(R.id.head_img);
     }
 
     public void shareTap(View view) {
@@ -103,9 +109,25 @@ public class ActionSheetActivity extends BaseActivity {
                 }
             }
         });
-
-
     }
 
-
+   //头像
+    public void imageTap(View view){
+        //步骤1
+        SelectPhotoUtil.beginSelect(this, new SelectPhotoUtil.ResultListener() {
+            @Override
+            public void complete(Bitmap bitmap) {
+                if (bitmap != null) {
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //步骤2 (相机，裁剪，相册)
+        if (requestCode == Task.TAKE_PHOTO_CODE || requestCode == Task.CROP_PHOTO_CODE || requestCode == Task.ALBUM_CHOOSE_CODE){
+            SelectPhotoUtil.processPhoto(requestCode,resultCode,data);
+        }
+    }
 }

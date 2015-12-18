@@ -30,8 +30,15 @@ public class HUD {
     public static void dismiss(){
         if (hudDialog != null){
             if (hudDialog.isShowing()){
-                hudDialog.dismiss();
-                hudDialog = null;
+
+                //延迟0.7秒消失
+                titleTv.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        hudDialog.dismiss();
+                        hudDialog = null;
+                    }
+                }, 700);
             }
         }
     }

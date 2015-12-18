@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
+
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
