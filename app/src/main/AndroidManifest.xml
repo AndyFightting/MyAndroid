@@ -18,6 +18,11 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS"/>
 
+    <!-- 位置-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+
     <application
         android:name=".base.MainApplication"
         android:allowBackup="true"
@@ -34,7 +39,7 @@
         </activity>
 
         <activity android:name=".login.LoginActivity"/>
-        <activity android:name=".tab0.SelectPhotoActivity"/>
+        <activity android:name=".tab0.VolleyActivity"/>
         <activity android:name=".tab0.SwipeListViewActivity"/>
         <activity android:name=".tab0.SlidingMenuActivity"/>
         <activity android:name=".tab0.AudioActivity"/>

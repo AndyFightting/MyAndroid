@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:onClick="postTap"
-        android:text="volley post 请求"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_marginTop="30dp"
-        android:text="上传图片"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/head_img"
-        android:onClick="imageTap"
-        android:background="@color/red"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="postTap"
+            android:text="volley post 请求" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="gsonBeanTap"
+            android:text="gson" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="loactionTap"
+            android:text="定位" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="上传图片" />
+
+        <ImageView
+            android:id="@+id/head_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/red"
+            android:onClick="imageTap" />
+    </LinearLayout>
 </LinearLayout>

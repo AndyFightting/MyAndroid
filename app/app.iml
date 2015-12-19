@@ -109,6 +109,7 @@
     <orderEntry type="library" exported="" name="ormlite-core-4.48" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.4" level="project" />
     <orderEntry type="library" exported="" name="cube-sdk-1.0.44" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.5" level="project" />
     <orderEntry type="module" module-name="convenientbanner" exported="" />
     <orderEntry type="library" exported="" name="SlidingMenu/library-unspecified" level="project" />
   </component>

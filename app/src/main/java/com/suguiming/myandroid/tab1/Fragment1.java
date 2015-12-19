@@ -177,6 +177,8 @@ public class Fragment1 extends BaseFragment {
     //构造假数据
     private void initNameList() {
         nameList.add("汉字转拼音 Pinyin4j");
+        nameList.add("ORMLite");
+        nameList.add("gson");
     }
 
     private void itemTap(int position) {
@@ -196,6 +198,9 @@ public class Fragment1 extends BaseFragment {
 
                 break;
             case 2:
+
+
+
                 break;
 
         }

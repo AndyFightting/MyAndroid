@@ -13,7 +13,6 @@ import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
-import com.suguiming.myandroid.tool.utils.DBManager;
 import com.suguiming.myandroid.tool.utils.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
 import com.suguiming.myandroid.tool.customView.CustomDialog;
@@ -254,7 +253,7 @@ public class Fragment0 extends BaseFragment {
                 mainActivity.startActivity(intent);
                 break;
             case 9:
-                intent = new Intent(mainActivity,SelectPhotoActivity.class);
+                intent = new Intent(mainActivity,VolleyActivity.class);
                 mainActivity.startActivity(intent);
                 break;
             case 10:
