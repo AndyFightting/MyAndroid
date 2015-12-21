@@ -3,11 +3,8 @@ package com.suguiming.myandroid.base.volley;
 import android.util.Log;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.orhanobut.logger.Logger;
 import com.suguiming.myandroid.base.MainApplication;
 import com.suguiming.myandroid.tool.MyTool;
@@ -82,33 +79,4 @@ public class VolleyHelper {
         }
         application.addToQueue(multiPartStringRequest);
     }
-
-    //--------------
-
-    private void test(){
-
-        RequestQueue newRequestQueue = Volley.newRequestQueue(null);
-        StringRequest stringRequest = new StringRequest("http://www.baidu.com", new Response.Listener<String>()
-        {
-
-            @Override
-            public void onResponse(String response)
-            {
-                Log.e("TAG", response);
-
-            }
-        }, new Response.ErrorListener()
-        {
-            @Override
-            public void onErrorResponse(VolleyError error)
-            {
-                Log.e("TAG", error.getMessage(), error);
-            }
-        });
-
-
-    }
-
-
-
 }

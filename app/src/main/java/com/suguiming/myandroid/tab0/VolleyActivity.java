@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.volley.RequestListener;
@@ -148,6 +149,8 @@ public class VolleyActivity extends BaseActivity {
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             if (location != null){
                 showToast("经度 " + location.getLongitude() + "; 纬度：" + location.getLatitude());
+                MyTool.log("经度 " + location.getLongitude() + "; 纬度：" + location.getLatitude());
+                loactionToaddress(location);
             }
 
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 10, new LocationListener() {
@@ -178,6 +181,27 @@ public class VolleyActivity extends BaseActivity {
         } catch (SecurityException e) {
             e.printStackTrace();
         }
+    }
+
+    //反向地理编码，通过经纬度得到地址信息
+    private void loactionToaddress(Location location){
+      String url = String.format(Task.GOOGLE_GEO_URL, location.getLatitude(), location.getLongitude());
+
+        HUD.show(this,"位置解析中...");
+        VolleyHelper.getRequest(url, new RequestListener() {
+            @Override
+            public void requestSuccess(String response) {
+                HUD.setMessage("解析成功");
+                HUD.dismiss();
+            }
+
+            @Override
+            public void requestFailed(VolleyError error, int code, String message) {
+                HUD.setMessage("解析失败");
+                HUD.dismiss();
+
+            }
+        });
     }
 
 

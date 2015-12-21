@@ -12,6 +12,8 @@ import android.util.Log;
 
 import com.suguiming.myandroid.tool.Task;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by suguiming on 15/12/13.
  */
@@ -30,7 +32,9 @@ public class BackCycleService extends Service {
             public void run() {
                 //后台执行任务
 
-                Log.i("开始执行后台任务", "hello world");
+                EventBus.getDefault().post(new EventObject());
+
+                Log.i("myLog", "开始执行后台任务");
             }
         }).start();
 

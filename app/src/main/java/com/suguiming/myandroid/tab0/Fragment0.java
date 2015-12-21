@@ -50,7 +50,6 @@ public class Fragment0 extends BaseFragment {
         setMainView(R.layout.fragment0_layout);
         showTitleView("课程统计");
         showRightTitle("菜单"); //看BaseFragment, 重写rightTitleTap()得到点击事件
-        showLeftTitle("popView");
 
         initNameList();
         addUserToList(9);

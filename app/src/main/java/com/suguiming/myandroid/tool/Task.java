@@ -4,8 +4,8 @@ package com.suguiming.myandroid.tool;
  * Created by suguiming on 15/11/18.
  */
 public class Task {
-    public  static String HOST = "http://192.168.9.12:8081/fit/";
-
+    public static String HOST = "http://192.168.9.12:8081/fit/";
+    public static String GOOGLE_GEO_URL = "http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false";
 
     public static final String BROADCAST_HEAD = "com.suguiming.myandroid.";
     public static final String LOGIN_OUT_ACTION = BROADCAST_HEAD+"login.out";
