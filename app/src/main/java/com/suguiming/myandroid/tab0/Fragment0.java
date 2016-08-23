@@ -9,10 +9,14 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.squareup.otto.Bus;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
 import com.suguiming.myandroid.bean.User;
+import com.suguiming.myandroid.tool.other.EventObject;
+import com.suguiming.myandroid.tool.other.OttoEventObject;
+import com.suguiming.myandroid.tool.other.OttoHelper;
 import com.suguiming.myandroid.tool.utils.ItemTapListener;
 import com.suguiming.myandroid.tool.Task;
 import com.suguiming.myandroid.tool.customView.CustomDialog;
@@ -22,6 +26,7 @@ import com.suguiming.myandroid.tool.customView.PopMenue;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import in.srain.cube.util.LocalDisplay;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -138,7 +143,7 @@ public class Fragment0 extends BaseFragment {
         addUserToList(3);
         userAdapter.notifyDataSetChanged();
 
-        if (userList.size() > 15) { //假设最多15条数据
+        if (userList.size() > 20) { //假设最多条数据
             canLoadMore = false;
         }
     }
@@ -178,12 +183,6 @@ public class Fragment0 extends BaseFragment {
         });
     }
 
-    @Override
-    public void leftTitleTap(View view) {
-
-
-    }
-
     //构造假数据
     private void initNameList() {
         nameList.add("模拟下线通知，在任何地方都可以");
@@ -198,6 +197,9 @@ public class Fragment0 extends BaseFragment {
         nameList.add("Volley 使用");
         nameList.add("音频,视频");
         nameList.add("Thread,Service");
+        nameList.add("Picasso");
+        nameList.add("EventBus");
+        nameList.add("Otto");
     }
 
     private void itemTap(int position) {
@@ -262,6 +264,23 @@ public class Fragment0 extends BaseFragment {
             case 11:
                 intent = new Intent(mainActivity,ThreadActivity.class);
                 mainActivity.startActivity(intent);
+                break;
+            case 12:
+                intent = new Intent(mainActivity,PicassoActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 13:
+                EventObject eventObject = new EventObject();
+                eventObject.eventId = 10086;
+
+                EventBus.getDefault().post(eventObject);
+                break;
+            case 14:
+                OttoEventObject object = new OttoEventObject();
+                object.eventId = 110;
+                object.msg = "hello otto";
+
+                OttoHelper.getInstance().post(object);
                 break;
 
         }

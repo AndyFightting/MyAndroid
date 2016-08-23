@@ -50,8 +50,8 @@ public class VolleyActivity extends BaseActivity {
     public void postTap(View view) {//测试
         //后台接口要用的参数...
         Map<String, Object> params = new HashMap<>();
-        params.put("phone", "13199999999");
-        params.put("password", "q");
+        params.put("phone", "13888888888");
+        params.put("password", "123");
         params.put("deviceType", "1");
         params.put("deviceToken", "token");
 

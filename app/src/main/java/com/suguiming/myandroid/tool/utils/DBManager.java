@@ -9,9 +9,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-/**
- * Created by dongxuewei on 14/12/12.
- */
 //db保存路径  /data/data/packageName/databases/ 文件夹下
 public class DBManager {
 

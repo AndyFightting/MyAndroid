@@ -16,9 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by dongxuewei on 15/1/15.
- */
 public class AddressSheet extends BaseSheetActivity {
 
     public CustomNumberPicker onePicker;
