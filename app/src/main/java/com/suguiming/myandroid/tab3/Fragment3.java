@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.orhanobut.logger.Logger;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseFragment;
+import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.other.EventObject;
 import com.suguiming.myandroid.tool.other.OttoEventObject;
 import com.suguiming.myandroid.tool.other.OttoHelper;
@@ -75,9 +78,17 @@ public class Fragment3 extends BaseFragment {
 
     //otto 事件接收
     //注解一定要有,并且方法的用 public 修饰的.方法名可以随意取,重点是参数,它是根据参数进行判断!
-    //@Produce也是用于方法，并且这个方法的参数必须为空，返回值是你要订阅的事件的类型。
     @com.squareup.otto.Subscribe
     public void receiveOttoEventObject(OttoEventObject object){
         showToast("收到otto啦"+object.getMsg());
+    }
+
+    //@Produce是用于发布事件！并且这个方法的参数必须为空，返回值是你要订阅的事件的类型。需要注册和注销！
+    @com.squareup.otto.Produce
+    public OttoEventObject postOttoEventObject(){
+        OttoEventObject object = new OttoEventObject();
+        object.eventId = 110;
+        object.msg = "会立即发布otto事件";
+        return object;
     }
 }

@@ -200,6 +200,7 @@ public class Fragment0 extends BaseFragment {
         nameList.add("Picasso");
         nameList.add("EventBus");
         nameList.add("Otto");
+        nameList.add("okhttp");
     }
 
     private void itemTap(int position) {
@@ -281,6 +282,10 @@ public class Fragment0 extends BaseFragment {
                 object.msg = "hello otto";
 
                 OttoHelper.getInstance().post(object);
+                break;
+            case 15:
+                intent = new Intent(mainActivity,OkhttpActivity.class);
+                mainActivity.startActivity(intent);
                 break;
 
         }

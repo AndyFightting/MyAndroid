@@ -37,6 +37,16 @@ public class StudentAdapter extends BaseAdapter{
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return studentList.get(position);
+    }
+
+    @Override
     public View getView (final int position, View convertView, ViewGroup parent){
          ViewHolder viewHolder;
         if (convertView == null){
@@ -61,16 +71,6 @@ public class StudentAdapter extends BaseAdapter{
         viewHolder.imageView.setImageResource(R.mipmap.tab2s);
 
         return convertView;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return studentList.get(position);
     }
 
     class ViewHolder{

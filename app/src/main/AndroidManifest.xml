@@ -80,7 +80,8 @@
         <service android:name=".tool.other.MyIntentService" />
         <service android:name=".tool.other.BackCycleService" />
 
-        <activity android:name=".tab0.PicassoActivity"></activity>
+        <activity android:name=".tab0.PicassoActivity" />
+        <activity android:name=".tab0.OkhttpActivity"></activity>
     </application>
 
 </manifest>

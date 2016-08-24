@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.suguiming.myandroid.tab0.OkhttpActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:onClick="getRequest"
+        android:textAllCaps="false"
+        android:text="get request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="postRequest"
+        android:textAllCaps="false"
+        android:text="post request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

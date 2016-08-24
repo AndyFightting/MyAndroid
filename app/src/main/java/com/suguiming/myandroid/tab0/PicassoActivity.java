@@ -1,17 +1,19 @@
 package com.suguiming.myandroid.tab0;
 
 import android.graphics.Bitmap;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
+import com.squareup.seismic.ShakeDetector;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
-public class PicassoActivity extends BaseActivity {
+public class PicassoActivity extends BaseActivity implements ShakeDetector.Listener{
 
     private ImageView picassoImage;
 
@@ -52,6 +54,10 @@ public class PicassoActivity extends BaseActivity {
 //        BrightnessFilterTransformation, KuwaharaFilterTransformation VignetteFilterTransformation
         Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").transform(new CropCircleTransformation()).into(picassoImage);
 
+        //手机摇一摇
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        ShakeDetector sd = new ShakeDetector(this);
+        sd.start(sensorManager);
     }
 
     //自定义Transformation
@@ -73,6 +79,11 @@ public class PicassoActivity extends BaseActivity {
         public String key() {
             return "square_picasso()";
         }
+    }
+
+  // ShakeDetector.Listener
+    public void hearShake() {
+        showToast("摇啊摇");
     }
 
 }

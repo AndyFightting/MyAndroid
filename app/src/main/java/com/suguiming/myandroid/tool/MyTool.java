@@ -30,6 +30,10 @@ public class MyTool {
         Log.i("myLog", message);
     }
 
+    public static void logJson(String json){
+        Logger.json(json);
+    }
+
     public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }

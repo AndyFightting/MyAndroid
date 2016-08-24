@@ -154,6 +154,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View tmpView = inflater.inflate(viewId, null);
+
+        if (tmpView instanceof LinearLayout) {
+            LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            tmpView.setLayoutParams(linearLayoutParams);
+        } else if (tmpView instanceof RelativeLayout) {
+            RelativeLayout.LayoutParams relativeLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            tmpView.setLayoutParams(relativeLayoutParams);
+        }
+
         mainView.removeAllViews();
         mainView.addView(tmpView);
 

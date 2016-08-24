@@ -51,12 +51,10 @@
     <com.suguiming.myandroid.tool.customView.RoundImageView
         android:id="@+id/head_img"
         android:onClick="imageTap"
-        android:layout_centerHorizontal="true"
         android:src="@mipmap/round_test"
         app:border_color="@color/yellow"
         app:border_width="2dp"
         android:layout_width="100dp"
-        android:layout_marginLeft="20dp"
         android:layout_height="100dp"/>
 
 
