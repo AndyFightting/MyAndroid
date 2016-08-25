@@ -7,7 +7,7 @@
     tools:context="com.suguiming.myandroid.tab0.OkhttpActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_okhttp"
         android:onClick="getRequest"
         android:textAllCaps="false"
         android:text="get request"
@@ -19,5 +19,11 @@
         android:text="post request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/image_okhttp"
+        android:onClick="upload"
+        android:background="@color/red"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
 </LinearLayout>

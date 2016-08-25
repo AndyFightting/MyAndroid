@@ -50,7 +50,7 @@ public class VolleyActivity extends BaseActivity {
     public void postTap(View view) {//测试
         //后台接口要用的参数...
         Map<String, Object> params = new HashMap<>();
-        params.put("phone", "13888888888");
+        params.put("phone", "18301943273");
         params.put("password", "123");
         params.put("deviceType", "1");
         params.put("deviceToken", "token");
@@ -95,7 +95,7 @@ public class VolleyActivity extends BaseActivity {
     private void uploadImage() {
         //后台要的参数....
         Map<String, Object> paramter = new HashMap<>();
-        paramter.put("phone", "13123286789");
+        paramter.put("phone", "12123286780");//注册后就不能再注册了
         paramter.put("password", "123");
         paramter.put("deviceType", "1");
         paramter.put("deviceToken", "tmp_token");
