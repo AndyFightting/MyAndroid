@@ -7,6 +7,7 @@ import com.suguiming.myandroid.tool.MyTool;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -61,6 +62,34 @@ public class OkHttpHelper {
         beginRequest(request, listener);
     }
 
+
+    public static void postMultipleMap(String url, final Map<String, Object> params, final OkHttpListener listener) {
+        MultipartBody.Builder multipleBuilder = new MultipartBody.Builder();
+        multipleBuilder.setType(MultipartBody.FORM);
+
+        if (params != null) {
+            Set<String> keys = params.keySet();
+            for (String key : keys) {
+                Object obj = params.get(key);
+
+                if (obj instanceof File) {
+                    File tmpFile = (File) obj;
+                    multipleBuilder.addFormDataPart(key,tmpFile.getName(),MultipartBody.create(MediaType.parse("image/png"), tmpFile));
+                } else {
+                    multipleBuilder.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + key + "\""), RequestBody.create(null, (String)obj));
+                }
+            }
+        }
+
+        RequestBody multipleBody = multipleBuilder.build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(multipleBody)
+                .build();
+
+        beginRequest(request, listener);
+    }
+
     private static void beginRequest(Request request, final OkHttpListener listener) {
         Call call = client.newCall(request);
 
@@ -68,6 +97,7 @@ public class OkHttpHelper {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseString = response.body().string();
+                final int code = response.code();
 
                 if (response.isSuccessful()) {
                     MyTool.logJson(responseString);
@@ -81,7 +111,8 @@ public class OkHttpHelper {
                         }
                     });
                 } else {
-                    MyTool.log("请求失败：" + response.code() + "---------" + response.toString());
+                              //请求失败：    400  ---------   {"code":100002,"msg":"手机号已注册","url":""}
+                    MyTool.log("请求失败：" + code + "---------" + responseString);
                     mainHandler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -107,34 +138,6 @@ public class OkHttpHelper {
                 });
             }
         });
-    }
-
-    public static void postMultipleMap(String url, final Map<String, Object> params, final OkHttpListener listener) {
-        MultipartBody.Builder multipleBuilder = new MultipartBody.Builder();
-        multipleBuilder.setType(MultipartBody.FORM);
-
-        if (params != null) {
-            Set<String> keys = params.keySet();
-            for (String key : keys) {
-                Object obj = params.get(key);
-
-                //注意是 addFormDataPart 和 addPart
-                if (obj instanceof File) {
-                    File tmpFile = (File) obj;
-                    multipleBuilder.addFormDataPart(key,tmpFile.getName(),MultipartBody.create(MediaType.parse("image/png"), tmpFile));
-                } else {
-                    multipleBuilder.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + key + "\""), RequestBody.create(null, (String)obj));
-                }
-            }
-        }
-
-        RequestBody multipleBody = multipleBuilder.build();
-        Request request = new Request.Builder()
-                .url(url)
-                .post(multipleBody)
-                .build();
-
-        beginRequest(request, listener);
     }
 
 

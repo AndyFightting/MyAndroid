@@ -6,7 +6,7 @@ package com.suguiming.myandroid.tool;
 public class Task {
 
 //    public static String HOST ="http://api1.koudaifit.com/fit/";
-    public static String HOST ="http://test.koudaifit.com/fit/ ";
+    public static String HOST ="http://test.koudaifit.com/fit/";
 
     public static String GOOGLE_GEO_URL = "http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false";
 

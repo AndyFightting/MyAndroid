@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.orhanobut.logger.Logger;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.tool.MyTool;
 import com.suguiming.myandroid.tool.Task;
-import com.suguiming.myandroid.tool.customView.HUD;
 import com.suguiming.myandroid.tool.other.okhttp.OkHttpHelper;
 import com.suguiming.myandroid.tool.other.okhttp.OkHttpListener;
 import com.suguiming.myandroid.tool.utils.SelectPhotoUtil;
@@ -95,7 +93,7 @@ public class OkhttpActivity extends BaseActivity {
     private void uploadImage() {
         //后台要的参数....
         Map<String, Object> paramter = new HashMap<>();
-        paramter.put("phone", "12123286713");//注册后就不能再注册了
+        paramter.put("phone", "12123286780");//注册后就不能再注册了
         paramter.put("password", "123");
         paramter.put("deviceType", "1");
         paramter.put("deviceToken", "tmp_token");
@@ -116,8 +114,8 @@ public class OkhttpActivity extends BaseActivity {
                 showToast("失败了");
             }
         });
-
-
     }
+
+
 
 }

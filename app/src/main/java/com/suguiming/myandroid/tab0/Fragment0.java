@@ -201,6 +201,8 @@ public class Fragment0 extends BaseFragment {
         nameList.add("EventBus");
         nameList.add("Otto");
         nameList.add("okhttp");
+        nameList.add("纯代码、DrawerLayout、NavigationView");
+
     }
 
     private void itemTap(int position) {
@@ -285,6 +287,10 @@ public class Fragment0 extends BaseFragment {
                 break;
             case 15:
                 intent = new Intent(mainActivity,OkhttpActivity.class);
+                mainActivity.startActivity(intent);
+                break;
+            case 16:
+                intent = new Intent(mainActivity,PureCodeActivity.class);
                 mainActivity.startActivity(intent);
                 break;
 

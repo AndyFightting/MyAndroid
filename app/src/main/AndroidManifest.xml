@@ -81,7 +81,8 @@
         <service android:name=".tool.other.BackCycleService" />
 
         <activity android:name=".tab0.PicassoActivity" />
-        <activity android:name=".tab0.OkhttpActivity"></activity>
+        <activity android:name=".tab0.OkhttpActivity" />
+        <activity android:name=".tab0.PureCodeActivity"></activity>
     </application>
 
 </manifest>
