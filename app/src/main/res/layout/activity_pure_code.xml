@@ -17,14 +17,21 @@
         tools:openDrawer="start"
         tools:context="com.suguiming.myandroid.tab0.PureCodeActivity">
 
-        <FrameLayout
-            android:id="@+id/fl_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:id="@+id/drawer_text"
+               android:layout_centerInParent="true"
+               android:text="滑动左边框拉出菜单"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+
+       </RelativeLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header_main"

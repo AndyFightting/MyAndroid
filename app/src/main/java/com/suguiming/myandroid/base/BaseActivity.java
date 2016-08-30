@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suguiming.myandroid.R;
-import com.suguiming.myandroid.tool.utils.ActivityManager;
 import com.suguiming.myandroid.tool.MyTool;
+import com.suguiming.myandroid.tool.utils.ActivityManager;
 
 /**
  * Created by suguiming on 15/11/18.

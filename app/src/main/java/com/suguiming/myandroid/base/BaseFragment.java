@@ -25,6 +25,8 @@ import com.suguiming.myandroid.tool.MyTool;
  */
 public class BaseFragment extends Fragment implements View.OnClickListener {
 
+    private static final String FRAGMENT_IS_HIDDEN = "FRAGMENT_IS_HIDDEN";
+
     protected RelativeLayout fatherView;
     protected RelativeLayout titleView;
     protected LinearLayout mainView;
@@ -65,6 +67,17 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //解决重叠问题
+        if (savedInstanceState != null) {
+            boolean isHidden = savedInstanceState.getBoolean(FRAGMENT_IS_HIDDEN);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            if (isHidden) {
+                ft.hide(this);
+            } else {
+                ft.show(this);
+            }
+            ft.commit();
+        }
     }
 
     @Override
@@ -137,6 +150,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putBoolean(FRAGMENT_IS_HIDDEN, isHidden());//保持fragment是否隐藏的状态
     }
 
     //方向改变时被调用

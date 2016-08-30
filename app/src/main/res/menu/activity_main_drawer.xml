@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/item_0"
             android:icon="@mipmap/tab0"
             android:title="课程统计"/>
         <item
-            android:id="@+id/nav_discover"
+            android:id="@+id/item_1"
             android:icon="@mipmap/tab1"
             android:title="日历排期"/>
         <item
-            android:id="@+id/nav_msg"
+            android:id="@+id/item_2"
             android:icon="@mipmap/tab2"
             android:title="商品详情"/>
-    </group>
 
-    <item android:title="system">
+    <item android:title="主页">
         <menu>
             <item
-                android:id="@+id/nav_login"
+                android:id="@+id/item_3"
                 android:icon="@mipmap/tab3"
                 android:title="个人主页"/>
         </menu>
     </item>
 
-    <item android:title="swipe">
+    <item android:title="设置">
         <menu>
             <item
-                android:id="@+id/nav_swipe_back"
+                android:id="@+id/item_4"
                 android:icon="@mipmap/tab0"
                 android:title="退出登录"/>
         </menu>

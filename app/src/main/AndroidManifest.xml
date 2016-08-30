@@ -44,6 +44,7 @@
         <activity android:name=".tab0.AudioActivity" />
         <activity android:name=".tab0.ThreadActivity" />
         <activity android:name=".tab0.ActionSheetActivity" />
+
         <activity
             android:name=".tool.customView.actionSheets.AddressWheelSheet"
             android:theme="@style/ActionSheetTheme" />
@@ -82,7 +83,8 @@
 
         <activity android:name=".tab0.PicassoActivity" />
         <activity android:name=".tab0.OkhttpActivity" />
-        <activity android:name=".tab0.PureCodeActivity"></activity>
+        <activity android:name=".tab0.PureCodeActivity" />
+        <activity android:name=".tab0.ActivitySwipBack"></activity>
     </application>
 
 </manifest>

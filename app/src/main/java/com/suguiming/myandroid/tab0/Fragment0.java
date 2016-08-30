@@ -201,7 +201,7 @@ public class Fragment0 extends BaseFragment {
         nameList.add("EventBus");
         nameList.add("Otto");
         nameList.add("okhttp");
-        nameList.add("纯代码、DrawerLayout、NavigationView");
+        nameList.add("DrawerLayout");
 
     }
 
@@ -292,6 +292,8 @@ public class Fragment0 extends BaseFragment {
             case 16:
                 intent = new Intent(mainActivity,PureCodeActivity.class);
                 mainActivity.startActivity(intent);
+                break;
+            case 17:
                 break;
 
         }
