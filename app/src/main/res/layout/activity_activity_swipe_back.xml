@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.suguiming.myandroid.tab0.ActivitySwipeBack">
+
+    <TextView
+        android:onClick="textTaped"
+        android:textSize="20dp"
+        android:textColor="@color/red"
+        android:gravity="center"
+        android:text="手势滑动返回,点击继续push"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp" />
+
+</RelativeLayout>

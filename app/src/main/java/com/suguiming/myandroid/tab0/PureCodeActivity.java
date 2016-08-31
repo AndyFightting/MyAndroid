@@ -174,8 +174,8 @@ public class PureCodeActivity extends BaseActivity {
         }
     }
 
-
-    //    private void pureCodeLayout(){
+//        纯代码添加控件
+//        private void pureCodeLayout(){
 //        RelativeLayout  pureLayout = (RelativeLayout)findViewById(R.id.pureLayout);//控件容器
 //        pureLayout.setBackgroundColor(Color.parseColor("#F5F5DC"));
 //

@@ -13,6 +13,7 @@ import com.squareup.otto.Bus;
 import com.suguiming.myandroid.R;
 import com.suguiming.myandroid.adapter.UserAdapter;
 import com.suguiming.myandroid.base.BaseFragment;
+import com.suguiming.myandroid.base.BaseSwipeActivity;
 import com.suguiming.myandroid.bean.User;
 import com.suguiming.myandroid.tool.other.EventObject;
 import com.suguiming.myandroid.tool.other.OttoEventObject;
@@ -202,6 +203,7 @@ public class Fragment0 extends BaseFragment {
         nameList.add("Otto");
         nameList.add("okhttp");
         nameList.add("DrawerLayout");
+        nameList.add("手势滑动返回");
 
     }
 
@@ -294,6 +296,8 @@ public class Fragment0 extends BaseFragment {
                 mainActivity.startActivity(intent);
                 break;
             case 17:
+                intent = new Intent(mainActivity,ActivitySwipeBack.class);
+                mainActivity.startActivity(intent);
                 break;
 
         }

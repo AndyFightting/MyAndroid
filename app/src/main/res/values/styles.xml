@@ -77,4 +77,19 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <!--手势返回theme-->
+    <style name="BackSwipeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@style/ActivitySwipeBackAnimation</item>
+    </style>
+    <style name="ActivitySwipeBackAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_swipe_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_swipe_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_swipe_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_swipe_out</item>
+    </style>
+
 </resources>
