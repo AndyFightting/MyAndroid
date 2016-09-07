@@ -86,9 +86,10 @@
         <activity
             android:name=".base.BaseSwipeActivity"
             android:theme="@style/BackSwipeTheme" />
-
-        <activity android:name=".tab0.ActivitySwipeBack"
-            android:theme="@style/BackSwipeTheme"/>
+        <activity
+            android:name=".tab0.ActivitySwipeBack"
+            android:theme="@style/BackSwipeTheme" />
+        <activity android:name=".tab0.AsyncTaskActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.suguiming.myandroid.base.BaseActivity;
 import com.suguiming.myandroid.base.BaseFragment;
+import com.suguiming.myandroid.tab0.Fragment0;
 import com.suguiming.myandroid.tool.other.BackCycleService;
 import com.suguiming.myandroid.tool.utils.DBManager;
 import com.suguiming.myandroid.tool.utils.MainBroadcastReceiver;
@@ -53,6 +54,10 @@ public class MainActivity extends BaseActivity {
             }
         }
         transaction.commit();
+
+        if (savedInstanceState != null){
+            selectedIndex = savedInstanceState.getInt("selectedIndex");
+        }
         selectFragment(selectedIndex);
 
         addBroadcastReceiver();//添加广播监听
@@ -61,6 +66,13 @@ public class MainActivity extends BaseActivity {
 
         DBManager.copyDB(this, DBManager.ADDRESS_NAME);//导入地区db
         DBManager.copyDB(this, DBManager.WHEEL_NAME);//导入地区db
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 
     @Override
@@ -82,7 +94,14 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         removeBroadcastReceiver();//移除广播监听
     }
-//-----------------------------------------------自己方法----------------------------------------------------------------
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("selectedIndex",selectedIndex);
+    }
+
+    //-----------------------------------------------自己方法----------------------------------------------------------------
     public void tabTap(View view){
         switch (view.getId()){
             case R.id.tab0_layout:
@@ -139,6 +158,5 @@ public class MainActivity extends BaseActivity {
     public void removeBroadcastReceiver(){
         unregisterReceiver(mainBroadcastReceiver);
     }
-
 
 }

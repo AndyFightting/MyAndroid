@@ -204,6 +204,8 @@ public class Fragment0 extends BaseFragment {
         nameList.add("okhttp");
         nameList.add("DrawerLayout");
         nameList.add("手势滑动返回");
+        nameList.add("AsyncTask使用");
+        nameList.add("RxJava使用");
 
     }
 
@@ -299,7 +301,10 @@ public class Fragment0 extends BaseFragment {
                 intent = new Intent(mainActivity,ActivitySwipeBack.class);
                 mainActivity.startActivity(intent);
                 break;
-
+            case 18:
+                intent = new Intent(mainActivity,AsyncTaskActivity.class);
+                mainActivity.startActivity(intent);
+                break;
         }
     }
 

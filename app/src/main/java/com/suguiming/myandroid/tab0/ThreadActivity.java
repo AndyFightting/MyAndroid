@@ -53,6 +53,7 @@ public class ThreadActivity extends BaseActivity {
             }
         }).start();
 
+
         handler = new MyHandler(this);
         asyncTask = new MyAsyncTask();
         asyncTask.execute();
@@ -69,6 +70,7 @@ public class ThreadActivity extends BaseActivity {
     class ThreadOne extends Thread {
         @Override
         public void run() {
+
             Log.i("thread one", "hello world");
         }
     }
